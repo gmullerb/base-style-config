@@ -1,0 +1,42 @@
+//  Copyright (c) 2018 Gonzalo Müller Bravo.
+//  Licensed under the MIT License (MIT), see LICENSE.txt
+
+plugins {
+  id 'checkstyle'
+}
+
+repositories {
+  jcenter()
+}
+
+// TASKS
+////////
+
+task assess (type: Checkstyle) {
+  // Checkstyle task settings
+  configFile = file('config/common/common-checks.xml')
+  classpath = files('dummy') // Required by Checkstyle, Not required for Checker modules
+  source files('.', {
+    include 'config/', '*.gradle', '*.properties', '*.md'
+  })
+  // gradle task settings
+  description = 'Runs Checkstyle analysis for all files.'
+  group = 'assess'
+}
+
+task build (type: Jar) {
+  // Jar task settings
+  baseName = project.name
+  version = project.version
+  from 'config'
+  destinationDir project.buildDir
+  // gradle task settings
+  description = 'Creates a JAR file with all check configurations.'
+  group = 'build'
+  dependsOn 'assess'
+}
+
+// Default task
+///////////////
+
+defaultTasks 'build'
