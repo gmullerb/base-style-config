@@ -1,6 +1,6 @@
 # Base coding style check configuration
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0-blue.svg)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.1-blue.svg)
 
 **This project provides a set of essential configuration files for code style checking.**
 
@@ -55,25 +55,29 @@ The Defined Sets of rules are in:
 
 ### Code Style Checking Common rules
 
-#### All files [1]
+#### Common rules (common-checks.xml) [1]
 
 * No tab characters on files.
 * Requires a new line break at the end of the file[2].
 
-> [1] Extensions: css, conf, gitignore, gradle, groovy, java, js, json, html, md, properties, sh, sql, ts, txt, xml, yml.
+> [1] Extensions: css, conf, gitignore, gradle, groovy, java, js, json, html, md, properties, sh, sql, ts, txt, xml, yml.  
 > [2] In order to be friendly with Code Versioning tools.
 
-#### Backend and Frontend
+#### Common Backend's, Frontend's and Build's code rules
 
 To highlights:
 
-* CamelCase naming convention.
-* Egyptian brackets.
-* "Tab" character checking with 2 spaces.
-* Method length limit (48 lines).
-* Method parameters number limit (4 parameters).
+* Naming convention: CamelCase.
+* Brackets style: Stroustrup.
+* Indentation: "Tab" character = 2 spaces.
+* Line length limit: 144 characters per line.
+* Method length limit: 48 lines per method.
+* Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
-* Requires semicolon at the end of the line.
+* Method count limit: 10 methods per class.
+* Class count limit: 1 Class per file.
+* Cyclomatic Complexity limit: 8 paths.
+* Requires semicolon at the end of the line (except for Build's code).
 * Some spacing rules are the same.
 
 ### Code Style Checking Custom rules
@@ -82,7 +86,7 @@ To highlights:
 
 ##### Customized rules
 
-* **LineLength**: Line length limit is ignored for lines with some patterns:
+* **`LineLength`**: Line length limit is ignored for lines with some patterns:
   * Starting with `package`.
   * Starting with `import`.
   * Containing Test methods: `public void should*()`.
@@ -101,16 +105,18 @@ To highlights:
     * `get*By*`.
     * `count*By*`.
 
-* **CustomImportOrder**: Import order is forced to have some structure[1]:
+* **`CustomImportOrder`**: Import order is forced to have some structure[1]:
   * First same package's imports, to increase Readability (Allows to always easily locate the classes of same package, usually classes created in the project, that current class depends on).
   * Then java and javax.
   * Then third party.
+
+* **`BeanMembersShouldSerialize`**: ignores this rule when the class does not implement `java.io.Serializable` interface or does not have the `javax.persistence.Entity` Annotation (i.e. checks for `transient` only when the class implements `java.io.Serializable` interface or has the `javax.persistence.Entity` Annotation).
 
 > [1] Although forcing this is sometime harmful since different team members can use different IDEs, but IDEs should not rule the development.
 
 ##### New rules
 
-* **UseMultilineTernaryOperator**: Ternary operator is forced to be in multiple lines in order to increase Readability:
+* **`UseMultilineTernaryOperator`**: Ternary operator is forced to be in multiple lines in order to increase Readability:
 
   ```java
     condition
@@ -118,7 +124,7 @@ To highlights:
       : expression
    ```
 
-* **CallOnlyOneMethodPerLineForChainedCall**: Checks that only one method is called per line in order to increase Readability:
+* **`CallOnlyOneMethodPerLineForChainedCall`**: Checks that only one method is called per line in order to increase Readability:
 
   ```java
     new SomeObject(..)
@@ -146,7 +152,13 @@ To highlights:
 
 ##### New rules
 
-* **AvoidFieldInjection**: Checks that no Field Injection is used in the code.
+* **`AvoidFieldInjection`**: Checks that no Field Injection is used in the code with either `javax.inject.Inject`, `com.google.inject.Inject` or `org.springframework.beans.factory.annotation.Autowired`.
+
+#### Codenarc custom rules
+
+##### Customized rules
+
+* **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
 
 #### Suppressions
 
@@ -368,7 +380,7 @@ git clone https://github.com/gmullerb/base-style-config
 
 ## Documentation
 
-* [`CHANGELOG.md`](CHANGELOG.md)[1] add information of notable changes for each version here, chronologically ordered.
+* [`CHANGELOG.md`](CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
 
 > [1] [Keep a Changelog](http://keepachangelog.com)
 

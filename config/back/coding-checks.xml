@@ -23,6 +23,7 @@
     <!-- Blocks -->
     <module name="AvoidNestedBlocks"/>
     <module name="EmptyBlock"/>
+    <module name="LeftCurly"/>
     <module name="NeedBraces">
       <property name="tokens" value="LITERAL_DO, LITERAL_FOR, LITERAL_WHILE"/>
     </module>
@@ -37,6 +38,10 @@
         <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?!:).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?!:).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
         <property name="ignoreComments" value="true"/>
         <message key="regexp.exceeded" value="Must use multiline operator: condition NEWLINE ? expression NEWLINE : expression"/>
+    </module>
+    <module name="RightCurly">
+      <property name="option" value="alone"/>
+      <property name="tokens" value="CLASS_DEF, INSTANCE_INIT, LITERAL_CATCH, LITERAL_DO, LITERAL_ELSE, LITERAL_FINALLY, LITERAL_FOR, LITERAL_IF, LITERAL_TRY, LITERAL_WHILE, METHOD_DEF, STATIC_INIT"/>
     </module>
     <!-- Documentation -->
     <module name="JavadocStyle">
@@ -107,9 +112,12 @@
       <property name="max" value="48"/>
     </module>
     <module name="ParameterNumber">
-      <property name="max" value="4"/>
+      <property name="max" value="5"/>
       <property name="ignoreOverriddenMethods" value="true"/>
       <property name="tokens" value="METHOD_DEF"/>
+    </module>
+    <module name="CyclomaticComplexity">
+      <property name="max" value="8"/>
     </module>
     <!-- Spaces -->
     <module name="CommentsIndentation"/>

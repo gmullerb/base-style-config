@@ -38,6 +38,21 @@ ruleset {
     exclude 'VariableName'
   }
 
+  ruleset('rulesets/size.xml') {
+    CyclomaticComplexity {
+      maxMethodComplexity = 8
+    }
+    MethodCount {
+      maxMethods = 10
+    }
+    MethodSize {
+      maxLines = 48
+    }
+    ParameterCount {
+      maxParameters = 5
+    }
+  }
+
   ruleset('rulesets/unnecessary.xml')
 
   ruleset('rulesets/unused.xml')

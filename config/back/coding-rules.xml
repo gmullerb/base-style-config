@@ -43,6 +43,7 @@
   <rule ref="category/java/design.xml">
     <exclude name="AvoidCatchingGenericException"/>
     <exclude name="AvoidDeeplyNestedIfStmts"/>
+    <exclude name="CyclomaticComplexity"/>
     <exclude name="DataClass"/>
     <exclude name="LawOfDemeter"/>
     <exclude name="LoosePackageCoupling"/>
@@ -85,9 +86,9 @@
       <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[ends-with(@Image,'Test')]"/>
     </properties>
   </rule>
-  <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize">
+   <rule ref="category/java/errorprone.xml/BeanMembersShouldSerialize">
     <properties>
-      <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[ends-with(@Image,'Test')]"/>
+      <property name="violationSuppressXPath" value="/TypeDeclaration[(child::ClassOrInterfaceDeclaration[not(child::ImplementsList) or child::ImplementsList[not(descendant::ClassOrInterfaceType[@Image='Serializable' or @Image='java.io.Serializable'])]]) and (not(child::Annotation) or not(child::Annotation/MarkerAnnotation/Name[@Image='Entity' or @Image='javax.persistence.Entity']))]"/>
     </properties>
   </rule>
   <rule ref="category/java/multithreading.xml">
@@ -108,7 +109,7 @@
     <properties>
       <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[ends-with(@Image,'Test')]"/>
       <property name="xpath">
-        <value><![CDATA[//FieldDeclaration/preceding-sibling::Annotation/MarkerAnnotation/Name[@Image='Inject' or @Image='Autowired']]]></value>
+        <value><![CDATA[//FieldDeclaration/preceding-sibling::Annotation/MarkerAnnotation/Name[@Image='Inject' or @Image='javax.inject.Inject' or @Image='com.google.inject.Inject' or @Image='Autowired' or @Image='org.springframework.beans.factory.annotation.Autowired']]]></value>
       </property>
     </properties>
   </rule>
