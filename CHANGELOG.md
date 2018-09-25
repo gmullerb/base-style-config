@@ -1,5 +1,9 @@
 # Base Style Config Change Log
 
+## 1.0.2 - September 2018
+
+* Excludes `AbcMetric` rule from CodeNarc's `rulesets/size.xml` set of rules.
+
 ## 1.0.1 - September 2018
 
 * Adds new rules to Checkstyle to check Stroustrup brackets on Backend:

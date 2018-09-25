@@ -51,6 +51,7 @@ ruleset {
     ParameterCount {
       maxParameters = 5
     }
+    exclude 'AbcMetric'
   }
 
   ruleset('rulesets/unnecessary.xml')
