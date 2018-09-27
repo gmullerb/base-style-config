@@ -1,5 +1,18 @@
 # Base Style Config Change Log
 
+## 1.0.3 - September 2018
+
+* Adds `DeclarationOrder` check to [Backend Checkstyle checks](config/back/coding-checks.xml).
+* Updates [Suppressions](config/back/checks-suppressions.xml) for Test's files in Checkstyle:
+  * Adds suppressions for `CyclomaticComplexity` and `MethodLength` checks.
+* Updates CodeNarc's rulesets in order to:
+  * Be more similar to [Backend Checkstyle checks](config/back/coding-checks.xml): updates `rulesets/convention.xml`, `rulesets/imports.xml` and `rulesets/naming.xml`.
+  * Ignore some rules for Test's files: `CyclomaticComplexity`, `MethodCount` and `MethodSize`.
+* Sets priority to `0` (are reported but does not cause a failure) for `DuplicateNumberLiteral` and `DuplicateStringLiteral` rules from CodeNarc, at the moment of this change, these two rules did not allow for a configurable limit of allowed duplications, which turns these rules into impractical.
+* Excludes `ClassJavadoc` rule from CodeNarc's `rulesets/formatting.xml` set of rules.
+* Excludes `CrapMetric` rule from CodeNarc's `rulesets/size.xml` set of rules.
+* Updates README file.
+
 ## 1.0.2 - September 2018
 
 * Excludes `AbcMetric` rule from CodeNarc's `rulesets/size.xml` set of rules.

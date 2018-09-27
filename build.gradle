@@ -3,11 +3,15 @@
 
 plugins {
   id 'checkstyle'
+  id 'codenarc'
 }
 
 repositories {
   jcenter()
 }
+
+final ROOT_FOLDER = '.'
+final CODE_FILES = ['*.gradle', '*.groovy']
 
 // TASKS
 ////////
@@ -16,12 +20,23 @@ task assess (type: Checkstyle) {
   // Checkstyle task settings
   configFile = file('config/common/common-checks.xml')
   classpath = files('dummy') // Required by Checkstyle, Not required for Checker modules
-  source files('.', {
-    include 'config/', '*.gradle', '*.properties', '*.md'
-  })
+  source files(ROOT_FOLDER) {
+    include CODE_FILES + ['config/', '*.gitignore', '*.md', '*.properties', '*.txt']
+  }
   // gradle task settings
   description = 'Runs Checkstyle analysis for all files.'
-  group = 'assess'
+  group = GROUP_ASSESS
+}
+
+task assessGradle(type: CodeNarc) {
+  // CodeNarc task settings
+  configFile = file('config/gradle/gradle-rules.groovy')
+  source files(ROOT_FOLDER) {
+    include CODE_FILES
+  }
+  // gradle task settings
+  description = 'Run Codenarc analysis for all gradle files.'
+  group = GROUP_ASSESS
 }
 
 task build (type: Jar) {
@@ -33,7 +48,7 @@ task build (type: Jar) {
   // gradle task settings
   description = 'Creates a JAR file with all check configurations.'
   group = 'build'
-  dependsOn 'assess'
+  dependsOn = ['assess', 'assessGradle']
 }
 
 // Default task

@@ -1,6 +1,6 @@
 # Base coding style check configuration
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.1-blue.svg)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.3-blue.svg)
 
 **This project provides a set of essential configuration files for code style checking.**
 
@@ -159,15 +159,19 @@ To highlights:
 ##### Customized rules
 
 * **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
+* **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` (violations are only reported), these rules don't allow to configure allowed duplications' limit, which make them hard to use.
 
 #### Suppressions
 
-* For test files, some rules/checks are disabled in order to allow some freedom:
-  * No restriction on the number of methods.
-  * Duplication of literals is allowed, to increase test Maintainability.
-  * Throwing Exception is allowed.
-  * Field Injection is allowed.
-  * Javadoc, obviously, is not required or checked.
+For test files, some rules/checks[1] are disabled in order to allow some freedom:
+* No restriction on the number of methods or size.
+* Duplication of literals is allowed, to increase test Maintainability.
+* No Cyclomatic Complexity's restriction.
+* Throwing `Exception` is allowed.
+* Field Injection is allowed.
+* Javadoc, obviously, is not required or checked.
+
+> [1] For Checkstyle, PMD and CodeNarc.
 
 #### Conventions
 

@@ -22,6 +22,9 @@
     <module name="MissingOverride"/>
     <!-- Blocks -->
     <module name="AvoidNestedBlocks"/>
+    <module name="DeclarationOrder">
+      <property name="ignoreModifiers" value="true"/>
+    </module>
     <module name="EmptyBlock"/>
     <module name="LeftCurly"/>
     <module name="NeedBraces">
