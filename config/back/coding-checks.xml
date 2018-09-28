@@ -31,16 +31,16 @@
       <property name="tokens" value="LITERAL_DO, LITERAL_FOR, LITERAL_WHILE"/>
     </module>
     <module name="RegexpSinglelineJava">
-        <property name="id" value="CallOnlyOneMethodPerLineForChainedCall"/>
-        <property name="format" value='^[^)]*\)\s*\..*' />
-        <property name="ignoreComments" value="true"/>
-        <message key="regexp.exceeded" value="Must call only one method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)"/>
+      <property name="id" value="CallOnlyOneMethodPerLineForChainedCall"/>
+      <property name="format" value='^[^)]*\)\s*\..*' />
+      <property name="ignoreComments" value="true"/>
+      <message key="regexp.exceeded" value="Must call only one method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)"/>
     </module>
     <module name="RegexpSinglelineJava">
-        <property name="id" value="UseMultilineTernaryOperator"/>
-        <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?!:).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?!:).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
-        <property name="ignoreComments" value="true"/>
-        <message key="regexp.exceeded" value="Must use multiline operator: condition NEWLINE ? expression NEWLINE : expression"/>
+      <property name="id" value="UseMultilineTernaryOperator"/>
+      <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?!:).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?!:).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
+      <property name="ignoreComments" value="true"/>
+      <message key="regexp.exceeded" value="Must use multiline operator: condition NEWLINE ? expression NEWLINE : expression"/>
     </module>
     <module name="RightCurly">
       <property name="option" value="alone"/>
@@ -87,6 +87,12 @@
     <module name="PackageDeclaration"/>
     <module name="PackageName"/>
     <module name="ParameterName"/>
+    <module name="RegexpSinglelineJava">
+      <property name="id" value="UseOnlyMockOrSpyPrefixOnTestFiles"/>
+      <property name="format" value='\b(mock|spy)[A-Z0-9]' />
+      <property name="ignoreComments" value="true"/>
+      <message key="regexp.exceeded" value="Use the 'mock' or 'spy' prefixes only on test's files' code"/>
+    </module>
     <module name="StaticVariableName"/>
     <module name="TypeName"/>
     <module name="UpperEll"/>
@@ -140,6 +146,11 @@
     <module name="MethodParamPad"/>
     <module name="NoLineWrap"/>
     <module name="SingleSpaceSeparator"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="UseOnlyDoFamilyMethodsWhenMocking"/>
+    <property name="format" value='Mockito\s*\.\s*when|org\.mockito\.BDDMockito' />
+    <message key="regexp.exceeded" value="Use only &#34;do*&#34;'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn &amp; doThrow"/>
   </module>
   <module name="SuppressionFilter">
     <property name="file" value="${suppressionFile}" default="dummy.xml"/>

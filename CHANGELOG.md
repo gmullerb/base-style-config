@@ -1,5 +1,18 @@
 # Base Style Config Change Log
 
+## 1.0.4 - September 2018
+
+* Adds new rules to Checkstyle and CodeNarc:
+  * `UseOnlyMockOrSpyPrefixOnTestFiles` to use the '`mock`' or '`spy`' prefixes only on test's files.
+    * This rule is ignored in Test's files.
+  * `UseOnlyDoFamilyMethodsWhenMocking` to use only `do*`'s family methods when using Mockito: `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` (`Mockito.when` and `BDDMockito.given` have some "issues")
+* Adds new rule `AnnotateClassesWith@CompileStaticOr@TypeChecked` to CodeNarc to check if Main class is annotated with `@CompileStatic` or `@TypeChecked`.
+* Customizes CodeNarc's rule `BracesForIfElse` to have same Stroustrup style that Checkstyle and ESLint.
+* Enables some CodeNarc's rules for `*.groovy` files and excludes to `*.gradle` files: `Indentation`, `NoDef`, `Indentation` and `VariableTypeRequired`
+* Ignores some of the CodeNarc's rules for Test's files: `UnnecessaryGetter` to allow mocking.
+* Fixes some indentation issues in `coding-checks.xml` file.
+* Updates README file.
+
 ## 1.0.3 - September 2018
 
 * Adds `DeclarationOrder` check to [Backend Checkstyle checks](config/back/coding-checks.xml).

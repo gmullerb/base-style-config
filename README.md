@@ -1,6 +1,6 @@
 # Base coding style check configuration
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.3-blue.svg)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.4-blue.svg)
 
 **This project provides a set of essential configuration files for code style checking.**
 
@@ -21,7 +21,7 @@ The idea is to have a common and single source of code styling rules, which can 
   * A [PMD's set](/config/back/coding-rules.xml), for Backend's Java code.
   * A [ESLint's set](/config/front/.eslintrc.json), for Frontend's JS code.
   * A [StyleLint's set](/config/front/.stylelintrc.json), for Frontend's CSS code.
-  * A [Codenarc's set](/config/gradle/gradle-rules.groovy) for Build's Gradle code.
+  * A [Codenarc's set](/config/gradle/gradle-rules.groovy) for Build's Gradle code and Groovy's code.
   * All sets define a similar set of rules in order to get the homogeneity in code style between Backend's, Frontend's and Build's code.
 * Adds some new custom rules to Checkstyle and PMD.
 
@@ -77,8 +77,30 @@ To highlights:
 * Method count limit: 10 methods per class.
 * Class count limit: 1 Class per file.
 * Cyclomatic Complexity limit: 8 paths.
-* Requires semicolon at the end of the line (except for Build's code).
 * Some spacing rules are the same.
+
+##### Semicolon
+
+Semicolon is required by Java[1], but no by Groovy, then when having JS code, the use of the semicolon could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
+
+To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to [2]:
+
+```json
+  "rules": {
+    "semi": ["error", "always"]
+  }
+```
+
+To enforce Groovy style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
+
+```json
+  "rules": {
+    "semi": ["error", "never"]
+  }
+```
+
+> [1] Although new programming languages don't required semicolon, may be forcing JS to use of semicolon could be a waste of typing.  
+> [2] or don't do any configuration, since, unfortunately,the default that comes from the `semi` rule is `always`.
 
 ### Code Style Checking Custom rules
 
@@ -156,10 +178,35 @@ To highlights:
 
 #### Codenarc custom rules
 
+##### New rules
+
+* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if Main class is annotated with `@CompileStatic` or `@TypeChecked`.
+  * [@TypeChecked](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/TypeChecked.html) will do check of type during compilation, this will lead to a more Reliable program.
+  * [@CompileStatic](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/CompileStatic.html) will do check of type during compilation and perform static compilation, this will increase performance of the resulting program.
+
 ##### Customized rules
 
 * **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
 * **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` (violations are only reported), these rules don't allow to configure allowed duplications' limit, which make them hard to use.
+
+Disabled rules for Gradle (still enabled for Groovy):
+
+* `AnnotateClassesWith@CompileStaticOr@TypeChecked`.
+* `Indentation`.
+* `MethodParameterTypeRequired`.
+* `NoDef`.
+* `UseOnlyMockOrSpyPrefixOnTestFiles`.
+* `VariableTypeRequired`.
+
+#### Common New rules
+
+Checkstyle/CodeNarc Rules:
+
+* **`UseOnlyDoFamilyMethodsWhenMocking`**: Checks that only `do*`'s family methods are use when mocking: `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow`:
+  * `Mockito.when` have some ["issues"](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy) basically when spying.
+    * `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` do not present those issues.
+  * `BDDMockito.given` is an alias for `Mockito.when`.
+* **`UseOnlyMockOrSpyPrefixOnTestFiles`**: Checks that the '`mock`' or '`spy`' prefixes are used only on test's files' code.
 
 #### Suppressions
 
@@ -169,6 +216,7 @@ For test files, some rules/checks[1] are disabled in order to allow some freedom
 * No Cyclomatic Complexity's restriction.
 * Throwing `Exception` is allowed.
 * Field Injection is allowed.
+* `UseOnlyMockOrSpyPrefixOnTestFiles`.
 * Javadoc, obviously, is not required or checked.
 
 > [1] For Checkstyle, PMD and CodeNarc.

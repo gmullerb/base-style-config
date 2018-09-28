@@ -1,7 +1,8 @@
 //  Copyright (c) 2018 Gonzalo Müller Bravo.
 //  Licensed under the MIT License (MIT), see LICENSE.txt
 
-final TEST_FILE = '*Test.*'
+final GRADLE_FILES = '*.gradle'
+final TEST_FILES = '*Test.*'
 
 ruleset {
   description 'Gradle code rules'
@@ -11,13 +12,19 @@ ruleset {
   ruleset('rulesets/braces.xml')
 
   ruleset('rulesets/convention.xml') {
+    MethodParameterTypeRequired {
+      doNotApplyToFileNames = GRADLE_FILES
+    }
+    NoDef {
+      doNotApplyToFileNames = GRADLE_FILES
+    }
+    VariableTypeRequired {
+      doNotApplyToFileNames = GRADLE_FILES
+    }
     exclude 'InvertedCondition'
-    exclude 'MethodParameterTypeRequired'
-    exclude 'NoDef'
     exclude 'PublicMethodsBeforeNonPublicMethods'
     exclude 'StaticMethodsBeforeInstanceMethods'
     exclude 'TrailingComma'
-    exclude 'VariableTypeRequired'
   }
 
   ruleset('rulesets/dry.xml') {
@@ -30,6 +37,14 @@ ruleset {
   }
 
   ruleset('rulesets/formatting.xml') {
+    BracesForIfElse {
+      validateElse = true
+      elseOnSameLineAsClosingBrace = false
+    }
+    Indentation {
+      spacesPerIndentLevel = 2
+      doNotApplyToFileNames = GRADLE_FILES
+    }
     LineLength {
       length = 144
       priority = 3
@@ -38,7 +53,6 @@ ruleset {
       characterAfterColonRegex = /\s/
     }
     exclude 'ClassJavadoc'
-    exclude 'Indentation'
   }
 
   ruleset('rulesets/groovyism.xml')
@@ -62,15 +76,15 @@ ruleset {
   ruleset('rulesets/size.xml') {
     CyclomaticComplexity {
       maxMethodComplexity = 8
-      doNotApplyToFileNames = TEST_FILE
+      doNotApplyToFileNames = TEST_FILES
     }
     MethodCount {
       maxMethods = 10
-      doNotApplyToFileNames = TEST_FILE
+      doNotApplyToFileNames = TEST_FILES
     }
     MethodSize {
       maxLines = 48
-      doNotApplyToFileNames = TEST_FILE
+      doNotApplyToFileNames = TEST_FILES
     }
     ParameterCount {
       maxParameters = 5
@@ -79,7 +93,42 @@ ruleset {
     exclude 'CrapMetric'
   }
 
-  ruleset('rulesets/unnecessary.xml')
+  ruleset('rulesets/unnecessary.xml') {
+    UnnecessaryGetter {
+      doNotApplyToFileNames = TEST_FILES
+    }
+  }
 
   ruleset('rulesets/unused.xml')
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'UseOnlyDoFamilyMethodsWhenMocking'
+    description = 'Should use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
+    violationMessage = 'Use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
+    applyToFileNames = TEST_FILES
+    // IllegalPackageReference rule settings
+    regex = /Mockito\s*\.\s*when|org\.mockito\.BDDMockito/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'UseOnlyMockOrSpyPrefixOnTestFiles'
+    description = 'Should use the "mock" or "spy" prefixes only on test\'s files\' code'
+    violationMessage = 'Use the "mock" or "spy" prefixes only on test\'s files\' code'
+    doNotApplyToFileNames = "$GRADLE_FILES,$TEST_FILES"
+    priority = 3
+    // IllegalPackageReference rule settings
+    regex = /\b(mock|spy)[A-Z0-9]/
+  }
+
+  RequiredRegex {
+    // Codenarc rule settings
+    name = 'AnnotateClassesWith@CompileStaticOr@TypeChecked'
+    description = 'Must annotate Main class with @CompileStatic or @TypeChecked'
+    violationMessage = 'Annotate Main class with @CompileStatic or @TypeChecked'
+    doNotApplyToFileNames = GRADLE_FILES
+    // IllegalPackageReference rule settings
+    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?class) | (^(((?!class).)*)$)/
+  }
 }
