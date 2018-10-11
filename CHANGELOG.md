@@ -1,5 +1,13 @@
 # Base Style Config Change Log
 
+## 1.0.5 - October 2018
+
+* Maven Group now is on all.shared.quality
+* Fixes AnnotateClassesWith@CompileStaticOr@TypeChecked to also allow final classes.
+* Ignores some of the CodeNarc's rules for Test's files: UnnecessarySetter to allow mocking and verification.
+* Excludes CodeNarc's rule 'UnnecessaryObjectReferences' for same reason that other languages do not recommend it, e.g.: performance, readability.
+* Updates README file.
+
 ## 1.0.4 - September 2018
 
 * Adds new rules to Checkstyle and CodeNarc:

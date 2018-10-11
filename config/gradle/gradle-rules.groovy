@@ -97,6 +97,10 @@ ruleset {
     UnnecessaryGetter {
       doNotApplyToFileNames = TEST_FILES
     }
+    UnnecessarySetter {
+      doNotApplyToFileNames = TEST_FILES
+    }
+    exclude 'UnnecessaryObjectReferences'
   }
 
   ruleset('rulesets/unused.xml')
@@ -129,6 +133,6 @@ ruleset {
     violationMessage = 'Annotate Main class with @CompileStatic or @TypeChecked'
     doNotApplyToFileNames = GRADLE_FILES
     // IllegalPackageReference rule settings
-    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?class) | (^(((?!class).)*)$)/
+    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?(final\s+)?class) | (^(((?!class).)*)$)/
   }
 }

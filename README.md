@@ -1,6 +1,6 @@
 # Base coding style check configuration
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) ![release](https://img.shields.io/badge/version-1.0.4-blue.svg)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) [![Download](https://api.bintray.com/packages/gmullerb/all.shared.quality/base-style-config/images/download.svg)](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion)
 
 **This project provides a set of essential configuration files for code style checking.**
 
@@ -180,7 +180,7 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 ##### New rules
 
-* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if Main class is annotated with `@CompileStatic` or `@TypeChecked`.
+* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if principal class in the file is annotated with `@CompileStatic` or `@TypeChecked`.
   * [@TypeChecked](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/TypeChecked.html) will do check of type during compilation, this will lead to a more Reliable program.
   * [@CompileStatic](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/CompileStatic.html) will do check of type during compilation and perform static compilation, this will increase performance of the resulting program.
 
@@ -301,7 +301,7 @@ Following is a detailed description of how to use configuration files from a JAR
 1. Add the respective Bintray repository:
 
 ```gradle
-  repositories { maven { url "https://dl.bintray.com/gmullerb/all.shared.config.style" } }
+  repositories { maven { url "https://dl.bintray.com/gmullerb/all.shared.quality.style" } }
 
 ```
 
@@ -312,7 +312,7 @@ Following is a detailed description of how to use configuration files from a JAR
     styleConfig
   }
   dependencies {
-    styleConfig 'all.shared.config:base-style-config:+'
+    styleConfig 'all.shared.quality:base-style-config:+'
   }
 ```
 
@@ -330,6 +330,8 @@ Following is a detailed description of how to use configuration files from a JAR
 
 ### Backend configuration
 
+#### Java
+
 ```gradle
   checkstyle {
     config = resources.text.fromArchiveEntry(configurations.styleConfig, 'back/coding-checks.xml')
@@ -344,6 +346,14 @@ Following is a detailed description of how to use configuration files from a JAR
 
 > If using both, PMD should be run after Checkstyle, since Checkstyle is "lighter".  
 > A complete example in [basecode project - back project](https://github.com/gmullerb/basecode/tree/master/back).
+
+#### Groovy
+
+```gradle
+  codenarc {
+    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'gradle/gradle-rules.groovy')
+  }
+```
 
 ### Frontend configuration
 
@@ -366,7 +376,25 @@ Following is a detailed description of how to use configuration files from a JAR
   }
 ```
 
-3. Same for Stylelint.
+
+3. Same for Stylelint:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someStylelintTask": "stylelint --config ${npm_config_stylelintConfigFile} ..",
+  },
+```
+
+`build.gradle`:
+
+```gradle
+  task assessSomeStylelint(type: NpmTask) {
+    // NpmTask task settings
+    args = ['someStylelintTask'] + "--stylelintConfigFile=${resources.text.fromArchiveEntry(configurations.styleConfig, 'front/.stylelintrc.json').asFile().path}"]
+  }
+```
 
 > A complete example in [basecode project - front project](https://github.com/gmullerb/basecode/tree/master/front).
 
@@ -391,7 +419,7 @@ Following is a detailed description of how to use configuration files from a JAR
 
 ### Getting it
 
-Clone or download the project[1], In the desired folder execute:
+Clone or download the project[1], in the desired folder execute:
 
 ```sh
 git clone https://github.com/gmullerb/base-style-config

@@ -20,7 +20,7 @@ task assess (type: Checkstyle) {
   // Checkstyle task settings
   configFile = file('config/common/common-checks.xml')
   classpath = files('dummy') // Required by Checkstyle, Not required for Checker modules
-  source files(ROOT_FOLDER) {
+  source fileTree(ROOT_FOLDER) {
     include CODE_FILES + ['config/', '*.gitignore', '*.md', '*.properties', '*.txt']
   }
   // gradle task settings
@@ -31,7 +31,7 @@ task assess (type: Checkstyle) {
 task assessGradle(type: CodeNarc) {
   // CodeNarc task settings
   configFile = file('config/gradle/gradle-rules.groovy')
-  source files(ROOT_FOLDER) {
+  source fileTree(ROOT_FOLDER) {
     include CODE_FILES
   }
   // gradle task settings
