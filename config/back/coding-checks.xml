@@ -8,6 +8,7 @@
   <property name="fileExtensions" value="java"/>
   <module name="JavadocPackage"/>
   <module name="TreeWalker">
+    <property name="severity" value="error"/>
     <!-- Annotations -->
     <module name="AnnotationLocation">
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>
@@ -109,24 +110,28 @@
       <property name="protectedAllowed" value="true"/>
     </module>
     <!-- Size -->
-    <property name="severity" value="error"/>
+    <module name="AnonInnerLength"/>
+    <module name="CyclomaticComplexity">
+      <property name="max" value="8"/>
+    </module>
     <module name="LineLength">
       <property name="max" value="144"/>
       <property name="ignorePattern" value="^package\s|^import\s|public void should\w*()|file:///|http://|https://|ftp://|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\("/>
     </module>
     <module name="MethodCount">
-      <property name="maxTotal" value="10"/>
+      <property name="maxPublic" value="12"/>
     </module>
     <module name="MethodLength">
-      <property name="max" value="48"/>
+      <property name="max" value="25"/>
     </module>
     <module name="ParameterNumber">
       <property name="max" value="5"/>
       <property name="ignoreOverriddenMethods" value="true"/>
       <property name="tokens" value="METHOD_DEF"/>
     </module>
-    <module name="CyclomaticComplexity">
-      <property name="max" value="8"/>
+    <module name="VariableDeclarationUsageDistance">
+      <property name="allowedDistance" value="6"/>
+      <property name="ignoreFinal" value="false"/>
     </module>
     <!-- Spaces -->
     <module name="CommentsIndentation"/>
@@ -146,6 +151,14 @@
     <module name="MethodParamPad"/>
     <module name="NoLineWrap"/>
     <module name="SingleSpaceSeparator"/>
+  </module>
+  <module name="FileLength">
+    <property name="max" value="300"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="NameOfTestsMustStartWithShould"/>
+    <property name="format" value='(@Test|@org\.junit\.jupiter\.api\.Test|@org\.junit\.Test|@org\.testng\.annotations\.Test)\s+(public|protected)\s+void(?!\s+should)' />
+    <message key="regexp.exceeded" value="Name of the Test method must begin with 'should'"/>
   </module>
   <module name="RegexpMultiline">
     <property name="id" value="UseOnlyDoFamilyMethodsWhenMocking"/>

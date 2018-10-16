@@ -55,7 +55,7 @@ The Defined Sets of rules are in:
 
 ### Code Style Checking Common rules
 
-#### Common rules (common-checks.xml) [1]
+#### Common rules [common-checks.xml](config/common/common-checks.xml) [1]
 
 * No tab characters on files.
 * Requires a new line break at the end of the file[2].
@@ -71,13 +71,20 @@ To highlights:
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
-* Method length limit: 48 lines per method.
+* Method length limit: 25 lines per method.
 * Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
-* Method count limit: 10 methods per class.
+* Class/File lines limit: 300 lines per class/file.
+  * This will allow having at most around of 11 big methods: 11 methods of max 25 lines.
+  * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 25 lines.
+    * Several small private methods and few public methods.
+    * Java Code [1] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
 * Class count limit: 1 Class per file.
 * Cyclomatic Complexity limit: 8 paths.
 * Some spacing rules are the same.
+
+> Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
+> [1] CodeNarc and ESLint does not yet provide a way of doing this.
 
 ##### Semicolon
 
@@ -134,7 +141,10 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 * **`BeanMembersShouldSerialize`**: ignores this rule when the class does not implement `java.io.Serializable` interface or does not have the `javax.persistence.Entity` Annotation (i.e. checks for `transient` only when the class implements `java.io.Serializable` interface or has the `javax.persistence.Entity` Annotation).
 
-> [1] Although forcing this is sometime harmful since different team members can use different IDEs, but IDEs should not rule the development.
+* **`VariableDeclarationUsageDistance`**: is set to allow a maximum distance of 6 effective statements between declaration and first used of the variable [2].
+
+> [1] Although forcing this is sometime harmful since different team members can use different IDEs, but IDEs should not rule the development.  
+> [2] CodeNarc and ESLint does not yet provide a way of doing this.
 
 ##### New rules
 
@@ -172,6 +182,12 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 #### PMD custom rules
 
+##### Customized rules
+
+* **`TooManyFields`**: is set to allow a maximum of 6 fields per class [1].
+
+> [1]  CodeNarc and ESLint does not yet provide a way of doing this.
+
 ##### New rules
 
 * **`AvoidFieldInjection`**: Checks that no Field Injection is used in the code with either `javax.inject.Inject`, `com.google.inject.Inject` or `org.springframework.beans.factory.annotation.Autowired`.
@@ -207,13 +223,13 @@ Checkstyle/CodeNarc Rules:
     * `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` do not present those issues.
   * `BDDMockito.given` is an alias for `Mockito.when`.
 * **`UseOnlyMockOrSpyPrefixOnTestFiles`**: Checks that the '`mock`' or '`spy`' prefixes are used only on test's files' code.
+* **`NameOfTestsMustStartWithShould`**: Checks that the test methods names begin with `should`, e.g. `shouldExtractSomeValue`.
 
 #### Suppressions
 
 For test files, some rules/checks[1] are disabled in order to allow some freedom:
 * No restriction on the number of methods or size.
 * Duplication of literals is allowed, to increase test Maintainability.
-* No Cyclomatic Complexity's restriction.
 * Throwing `Exception` is allowed.
 * Field Injection is allowed.
 * `UseOnlyMockOrSpyPrefixOnTestFiles`.
@@ -301,7 +317,7 @@ Following is a detailed description of how to use configuration files from a JAR
 1. Add the respective Bintray repository:
 
 ```gradle
-  repositories { maven { url "https://dl.bintray.com/gmullerb/all.shared.quality.style" } }
+  repositories { maven { url "https://dl.bintray.com/gmullerb/all.shared.quality" } }
 
 ```
 

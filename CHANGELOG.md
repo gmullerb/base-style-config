@@ -1,9 +1,22 @@
 # Base Style Config Change Log
 
+## 1.0.6 - October 2018
+
+* Adds new rules to Checkstyle and CodeNarc:
+  * `NameOfTestsMustStartWithShould` to guaranteed that test methods name are prefixed with the word `should`.
+* Adds `AnonInnerLength` and `VariableDeclarationUsageDistance` check to [Backend Checkstyle checks](config/back/coding-checks.xml).
+* Updates _Method Size Rule_ for Checkstyle, CodeNarc & ESLint to 25 lines, which is readable without scrolling, this will increase Mantainability.
+* Removes _Method Count Rules_ and adds _File Length rules_ for Checkstyle, CodeNarc & ESLint, to allow to be more functional oriented.
+  * Disables _File Length Rule_ for test files in Checkstyle & CodeNarc.
+  * Actually does not remove `MethodCount` for [Backend Checkstyle checks](config/back/coding-checks.xml), **but modifies** in order to only check the count for public methods.
+* Adds `TooManyFields` PMD rule to allow a maximum of 6 fields.
+* Enables _Cyclomatic Complexity rule_ for Test files on Checkstyle & CodeNarc, in order to increase its Mantainability.
+* Updates README file.
+
 ## 1.0.5 - October 2018
 
 * Maven Group now is on all.shared.quality
-* Fixes AnnotateClassesWith@CompileStaticOr@TypeChecked to also allow final classes.
+* Fixes `AnnotateClassesWith@CompileStaticOr@TypeChecked` to also allow final classes.
 * Ignores some of the CodeNarc's rules for Test's files: UnnecessarySetter to allow mocking and verification.
 * Excludes CodeNarc's rule 'UnnecessaryObjectReferences' for same reason that other languages do not recommend it, e.g.: performance, readability.
 * Updates README file.

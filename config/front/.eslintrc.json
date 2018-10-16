@@ -23,7 +23,7 @@
     "max-len": ["error", {"code": 144, "ignoreComments": false, "ignoreTrailingComments": false, "ignoreStrings": false, "ignoreTemplateLiterals": false, "ignoreRegExpLiterals": false}],
     "max-lines": "error",
     "max-params": ["error", {"max": 5}],
-    "max-statements": ["error", {"max": 48}],
+    "max-statements": ["error", {"max": 25}],
     "new-cap": "error",
     "new-parens": "error",
     "newline-per-chained-call": "error",

@@ -74,16 +74,15 @@ ruleset {
   }
 
   ruleset('rulesets/size.xml') {
+    ClassSize {
+      maxLines = 300
+      doNotApplyToFileNames = TEST_FILES
+    }
     CyclomaticComplexity {
       maxMethodComplexity = 8
-      doNotApplyToFileNames = TEST_FILES
-    }
-    MethodCount {
-      maxMethods = 10
-      doNotApplyToFileNames = TEST_FILES
     }
     MethodSize {
-      maxLines = 48
+      maxLines = 25
       doNotApplyToFileNames = TEST_FILES
     }
     ParameterCount {
@@ -107,11 +106,21 @@ ruleset {
 
   IllegalRegex {
     // Codenarc rule settings
+    name = 'NameOfTestsMustStartWithShould'
+    description = 'Names of Test methods must begin with "should"'
+    violationMessage = 'Name of the Test method must begin with "should"'
+    applyToFileNames = TEST_FILES
+    // IllegalRegex rule settings
+    regex = /(@Test|@org\.junit\.jupiter\.api\.Test|@org\.junit\.Test|@org\.testng\.annotations\.Test)\s+((public|protected)\s+)?void(?!\s+should)/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
     name = 'UseOnlyDoFamilyMethodsWhenMocking'
     description = 'Should use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
     violationMessage = 'Use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
     applyToFileNames = TEST_FILES
-    // IllegalPackageReference rule settings
+    // IllegalRegex rule settings
     regex = /Mockito\s*\.\s*when|org\.mockito\.BDDMockito/
   }
 
@@ -122,7 +131,7 @@ ruleset {
     violationMessage = 'Use the "mock" or "spy" prefixes only on test\'s files\' code'
     doNotApplyToFileNames = "$GRADLE_FILES,$TEST_FILES"
     priority = 3
-    // IllegalPackageReference rule settings
+    // IllegalRegex rule settings
     regex = /\b(mock|spy)[A-Z0-9]/
   }
 
@@ -132,7 +141,7 @@ ruleset {
     description = 'Must annotate Main class with @CompileStatic or @TypeChecked'
     violationMessage = 'Annotate Main class with @CompileStatic or @TypeChecked'
     doNotApplyToFileNames = GRADLE_FILES
-    // IllegalPackageReference rule settings
+    // RequiredRegex rule settings
     regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?(final\s+)?class) | (^(((?!class).)*)$)/
   }
 }
