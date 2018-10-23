@@ -25,6 +25,19 @@
     <exclude name="ConfusingTernary"/>
     <exclude name="OnlyOneReturn"/>
   </rule>
+  <rule ref="category/java/codestyle.xml/FieldNamingConventions">
+    <properties>
+      <property name="constantPattern" value="([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)"/>
+      <property name="enumConstantPattern" value="[A-Z](_?[A-Z0-9]+)*"/>
+      <property name="finalFieldPattern" value="[a-z]([A-Z]?[a-z0-9]+)*[A-Z]?"/>
+      <property name="publicConstantPattern" value="([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+    <properties>
+      <property name="utilityClassPattern" value="[A-Z][a-z0-9]([A-Z]?[a-z0-9]+)*(Factory|Utils?|Helper)"/>
+    </properties>
+  </rule>
   <rule ref="category/java/codestyle.xml/ShortClassName">
     <properties>
       <property name="minimum" value="3"/>

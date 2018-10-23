@@ -53,6 +53,7 @@ ruleset {
       characterAfterColonRegex = /\s/
     }
     exclude 'ClassJavadoc'
+    exclude 'SpaceAroundOperator'
   }
 
   ruleset('rulesets/groovyism.xml')
@@ -67,7 +68,8 @@ ruleset {
 
   ruleset('rulesets/naming.xml') {
     FieldName {
-      staticFinalRegex = '[a-zA-Z](_?[a-zA-Z0-9]+)*'
+      regex = '[a-z]([A-Z]?[a-z0-9]+)*[A-Z]?'
+      staticFinalRegex = '([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)'
     }
     exclude 'FactoryMethodName'
     exclude 'VariableName'
@@ -90,6 +92,7 @@ ruleset {
     }
     exclude 'AbcMetric'
     exclude 'CrapMetric'
+    exclude 'MethodCount'
   }
 
   ruleset('rulesets/unnecessary.xml') {
@@ -106,12 +109,66 @@ ruleset {
 
   IllegalRegex {
     // Codenarc rule settings
+    name = 'CallOnlyOneMethodPerLineForChainedCall'
+    description = 'No chained methods call allowed in same line'
+    violationMessage = 'Call only one chained method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)'
+    // IllegalRegex rule settings
+    regex = /[^)\v]*\)\h*\..*\(\V*/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
     name = 'NameOfTestsMustStartWithShould'
     description = 'Names of Test methods must begin with "should"'
     violationMessage = 'Name of the Test method must begin with "should"'
     applyToFileNames = TEST_FILES
     // IllegalRegex rule settings
     regex = /(@Test|@org\.junit\.jupiter\.api\.Test|@org\.junit\.Test|@org\.testng\.annotations\.Test)\s+((public|protected)\s+)?void(?!\s+should)/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'SpaceBeforeOperator'
+    description = 'Must set 1 space before operators'
+    violationMessage = 'Set 1 space before operator'
+    // IllegalRegex rule settings
+    regex = /(?<=[\n\r]).((\h*[^"'\n\r\/\*]*(?<!\s)(\!\=|\=\=|\<\=\>|(?<![\!\=\+\-\/\*\&\|\>\<\^%])\=(?!\=)|\+\=|(?<!\+)\+(?![\=\+])|\-\=|(?<!\-)\-(?![\-\=\>])|(?<!\/)\*\=|(?<!\/)\*\*|(?<![\/\*])\*(?![\*\/\=])|%\=|%(?!\=)|\^\=|\^(?!\=)|\|\||\|\=|(?<!\|)\|(?![\|\=])|\&\&|\&\=|(?<!\&)\&(?![\&\=])|\?:|\>\>\>|(?<!\>)\>\>(?!\>)|\<\<\<|(?<!\<)\<\<(?!\<)|(?<!\<)\<(?!\<)\s))|([^\<"'\n\r\/\*]*(?<!\s)((?<!\-)(\>(?!\>)))))[^\n\r]*/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'SpaceAfterOperator'
+    description = 'Must set 1 space after operators'
+    violationMessage = 'Set 1 space after operator'
+    // IllegalRegex rule settings
+    regex = /(?<=[\n\r]).\h*[^"'\n\r\/\*]*((\!\=|\=\=|\<\=\>|(?<![\!\=\+\-\/\*\&\|\>\<\^%])\=(?!\=)|\+\=|(?<!\+)\+(?![\=\+])|\-\=|(?<!\-)\-(?![\-\=\>])|(?<!\/)\*\=|(?<!\/)\*\*|(?<![\/\*])\*(?![\*\/\=\.:])|%\=|%(?!\=)|\^\=|\^(?!\=)|\|\||\|\=|(?<!\|)\|(?![\|\=])|\&\&|\&\=|(?<![\&\.])\&(?![\&\=])|\?:|\>\>\>|(?<!\>)\>\>(?!\>)|\<\<\<|(?<!\<)\<\<(?!\<))(?!\s)|\s(\<(?!\<))(?!\s)(?!.*\>))[^\n\r]*/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'Exactly1SpaceBeforeOperator'
+    description = 'Must set exactly 1 space before operators'
+    violationMessage = 'Set exactly 1 space before operator'
+    // IllegalRegex rule settings
+    regex = /(?<=[\n\r]).((\h*[^"'\n\r\/\*]*(?<=\s\s)((?<=[\n\r])(\!\=|\=\=|\<\=\>|(?<![\!\=\+\-\/\*\&\|\>\<\^%])\=(?!\=)|\+\=|(?<!\+)\+(?![\=\+])|\-\=|(?<!\-)\-(?![\-\=\>])|(?<!\/)\*\=|(?<!\/)\*\*|%\=|%(?!\=)|\^\=|\^(?!\=)|\|\||\|\=|(?<!\|)\|(?![\|\=])|\&\&|\&\=|(?<!\&)\&(?![\&\=])|\?:|\>\>\>|(?<!\>)\>\>(?!\>)|\<\<\<|(?<!\<)\<\<(?!\<)|(?<!\<)\<(?!\<)\s)))|([^\<"'\n\r\/\*]*(?<=\s\s)\>(?!\>)))[^\n\r]*/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'Exactly1SpaceAfterOperator'
+    description = 'Must set exactly 1 space after operators'
+    violationMessage = 'Set exactly 1 space after operator'
+    // IllegalRegex rule settings
+    regex = /(?<=[\n\r]).\h*[^"'\n\r\/\*]*(((\!\=|\=\=|\<\=\>|(?<![\!\=\+\-\/\*\&\|\>\<\^%])\=(?!\=)|\+\=|(?<!\+)\+(?![\=\+])|\-\=|(?<!\-)\-(?![\-\=\>])|(?<!\/)\*\=|(?<!\/)\*\*|%\=|%(?!\=)|\^\=|\^(?!\=)|\|\||\|\=|(?<!\|)\|(?![\|\=])|\&\&|\&\=|(?<![\&\.])\&(?![\&\=])|\?:|\>\>\>|(?<!\>)\>\>(?!\>)|\<\<\<|(?<!\<)\<\<(?!\<)))(?![\n\r])(?=\s\s)|\s(\<(?=\s=\s))(?!.*\>))[^\n\r]*/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'UseMultilineTernaryOperator'
+    description = 'Must expand ternary operator in multiple lines'
+    violationMessage = 'Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression'
+    // IllegalRegex rule settings
+    regex = /(?<=[\n\r]).\h*[^"'\n\r\/\*]*([^\s"']+?\h*?\?(?![:\>\.])|"[^"\n\r]*?"[^"\n\r]*?\?(?![:\>\.])|'[^'\n\r]*?'[^'\n\r]*?\?(?![:\>\.]))[^\n\r]*/
   }
 
   IllegalRegex {

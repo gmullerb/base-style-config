@@ -67,7 +67,10 @@ The Defined Sets of rules are in:
 
 To highlights:
 
-* Naming convention: CamelCase.
+* Naming convention:
+  * CamelCase.
+  * All in uppercase for constants.
+    * Non-consecutive underscore (`_`) for Backend.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
@@ -115,6 +118,9 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 ##### Customized rules
 
+* **`AbbreviationAsWordInName`**: allows abbreviation only for `final` fields.
+  * Then these `final` fields abbreviations are check by the Customized PMD's `FieldNamingConventions` rule.
+
 * **`LineLength`**: Line length limit is ignored for lines with some patterns:
   * Starting with `package`.
   * Starting with `import`.
@@ -146,15 +152,65 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 > [1] Although forcing this is sometime harmful since different team members can use different IDEs, but IDEs should not rule the development.  
 > [2] CodeNarc and ESLint does not yet provide a way of doing this.
 
+#### PMD custom rules
+
+##### Customized rules
+
+* **`FieldNamingConventions`**: will do custom validation for `final` fields:
+  * `static final` fields may represent constants, then this rule check for:
+    * All in uppercase [1], or
+    * CamelCase [1].
+  * non `static final` fields should use CamelCase.
+    * Additionally, fields are checked with Customized Checkstyle's `AbbreviationAsWordInName` rule.
+* **`ClassNamingConventions`**: Utility classes should end on `Factory`, `Util`, `Utils` or `Helper` [2].
+* **`TooManyFields`**: is set to allow a maximum of 6 fields per class [3].
+
+> [1] All in uppercase should be used for "real" constants, fields that are Immutable, and CamelCase for Non Immutable values.  
+> [2] Although utility classes should be avoided.  
+> [3] CodeNarc and ESLint does not yet provide a way of doing this.
+
 ##### New rules
 
-* **`UseMultilineTernaryOperator`**: Ternary operator is forced to be in multiple lines in order to increase Readability:
+* **`AvoidFieldInjection`**: Checks that no Field Injection is used in the code with either `javax.inject.Inject`, `com.google.inject.Inject` or `org.springframework.beans.factory.annotation.Autowired`.
 
-  ```java
-    condition
-      ? expression
-      : expression
-   ```
+#### Codenarc custom rules
+
+##### Customized rules
+
+* **`FieldName`**:
+  * `static final` fields may represent constants, then this rule check for:
+    * All in uppercase [1], or
+    * CamelCase [1].
+  * no `static final` must Camel Case always ending in a lower case.
+* **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` (violations are only reported), these rules don't allow to configure allowed duplications' limit, which make them hard to use.
+* **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
+
+> [1] All in uppercase should be used for "real" constants, fields that are Immutable, and CamelCase for Non Immutable values.
+
+##### New rules
+
+* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if principal class in the file is annotated with `@CompileStatic` or `@TypeChecked`.
+  * [@TypeChecked](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/TypeChecked.html) will do check of type during compilation, this will lead to a more Reliable program.
+  * [@CompileStatic](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/CompileStatic.html) will do check of type during compilation and perform static compilation, this will increase performance of the resulting program.
+
+* **`SpaceBeforeOperator`**, **`SpaceAfterOperator`**, **`Exactly1SpaceBeforeOperator`** & **`Exactly1SpaceAfterOperator`**: Check spaces around operators.
+  * Substitutes `SpaceAroundOperator` rule, it is unstable for some patterns (produces some false-positive).
+  * These rules may not check some cases, but should not give false-positives.
+
+##### Gradle & Groovy
+
+Disabled rules for Gradle, still enabled for Groovy:
+
+* `AnnotateClassesWith@CompileStaticOr@TypeChecked`.
+* `Indentation`.
+* `MethodParameterTypeRequired`.
+* `NoDef`.
+* `UseOnlyMockOrSpyPrefixOnTestFiles`.
+* `VariableTypeRequired`.
+
+#### Common New rules
+
+Checkstyle/CodeNarc Rules:
 
 * **`CallOnlyOneMethodPerLineForChainedCall`**: Checks that only one method is called per line in order to increase Readability:
 
@@ -180,50 +236,22 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
       .method3(..);
    ```
 
-#### PMD custom rules
+* **`NameOfTestsMustStartWithShould`**: Checks that the test methods names begin with `should`, e.g. `shouldExtractSomeValue`.
+* **`UseMultilineTernaryOperator`**: Ternary operator is forced to be in multiple lines in order to increase Readability [1]:
 
-##### Customized rules
-
-* **`TooManyFields`**: is set to allow a maximum of 6 fields per class [1].
-
-> [1]  CodeNarc and ESLint does not yet provide a way of doing this.
-
-##### New rules
-
-* **`AvoidFieldInjection`**: Checks that no Field Injection is used in the code with either `javax.inject.Inject`, `com.google.inject.Inject` or `org.springframework.beans.factory.annotation.Autowired`.
-
-#### Codenarc custom rules
-
-##### New rules
-
-* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if principal class in the file is annotated with `@CompileStatic` or `@TypeChecked`.
-  * [@TypeChecked](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/TypeChecked.html) will do check of type during compilation, this will lead to a more Reliable program.
-  * [@CompileStatic](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/CompileStatic.html) will do check of type during compilation and perform static compilation, this will increase performance of the resulting program.
-
-##### Customized rules
-
-* **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
-* **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` (violations are only reported), these rules don't allow to configure allowed duplications' limit, which make them hard to use.
-
-Disabled rules for Gradle (still enabled for Groovy):
-
-* `AnnotateClassesWith@CompileStaticOr@TypeChecked`.
-* `Indentation`.
-* `MethodParameterTypeRequired`.
-* `NoDef`.
-* `UseOnlyMockOrSpyPrefixOnTestFiles`.
-* `VariableTypeRequired`.
-
-#### Common New rules
-
-Checkstyle/CodeNarc Rules:
+  ```java
+    condition
+      ? expression
+      : expression
+   ```
 
 * **`UseOnlyDoFamilyMethodsWhenMocking`**: Checks that only `do*`'s family methods are use when mocking: `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow`:
   * `Mockito.when` have some ["issues"](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy) basically when spying.
     * `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` do not present those issues.
   * `BDDMockito.given` is an alias for `Mockito.when`.
 * **`UseOnlyMockOrSpyPrefixOnTestFiles`**: Checks that the '`mock`' or '`spy`' prefixes are used only on test's files' code.
-* **`NameOfTestsMustStartWithShould`**: Checks that the test methods names begin with `should`, e.g. `shouldExtractSomeValue`.
+
+> [1] Some cases are not detected by CodeNarc.
 
 #### Suppressions
 
@@ -490,5 +518,14 @@ Don't forget:
 
 * **Love what you do**.
 * **Learn everyday**.
+* **Learn yourself**.
 * **Share your knowledge**.
 * **Learn from the past, dream on the future, live and enjoy the present to the max!**.
+
+At life:
+
+* Let's act, not complain.
+
+At work:
+
+* Let's give solutions, not questions.

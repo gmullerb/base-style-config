@@ -33,15 +33,15 @@
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="CallOnlyOneMethodPerLineForChainedCall"/>
-      <property name="format" value='^[^)]*\)\s*\..*' />
+      <property name="format" value='[^)]*\)\h*\..*\(' />
       <property name="ignoreComments" value="true"/>
-      <message key="regexp.exceeded" value="Must call only one method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)"/>
+      <message key="regexp.exceeded" value="Call only one chained method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)"/>
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="UseMultilineTernaryOperator"/>
-      <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?!:).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?!:).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
+      <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?![:\>\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?![:\>\.]).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
       <property name="ignoreComments" value="true"/>
-      <message key="regexp.exceeded" value="Must use multiline operator: condition NEWLINE ? expression NEWLINE : expression"/>
+      <message key="regexp.exceeded" value="Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression"/>
     </module>
     <module name="RightCurly">
       <property name="option" value="alone"/>
@@ -66,9 +66,8 @@
     <module name="UnusedImports"/>
     <!-- Naming -->
     <module name="AbbreviationAsWordInName">
-      <property name="allowedAbbreviationLength" value="1"/>
+      <property name="allowedAbbreviationLength" value="0"/>
       <property name="ignoreStatic" value="false"/>
-      <property name="ignoreFinal" value="false"/>
     </module>
     <module name="AbstractClassName"/>
     <module name="AvoidEscapedUnicodeCharacters"/>

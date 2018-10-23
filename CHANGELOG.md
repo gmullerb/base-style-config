@@ -1,5 +1,23 @@
 # Base Style Config Change Log
 
+## 1.0.7 - October 2018
+
+* Creates `CallOnlyOneMethodPerLineForChainedCall`, a custom rule for CodeNarc rules.
+* Creates `UseMultilineTernaryOperator`, a custom rule for CodeNarc rules.
+* Customizes PMD's `ClassNamingConventions` rule to allow `Factory` suffix for Utility classes.
+* Customizes PMD's `FieldNamingConventions` rule:
+  * To do real check for CamelCase.
+  * To allow Constant or Non-Constants conventions for `static final` fields..
+* Customizes Checkstyle's `AbbreviationAsWordInName` rule to allow some freedom in `final` variables.
+* Improves Checkstyle's `CallOnlyOneMethodPerLineForChainedCall` rule.
+* Removes CodeNarc's `SpaceAroundOperator` rule, it is unstable for some patterns (produces some false-positive).
+* Creates `SpaceBeforeOperator`, `SpaceAfterOperator`, `Exactly1SpaceBeforeOperator` & `Exactly1SpaceAfterOperator` rules for CodeNarc.
+  * Substitutes `SpaceAroundOperator` rule.
+* Removes `MethodCount` for CodeNarc (missed this before).
+* Fixes `UseMultilineTernaryOperator` rule to ignore Wildcards.
+* Fixes Checkstyle's suppression file.
+* Updates README file.
+
 ## 1.0.6 - October 2018
 
 * Adds new rules to Checkstyle and CodeNarc:
