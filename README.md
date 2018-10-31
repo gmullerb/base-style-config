@@ -177,6 +177,7 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 ##### Customized rules
 
+* **`CouldBeElvis`**: Have priority = `0` (violations are only reported), is very useful but cause some false-positive, e.g. `if (!object.field) object.field = value` value is required as `object.field = object.field ?: value`.
 * **`FieldName`**:
   * `static final` fields may represent constants, then this rule check for:
     * All in uppercase [1], or
@@ -195,7 +196,7 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 * **`SpaceBeforeOperator`**, **`SpaceAfterOperator`**, **`Exactly1SpaceBeforeOperator`** & **`Exactly1SpaceAfterOperator`**: Check spaces around operators.
   * Substitutes `SpaceAroundOperator` rule, it is unstable for some patterns (produces some false-positive).
-  * These rules may not check some cases, but should not give false-positives.
+  * These rules may not check some cases, but should not give false-positives, e.g. `>>` is not validated.
 
 ##### Gradle & Groovy
 
@@ -525,6 +526,7 @@ Don't forget:
 At life:
 
 * Let's act, not complain.
+* Be flexible.
 
 At work:
 
