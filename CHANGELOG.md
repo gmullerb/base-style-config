@@ -1,11 +1,17 @@
 # Base Style Config Change Log
 
+## 1.0.9 - November 2018
+
+* Sets priority to `0` (reported but does not cause a failure) for `GStringExpressionWithinString` rule from CodeNarc, it was causing some "false-positive", e.g. `'--file ${npm_config_configFile}'`.
+* Updates README file.
+
 ## 1.0.8 - October 2018
 
-* Sets priority to `0` (are reported but does not cause a failure) for `CouldBeElvis` rule from CodeNarc, was causing some "false-positive", e.g. `if (!object.field) object.field = value` value is required as `object.field = object.field ?: value`.
+* Sets priority to `0` (reported but does not cause a failure) for `CouldBeElvis` rule from CodeNarc, it was causing some "false-positive", e.g. `if (!object.field) object.field = value` value is required as `object.field = object.field ?: value`.
 * Fixes `SpaceBeforeOperator` and `Exactly1SpaceBeforeOperator`:
   * It was not checking `.&` operator.
   * Removes validations for `<` `<<` `<<<` `>>` `>>>`, some false-positive were arising.
+* Updates README file.
 
 ## 1.0.7 - October 2018
 

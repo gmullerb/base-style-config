@@ -1,6 +1,6 @@
 # Base coding style check configuration
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) [![Download](https://api.bintray.com/packages/gmullerb/all.shared.quality/base-style-config/images/download.svg)](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) [![download](https://api.bintray.com/packages/gmullerb/all.shared.quality/base-style-config/images/download.svg)](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion)
 
 **This project provides a set of essential configuration files for code style checking.**
 
@@ -177,16 +177,18 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 ##### Customized rules
 
-* **`CouldBeElvis`**: Have priority = `0` (violations are only reported), is very useful but cause some false-positive, e.g. `if (!object.field) object.field = value` value is required as `object.field = object.field ?: value`.
+* **`CouldBeElvis`**: Has priority = `0` [1], is very useful but cause some false-positive, e.g. `if (!object.field) object.field = value` value is required as `object.field = object.field ?: value`.
 * **`FieldName`**:
   * `static final` fields may represent constants, then this rule check for:
-    * All in uppercase [1], or
-    * CamelCase [1].
+    * All in uppercase [2], or
+    * CamelCase [2].
   * no `static final` must Camel Case always ending in a lower case.
-* **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` (violations are only reported), these rules don't allow to configure allowed duplications' limit, which make them hard to use.
+* **`DuplicateNumberLiteral`** and **`DuplicateStringLiteral`**: Have priority = `0` [1], these rules don't allow to configure allowed duplications' limit, which make them hard to use.
+* **`GStringExpressionWithinString`**: Has priority = `0` [1], these rules don't allow to build string that has `${..}` inside a `String`, which is sometimes required, e.g.: `'--file ${npm_config_configFile}'` is not allowed.
 * **`SpaceAroundMapEntryColon`**: Requires a space after the colon in a map entry.
 
-> [1] All in uppercase should be used for "real" constants, fields that are Immutable, and CamelCase for Non Immutable values.
+> [1] Violations are only reported, but should be checked since some case it has good reason to be a violation, but priority was reduce to avoid false-positive.  
+> [2] All in uppercase should be used for "real" constants, fields that are Immutable, and CamelCase for Non Immutable values.
 
 ##### New rules
 

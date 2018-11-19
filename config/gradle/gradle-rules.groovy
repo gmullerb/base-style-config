@@ -59,7 +59,11 @@ ruleset {
     exclude 'SpaceAroundOperator'
   }
 
-  ruleset('rulesets/groovyism.xml')
+  ruleset('rulesets/groovyism.xml') {
+    GStringExpressionWithinString  {
+      priority = 0
+    }
+  }
 
   ruleset('rulesets/imports.xml') {
     MisorderedStaticImports {
