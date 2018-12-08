@@ -202,10 +202,10 @@ ruleset {
   RequiredRegex {
     // Codenarc rule settings
     name = 'AnnotateClassesWith@CompileStaticOr@TypeChecked'
-    description = 'Must annotate Main class with @CompileStatic or @TypeChecked'
-    violationMessage = 'Annotate Main class with @CompileStatic or @TypeChecked'
+    description = 'Must annotate Main class, interface or trait with @CompileStatic or @TypeChecked'
+    violationMessage = 'Annotate Main class, interface or trait with @CompileStatic or @TypeChecked'
     doNotApplyToFileNames = GRADLE_FILES
     // RequiredRegex rule settings
-    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?(final\s+)?class) | (^(((?!class).)*)$)/
+    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?(final\s+)?(class|interface|trait)) | (^(((?!(class|interface|trait)).)*)$)/
   }
 }

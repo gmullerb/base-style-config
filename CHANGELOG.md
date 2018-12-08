@@ -1,5 +1,10 @@
 # Base Style Config Change Log
 
+## 1.0.10 - December 2018
+
+* Updates `AnnotateClassesWith@CompileStaticOr@TypeChecked` to also check for interfaces and traits.
+* Updates README file.
+
 ## 1.0.9 - November 2018
 
 * Sets priority to `0` (reported but does not cause a failure) for `GStringExpressionWithinString` rule from CodeNarc, it was causing some "false-positive", e.g. `'--file ${npm_config_configFile}'`.

@@ -192,7 +192,7 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
 
 ##### New rules
 
-* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if principal class in the file is annotated with `@CompileStatic` or `@TypeChecked`.
+* **`AnnotateClassesWith@CompileStaticOr@TypeChecked`**: Check if principal class, interface or trait in the file is annotated with `@CompileStatic` or `@TypeChecked`.
   * [@TypeChecked](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/TypeChecked.html) will do check of type during compilation, this will lead to a more Reliable program.
   * [@CompileStatic](http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/CompileStatic.html) will do check of type during compilation and perform static compilation, this will increase performance of the resulting program.
 
