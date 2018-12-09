@@ -175,7 +175,7 @@ ruleset {
     description = 'Must expand ternary operator in multiple lines'
     violationMessage = 'Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression'
     // IllegalRegex rule settings
-    regex = /(?<=[\n\r]).\h*[^"'\n\r\/\*]*([^\s"']+?\h*?\?(?![:\>\.])|"[^"\n\r]*?"[^"\n\r]*?\?(?![:\>\.])|'[^'\n\r]*?'[^'\n\r]*?\?(?![:\>\.]))[^\n\r]*/
+    regex = /(?<=[\n\r]).\h*[^"'\n\r\/\*]*([^\s"']+?\h*?(?<!(\<|,|,\h))\?(?![:\>\.])|"[^"\n\r]*?"[^"\n\r]*?(?<!(\<|,|,\h))\?(?![:\>\.])|'[^'\n\r]*?'[^'\n\r]*?(?<!(\<|,|,\h))\?(?![:\>\.]))[^\n\r]*/
   }
 
   IllegalRegex {

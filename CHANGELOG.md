@@ -1,5 +1,9 @@
 # Base Style Config Change Log
 
+## 1.0.11 - December 2018
+
+* Fixes `UseMultilineTernaryOperator`, it was missing some cases for generics wildcards.
+
 ## 1.0.10 - December 2018
 
 * Updates `AnnotateClassesWith@CompileStaticOr@TypeChecked` to also check for interfaces and traits.

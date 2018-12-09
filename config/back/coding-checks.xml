@@ -39,7 +39,7 @@
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="UseMultilineTernaryOperator"/>
-      <property name="format" value='^[^\?]*?\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?\?(?![:\>\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?\?(?![:\>\.]).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
+      <property name="format" value='^[^\?]*?(?<!(\<|,|,\h))\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?(?<!(\<|,|,\h))\?(?![:\>\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?(?<!(\<|,|,\h))\?(?![:\>\.]).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
       <property name="ignoreComments" value="true"/>
       <message key="regexp.exceeded" value="Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression"/>
     </module>
