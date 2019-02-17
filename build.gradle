@@ -4,14 +4,21 @@
 plugins {
   id 'checkstyle'
   id 'codenarc'
+  id 'groovy'
 }
 
 repositories {
   jcenter()
 }
 
+dependencies {
+  testCompile 'org.codehaus.groovy:groovy-all:+'
+  testCompile 'org.junit.jupiter:junit-jupiter-api:+'
+  testRuntime 'org.junit.jupiter:junit-jupiter-engine:+'
+}
+
 final ROOT_FOLDER = '.'
-final CODE_FILES = ['*.gradle', '*.groovy']
+final CODE_FILES = ['*.gradle', '*.groovy', 'src/**/*.groovy']
 
 // TASKS
 ////////
@@ -33,13 +40,14 @@ task assessGradle(type: CodeNarc) {
   configFile = file('src/config/gradle/gradle-rules.groovy')
   source fileTree(ROOT_FOLDER) {
     include CODE_FILES
+    exclude 'src/config/**/*'
   }
   // gradle task settings
   description = 'Run Codenarc analysis for all gradle files.'
   group = GROUP_ASSESS
 }
 
-task build (type: Jar) {
+task buildArtifact (type: Jar) {
   // Jar task settings
   baseName = project.name
   version = project.version
@@ -48,10 +56,16 @@ task build (type: Jar) {
   // gradle task settings
   description = 'Creates a JAR file with all check configurations.'
   group = 'build'
-  dependsOn = ['assess', 'assessGradle']
+  dependsOn = ['assess', 'assessGradle', 'test']
+}
+
+test {
+  // Test task settings
+  useJUnitPlatform()
+  inputs.dir 'src'
 }
 
 // Default task
 ///////////////
 
-defaultTasks 'build'
+defaultTasks 'buildArtifact'

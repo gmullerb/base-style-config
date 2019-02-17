@@ -141,9 +141,9 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
     * `count*By*`.
 
 * **`CustomImportOrder`**: Import order is forced to have some structure[1]:
-  * First same package's imports, to increase Readability (Allows to always easily locate the classes of same package, usually classes created in the project, that current class depends on).
-  * Then java and javax.
-  * Then third party.
+  * First, same package's non-static imports, to increase Readability (Allows to easily locate the classes of same package, usually classes created in the project, that current class depends on).
+  * Followed by the rest of non-static imports.
+  * Finally, static imports.
 
 * **`BeanMembersShouldSerialize`**: ignores this rule when the class does not implement `java.io.Serializable` interface or does not have the `javax.persistence.Entity` Annotation (i.e. checks for `transient` only when the class implements `java.io.Serializable` interface or has the `javax.persistence.Entity` Annotation).
 

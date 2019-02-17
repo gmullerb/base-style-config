@@ -1,5 +1,16 @@
 # Base Style Config Change Log
 
+## 1.0.12 - February 2019
+
+* Remove `UnnecessaryPublicModifier` from CodeNarc's rules, switching between different languages, for example Java, Groovy and C ++, the change can become confusing with the default modifiers, this will allow using modifiers always, and forgetting what is the default value.
+* Changes `CustomImportOrder` check to give more freedom to import on java, due to all this mixing of programming languages can be in a project, it's "better" to only require alphabetical order.
+* Fixes `CallOnlyOneMethodPerLineForChainedCall` check, it was giving false positives for split calls and had some problems with Casts.
+* Fixes `UseMultilineTernaryOperator` Checkstyle check, it had some XML CDATA error.
+* Adds Tests for Regular Expressions.
+  * Updates [`build.gradle`](/build.gradle) for adding respective dependencies.
+* Upgrades Gradle to version 5.2.1.
+* Updates README file.
+
 ## February 2018
 
 * Moves configuration files from config/ to src/config (may get confused with project config files).

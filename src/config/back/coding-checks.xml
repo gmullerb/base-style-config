@@ -33,13 +33,13 @@
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="CallOnlyOneMethodPerLineForChainedCall"/>
-      <property name="format" value='[^)]*\)\h*\..*\(' />
+      <property name="format" value='[^\(]*\(.*\)\h*\.[^(]*\(' />
       <property name="ignoreComments" value="true"/>
       <message key="regexp.exceeded" value="Call only one chained method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)"/>
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="UseMultilineTernaryOperator"/>
-      <property name="format" value='^[^\?]*?(?<!(\<|,|,\h))\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?(?<!(\<|,|,\h))\?(?![:\>\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?(?<!(\<|,|,\h))\?(?![:\>\.]).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
+      <property name="format" value='^[^\?]*?(?&lt;!(\&lt;|,|,\h))\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?"[^"]*?"[^"]*?:.*$' />
       <property name="ignoreComments" value="true"/>
       <message key="regexp.exceeded" value="Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression"/>
     </module>
@@ -56,10 +56,8 @@
     <module name="AvoidStarImport"/>
     <module name="AvoidStaticImport"/>
     <module name="CustomImportOrder">
-      <property name="customImportOrderRules" value="SAME_PACKAGE(2)###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STATIC"/>
+      <property name="customImportOrderRules" value="SAME_PACKAGE(2)###THIRD_PARTY_PACKAGE###STATIC"/>
       <property name="sortImportsInGroupAlphabetically" value="true"/>
-      <property name="specialImportsRegExp" value="^javax\."/>
-      <property name="standardPackageRegExp" value="^java\."/>
     </module>
     <module name="IllegalImport"/>
     <module name="RedundantImport"/>

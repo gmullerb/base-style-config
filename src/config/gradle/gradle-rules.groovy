@@ -110,6 +110,7 @@ ruleset {
       doNotApplyToFileNames = TEST_FILES
     }
     exclude 'UnnecessaryObjectReferences'
+    exclude 'UnnecessaryPublicModifier'
   }
 
   ruleset('rulesets/unused.xml')
@@ -120,7 +121,7 @@ ruleset {
     description = 'No chained methods call allowed in same line'
     violationMessage = 'Call only one chained method per line: method1(...) NEWLINE .method2(...) NEWLINE .method3(...)'
     // IllegalRegex rule settings
-    regex = /[^)\v]*\)\h*\..*\(\V*/
+    regex = /[^\(\v]*\(.*\)\h*\..*\(\V*/
   }
 
   IllegalRegex {
