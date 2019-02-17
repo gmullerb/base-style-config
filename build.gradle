@@ -18,10 +18,10 @@ final CODE_FILES = ['*.gradle', '*.groovy']
 
 task assess (type: Checkstyle) {
   // Checkstyle task settings
-  configFile = file('config/common/common-checks.xml')
+  configFile = file('src/config/common/common-checks.xml')
   classpath = files('dummy') // Required by Checkstyle, Not required for Checker modules
   source fileTree(ROOT_FOLDER) {
-    include CODE_FILES + ['config/', '*.gitignore', '*.md', '*.properties', '*.txt']
+    include CODE_FILES + ['src/config/', '*.gitignore', '*.md', '*.properties', '*.txt']
   }
   // gradle task settings
   description = 'Runs Checkstyle analysis for all files.'
@@ -30,7 +30,7 @@ task assess (type: Checkstyle) {
 
 task assessGradle(type: CodeNarc) {
   // CodeNarc task settings
-  configFile = file('config/gradle/gradle-rules.groovy')
+  configFile = file('src/config/gradle/gradle-rules.groovy')
   source fileTree(ROOT_FOLDER) {
     include CODE_FILES
   }
@@ -43,7 +43,7 @@ task build (type: Jar) {
   // Jar task settings
   baseName = project.name
   version = project.version
-  from 'config'
+  from 'src/config'
   destinationDir project.buildDir
   // gradle task settings
   description = 'Creates a JAR file with all check configurations.'

@@ -1,5 +1,9 @@
 # Base Style Config Change Log
 
+## February 2018
+
+* Moves configuration files from config/ to src/config (may get confused with project config files).
+
 ## 1.0.11 - December 2018
 
 * Fixes `UseMultilineTernaryOperator`, it was missing some cases for generics wildcards.
