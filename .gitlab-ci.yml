@@ -31,7 +31,7 @@ common-assess:
   stage: assess
   script:
     - ./gradlew assess
-    cache:
+  cache:
     key: "${CI_COMMIT_SHA}"
     policy: pull
     untracked: true
