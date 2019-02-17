@@ -424,7 +424,7 @@ Following is a detailed description of how to use configuration files from a JAR
 ```
 
 
-3. Same for Stylelint:
+ q3. Same for Stylelint:
 
 `package.json`:
 
@@ -467,6 +467,12 @@ Following is a detailed description of how to use configuration files from a JAR
 ### Getting it
 
 Clone or download the project[1], in the desired folder execute:
+
+```sh
+git clone https://gitlab.com/gmullerb/base-style-config
+```
+
+or
 
 ```sh
 git clone https://github.com/gmullerb/base-style-config

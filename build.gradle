@@ -47,16 +47,16 @@ task assessGradle(type: CodeNarc) {
   group = GROUP_ASSESS
 }
 
-task buildArtifact (type: Jar) {
+task assembleArtifact (type: Jar) {
   // Jar task settings
   baseName = project.name
   version = project.version
   from 'src/config'
-  destinationDir project.buildDir
+  destinationDir = file("$project.buildDir/artifact")
   // gradle task settings
   description = 'Creates a JAR file with all check configurations.'
   group = 'build'
-  dependsOn = ['assess', 'assessGradle', 'test']
+  shouldRunAfter = ['assess', 'assessGradle', 'test']
 }
 
 test {
@@ -68,4 +68,4 @@ test {
 // Default task
 ///////////////
 
-defaultTasks 'buildArtifact'
+defaultTasks 'assess', 'assessGradle', 'test', 'assembleArtifact'

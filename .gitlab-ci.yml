@@ -1,0 +1,76 @@
+image: openjdk:11-jdk
+
+cache:
+  key: "${CI_COMMIT_SHA}"
+  untracked: true
+  paths:
+    - .gradle/
+
+before_script:
+  - chmod +x ./gradlew
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+stages:
+  - inception
+  - assess
+  - test
+  - assemble
+
+create-cache:
+  stage: inception
+  script:
+    - ./gradlew -v
+  cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: push
+    untracked: true
+    paths:
+      - .gradle/
+
+common-assess:
+  stage: assess
+  script:
+    - ./gradlew assess
+    cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: pull
+    untracked: true
+    paths:
+      - .gradle/
+
+groovy-assess:
+  stage: assess
+  script:
+    - ./gradlew assessGradle
+  cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: pull
+    untracked: true
+    paths:
+      - .gradle/
+
+test:
+  stage: test
+  script:
+    - ./gradlew test
+  cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: pull
+    untracked: true
+    paths:
+      - .gradle/
+
+assemble:
+  stage: assemble
+  script:
+    - ./gradlew assembleArtifact
+  cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: pull
+    untracked: true
+    paths:
+      - .gradle/
+  artifacts:
+    paths:
+      - build/artifact
+

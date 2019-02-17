@@ -1,5 +1,11 @@
 # Base Style Config Change Log
 
+## February 2018 B
+
+* Adds gitlab-ci.yml.
+* Updates build.gradle.
+* Updates README file.
+
 ## 1.0.12 - February 2019
 
 * Remove `UnnecessaryPublicModifier` from CodeNarc's rules, switching between different languages, for example Java, Groovy and C ++, the change can become confusing with the default modifiers, this will allow using modifiers always, and forgetting what is the default value.
