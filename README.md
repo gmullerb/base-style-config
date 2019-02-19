@@ -259,14 +259,16 @@ Checkstyle/CodeNarc Rules:
 #### Suppressions
 
 For test files, some rules/checks[1] are disabled in order to allow some freedom:
+
 * No restriction on the number of methods or size.
 * Duplication of literals is allowed, to increase test Maintainability.
 * Throwing `Exception` is allowed.
 * Field Injection is allowed.
 * `UseOnlyMockOrSpyPrefixOnTestFiles`.
-* Javadoc, obviously, is not required or checked.
+* Javadoc, obviously, is not required or checked [2].
 
 > [1] For Checkstyle, PMD and CodeNarc.
+> [2] Same as in JS.
 
 #### Conventions
 

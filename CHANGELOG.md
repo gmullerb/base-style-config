@@ -1,5 +1,12 @@
 # Base Style Config Change Log
 
+## 1.0.13 - February 2019
+
+* Removes `requires-jsdoc` from eslint rules, as in Java checks, favoring self-documented code and agile development, and not forcing documentation.
+* Adds exceptions and markers to `spaced-comment`, to allow special comments, like Flow comments.
+* Adds Smoke Tests for .eslintrc and .stylelintrc.
+* Updates README file.
+
 ## February 2018 B
 
 * Adds gitlab-ci.yml.
@@ -8,7 +15,7 @@
 
 ## 1.0.12 - February 2019
 
-* Remove `UnnecessaryPublicModifier` from CodeNarc's rules, switching between different languages, for example Java, Groovy and C ++, the change can become confusing with the default modifiers, this will allow using modifiers always, and forgetting what is the default value.
+* Removes `UnnecessaryPublicModifier` from CodeNarc's rules, switching between different languages, for example Java, Groovy and C ++, the change can become confusing with the default modifiers, this will allow using modifiers always, and forgetting what is the default value.
 * Changes `CustomImportOrder` check to give more freedom to import on java, due to all this mixing of programming languages can be in a project, it's "better" to only require alphabetical order.
 * Fixes `CallOnlyOneMethodPerLineForChainedCall` check, it was giving false positives for split calls and had some problems with Casts.
 * Fixes `UseMultilineTernaryOperator` Checkstyle check, it had some XML CDATA error.
