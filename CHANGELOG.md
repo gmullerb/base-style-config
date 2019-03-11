@@ -1,5 +1,14 @@
 # Base Style Config Change Log
 
+## 1.0.14 - March 2019
+
+* Removes `quotes` from eslint rules, should be set based on Backend language (or preference), for Groovy could be set to `'` -> `"quotes": ["quotes", "single"]`, for C++, Java or QML could be set to `"` ->  `"quotes": ["quotes", "double"]`.
+* Removes `semi` from eslint rules, should be set based on Backend language (or preference), for Groovy or QML could be set to `"semi": ["quotes", "never"]`, for C++ or Java could be set to `"semi": ["quotes", "always"]`.
+* Updates `indent` eslint rules to enforce different indentation in function declarations.
+* Updates DOCTYPE's FPI and URI for checkstyle files.
+* Adds new exceptions and markers to `spaced-comment`, to allow special comments, like Flow comments.
+* Updates README file.
+
 ## 1.0.13 - February 2019
 
 * Removes `requires-jsdoc` from eslint rules, as in Java checks, favoring self-documented code and agile development, and not forcing documentation.

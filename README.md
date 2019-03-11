@@ -93,7 +93,7 @@ To highlights:
 
 Semicolon is required by Java[1], but no by Groovy, then when having JS code, the use of the semicolon could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
 
-To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to [2]:
+To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
 
 ```json
   "rules": {
@@ -109,8 +109,43 @@ To enforce Groovy style, set the respective project's eslint configuration (`pac
   }
 ```
 
-> [1] Although new programming languages don't required semicolon, may be forcing JS to use of semicolon could be a waste of typing.  
-> [2] or don't do any configuration, since, unfortunately,the default that comes from the `semi` rule is `always`.
+Although this rule is not set, the project should always set `semi` rule in order to guarantee consistency in the code:
+
+```json
+  "rules": {
+    "semi": ["error", ".."]
+  }
+```
+
+> [1] Although new programming languages don't require semicolon, may be forcing JS to use of semicolon can be a waste of typing.  
+
+##### Quotes
+
+The use of single `'` or double `"` quote string could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
+
+To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
+
+```json
+  "rules": {
+    "quotes":  ["error", "double"]
+  }
+```
+
+To enforce Groovy style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
+
+```json
+  "rules": {
+    "quotes":  ["error", "single"]
+  }
+```
+
+Although this rule is not set, the project should always set `quotes` rule in order to guarantee consistency in the code:
+
+```json
+  "rules": {
+    "quotes":  ["error", ".."]
+  }
+```
 
 ### Code Style Checking Custom rules
 
