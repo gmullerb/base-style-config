@@ -148,6 +148,7 @@
     <module name="MethodParamPad"/>
     <module name="NoLineWrap"/>
     <module name="SingleSpaceSeparator"/>
+    <module name="OperatorWrap"/>
   </module>
   <module name="FileLength">
     <property name="max" value="300"/>

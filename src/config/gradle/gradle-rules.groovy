@@ -24,11 +24,13 @@ ruleset {
     VariableTypeRequired {
       doNotApplyToFileNames = GRADLE_FILES
     }
-    exclude 'InvertedCondition'
-    exclude 'PublicMethodsBeforeNonPublicMethods'
-    exclude 'StaticMethodsBeforeInstanceMethods'
-    exclude 'TrailingComma'
+    InvertedCondition(enabled: false)
+    PublicMethodsBeforeNonPublicMethods(enabled: false)
+    StaticMethodsBeforeInstanceMethods(enabled: false)
+    TrailingComma(enabled: false)
   }
+
+  ruleset('rulesets/design.xml')
 
   ruleset('rulesets/dry.xml') {
     DuplicateNumberLiteral {
@@ -52,11 +54,18 @@ ruleset {
       length = 144
       priority = 3
     }
+    SpaceAfterOpeningBrace {
+      ignoreEmptyBlock = true
+    }
     SpaceAroundMapEntryColon {
       characterAfterColonRegex = /\s/
     }
-    exclude 'ClassJavadoc'
-    exclude 'SpaceAroundOperator'
+    SpaceBeforeClosingBrace {
+      ignoreEmptyBlock = true
+    }
+    ClassEndsWithBlankLine(enabled: false)
+    ClassStartsWithBlankLine(enabled: false)
+    SpaceAroundOperator(enabled: false)
   }
 
   ruleset('rulesets/groovyism.xml') {
@@ -78,8 +87,8 @@ ruleset {
       regex = '[a-z]([A-Z]?[a-z0-9]+)*[A-Z]?'
       staticFinalRegex = '([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)'
     }
-    exclude 'FactoryMethodName'
-    exclude 'VariableName'
+    FactoryMethodName(enabled: false)
+    VariableName(enabled: false)
   }
 
   ruleset('rulesets/size.xml') {
@@ -97,9 +106,9 @@ ruleset {
     ParameterCount {
       maxParameters = 5
     }
-    exclude 'AbcMetric'
-    exclude 'CrapMetric'
-    exclude 'MethodCount'
+    AbcMetric(enabled: false)
+    CrapMetric(enabled: false)
+    MethodCount(enabled: false)
   }
 
   ruleset('rulesets/unnecessary.xml') {
@@ -109,8 +118,10 @@ ruleset {
     UnnecessarySetter {
       doNotApplyToFileNames = TEST_FILES
     }
-    exclude 'UnnecessaryObjectReferences'
-    exclude 'UnnecessaryPublicModifier'
+    UnnecessaryCast(enabled: false)
+    UnnecessaryObjectReferences(enabled: false)
+    UnnecessaryPublicModifier(enabled: false)
+    UnnecessaryReturnKeyword(enabled: false)
   }
 
   ruleset('rulesets/unused.xml')
