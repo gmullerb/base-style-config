@@ -20,6 +20,14 @@ dependencies {
 final ROOT_FOLDER = '.'
 final CODE_FILES = ['*.gradle', '*.groovy', 'src/**/*.groovy']
 
+checkstyle {
+  toolVersion = CHECKSTYLE_VERSION
+}
+
+codenarc {
+  toolVersion = CODENARC_VERSION
+}
+
 // TASKS
 ////////
 
@@ -37,7 +45,7 @@ task assess (type: Checkstyle) {
 
 task assessGradle(type: CodeNarc) {
   // CodeNarc task settings
-  configFile = file('src/config/gradle/gradle-rules.groovy')
+  configFile = file('src/config/groovy/groovy-rules.groovy')
   source fileTree(ROOT_FOLDER) {
     include CODE_FILES
     exclude 'src/config/**/*'

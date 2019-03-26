@@ -1,5 +1,25 @@
 # Base Style Config Change Log
 
+## 2.0.0 - March 2019
+
+* Breaking changes:
+  * Changes `gradle` folder name to `groovy`.
+  * Changes `gradle-rules.groovy` file name to `groovy-rules.groovy`.
+  * Removes `"extends"` from `.eslintrc.json`, it was not allowing for proper eslint config cascading. (It's not really "breaking" change, but the assumption that extends "eslint:recommended" is lost).
+* Adds the `design` rule set to Codenarc.
+* Strengthen import rules in Javascript, makes it more consistent with Defined Backend rules:
+  * Adds `sort-imports`, `no-duplicate-imports`, `no-new-require` and `no-mixed-requires`.
+* Updates the eslint rules with `operator-linebreak` and the checkstyle checks with `OperatorWrap` in order to check for line breaks on operators, operator must be on a new line, this with the intention of increasing Readability.
+* Updates Codenarc rules `SpaceAfterOpeningBrace` & `SpaceBeforeClosingBrace` to ignore empty blocks.
+* Excludes Codenarc rule `UnnecessaryReturnKeyword` in order to increase Readability, some cases may be ok, like a method with one statement. Additionally, explicitly using `return` may increase code coverage values.
+* Excludes Codenarc rule `UnnecessaryCast`, in some case is required the use of a cast, e.g. an empty List of String `[] as List<String>`.
+* Excludes new Codenarc rules `ClassEndsWithBlankLine` & `ClassStartsWithBlankLine`.
+* Updates Codenarc exclusion to the new format using `(enabled: false)`, which allows for better rules version validation.
+* Adds Versions Compatibility Table.
+* Updates Gitlab CI configuration.
+* Upgrades Gradle to version 5.3.
+* Updates README file.
+
 ## 1.0.14 - March 2019
 
 * Removes `quotes` from eslint rules, should be set based on Backend language (or preference), for Groovy could be set to `'` -> `"quotes": ["quotes", "single"]`, for C++, Java or QML could be set to `"` ->  `"quotes": ["quotes", "double"]`.
@@ -16,7 +36,7 @@
 * Adds Smoke Tests for .eslintrc and .stylelintrc.
 * Updates README file.
 
-## February 2018 B
+## February 2019 B
 
 * Adds gitlab-ci.yml.
 * Updates build.gradle.
@@ -33,7 +53,7 @@
 * Upgrades Gradle to version 5.2.1.
 * Updates README file.
 
-## February 2018
+## February 2019
 
 * Moves configuration files from config/ to src/config (may get confused with project config files).
 

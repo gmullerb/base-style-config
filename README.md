@@ -2,9 +2,21 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) [![download](https://api.bintray.com/packages/gmullerb/all.shared.quality/base-style-config/images/download.svg)](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion)
 
-**This project provides a set of essential configuration files for code style checking.**
+**This project provides a set of essential configuration files for Backend/Frontend code style checking.**
 
 This project is licensed under the terms of the [MIT license](/LICENSE.txt).
+__________________
+
+## Quick Start
+
+1 . Use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper).
+
+or
+
+1 . Download the Jar in [Direct Downloads](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion).
+
+2 . And point every tool to the respective configuration file [Using/Configuration](#Using/Configuration).
+__________________
 
 ## Goals
 
@@ -21,7 +33,7 @@ The idea is to have a common and single source of code styling rules, which can 
   * A [PMD's set](/config/back/coding-rules.xml), for Backend's Java code.
   * A [ESLint's set](/config/front/.eslintrc.json), for Frontend's JS code.
   * A [StyleLint's set](/config/front/.stylelintrc.json), for Frontend's CSS code.
-  * A [Codenarc's set](/config/gradle/gradle-rules.groovy) for Build's Gradle code and Groovy's code.
+  * A [Codenarc's set](/config/groovy/groovy-rules.groovy) for Build's Gradle code and Groovy's code.
   * All sets define a similar set of rules in order to get the homogeneity in code style between Backend's, Frontend's and Build's code.
 * Adds some new custom rules to Checkstyle and PMD.
 
@@ -51,7 +63,7 @@ The Defined Sets of rules are in:
 
 * **Stylelint** rules are in [`config/front/.stylelintrc.json`](config/front/.stylelintrc.json).
 
-* **Codenarc** rules are in [`config/gradle/gradle-rules.groovy`](config/gradle/gradle-rules.groovy).
+* **Codenarc** rules are in [`config/groovy/groovy-rules.groovy`](config/groovy/groovy-rules.groovy).
 
 ### Code Style Checking Common rules
 
@@ -83,8 +95,10 @@ To highlights:
     * Several small private methods and few public methods.
     * Java Code [1] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
 * Class count limit: 1 Class per file.
+* Imports should be order alphabetically.
 * Cyclomatic Complexity limit: 8 paths.
 * Some spacing rules are the same.
+* When wrapping operators, the operator must be at the beginning of a new line.
 
 > Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
 > [1] CodeNarc and ESLint does not yet provide a way of doing this.
@@ -234,6 +248,7 @@ Although this rule is not set, the project should always set `quotes` rule in or
 * **`SpaceBeforeOperator`**, **`SpaceAfterOperator`**, **`Exactly1SpaceBeforeOperator`** & **`Exactly1SpaceAfterOperator`**: Check spaces around operators.
   * Substitutes `SpaceAroundOperator` rule, it is unstable for some patterns (produces some false-positive).
   * These rules may not check some cases, but should not give false-positives, e.g. `>>` is not validated.
+  * tip: when having operators inside a string and some false-positive may arise, use unicode code for the operator, e.g. `".. version=1.0"` -> `"..  version\u003D1.0"`.
 
 ##### Gradle & Groovy
 
@@ -308,6 +323,11 @@ For test files, some rules/checks[1] are disabled in order to allow some freedom
 #### Conventions
 
 * Unit/Integration test files name should be suffix with "**`Test`**" in order to some rules/checks to be suppressed.
+
+### Version Compatibility
+
+[Versions Compatibility Table](VERSIONS_COMPATIBILITY.md)
+__________________
 
 ## Using/Configuration
 
@@ -435,13 +455,13 @@ Following is a detailed description of how to use configuration files from a JAR
 
 ```gradle
   codenarc {
-    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'gradle/gradle-rules.groovy')
+    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'groovy/groovy-rules.groovy')
   }
 ```
 
 ### Frontend configuration
 
-1. Add a config parameter to the respective ESLint script task, e.g.:
+1 . Add a config parameter to the respective ESLint script task, e.g.:
 - eslint script task: `someEslintTask`.
 - config parameter: `eslintConfigFile`
 
@@ -451,7 +471,7 @@ Following is a detailed description of how to use configuration files from a JAR
   },
 ```
 
-2. Set the config parameter in the respective gradle NpmTask task:
+2 . Set the config parameter in the respective gradle NpmTask task:
 
 ```gradle
   task assessSomeESLint(type: NpmTask) {
@@ -460,8 +480,7 @@ Following is a detailed description of how to use configuration files from a JAR
   }
 ```
 
-
- q3. Same for Stylelint:
+3 . Same for Stylelint:
 
 `package.json`:
 
@@ -484,15 +503,16 @@ Following is a detailed description of how to use configuration files from a JAR
 
 ### Gradle configuration
 
-1. Configure plugin:
+1 . Configure plugin:
 
 ```gradle
   codenarc {
-    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'gradle/gradle-rules.groovy')
+    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'groovy/groovy-rules.groovy')
   }
 ```
 
-2. Define a Codenarc task to check all gradle files in the project tree, e.g.: [basecode project - build.gradle file - assessGradle task](https://github.com/gmullerb/basecode/blob/master/build.gradle).
+2 . Define a Codenarc task to check all gradle files in the project tree, e.g.: [basecode project - build.gradle file - assessGradle task](https://github.com/gmullerb/basecode/blob/master/build.gradle).
+__________________
 
 ## Extending/Developing
 
@@ -557,6 +577,13 @@ git clone https://github.com/gmullerb/base-style-config
 ## License
 
 [MIT License](/LICENSE.txt)
+__________________
+
+## Remember
+
+* Use code style verification tools => Encourages Best Practices, Efficiency, Readability and Learnability.
+* Start testing early => Encourages Reliability and Maintainability.
+* Code Review everything => Encourages Functional suitability, Performance Efficiency and Teamwork.
 
 ## Additional words
 
@@ -576,3 +603,4 @@ At life:
 At work:
 
 * Let's give solutions, not questions.
+* Aim to simplicity not intellectualism.

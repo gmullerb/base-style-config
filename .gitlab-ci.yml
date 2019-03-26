@@ -59,6 +59,9 @@ test:
     untracked: true
     paths:
       - .gradle/
+  artifacts:
+    reports:
+      junit: build/test-results/test/**/TEST-*.xml
 
 assemble:
   stage: assemble
@@ -71,6 +74,7 @@ assemble:
     paths:
       - .gradle/
   artifacts:
+    name: $CI_PROJECT_NAME-artifact-$CI_COMMIT_SHORT_SHA
     paths:
       - build/artifact
 
