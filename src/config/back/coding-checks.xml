@@ -134,6 +134,8 @@
     <module name="CommentsIndentation"/>
     <module name="EmptyForInitializerPad"/>
     <module name="EmptyLineSeparator">
+      <property name="allowNoEmptyLineBetweenFields" value="true"/>
+      <property name="allowMultipleEmptyLines" value="false"/>
       <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
     </module>
     <module name="GenericWhitespace"/>
@@ -143,7 +145,6 @@
       <property name="throwsIndent" value="2"/>
       <property name="arrayInitIndent" value="2"/>
       <property name="lineWrappingIndentation" value="2"/>
-      <property name="forceStrictCondition" value="true"/>
     </module>
     <module name="MethodParamPad"/>
     <module name="NoLineWrap"/>

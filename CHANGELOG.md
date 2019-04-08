@@ -1,5 +1,13 @@
 # Base Style Config Change Log
 
+## 2.0.1 - April 2019
+
+* Updates `EmptyLineSeparator` Checkstyle rule to allow fields on a class to be immediately below to each other without line between them.
+* Removes `forceStrictCondition` from Checkstyles which allows more freedom on indentation in order to get a code more similar to JS code.
+* Updates Gitlab CI configuration.
+* Updates README file.
+  * Adds a new section `Code Style convention/tips`, in order to talk about some code style conventions which allow to improve Readability and also allow more code style consistency between Java, Groovy and JS code, since some rules between them cannot be exactly equally defined.
+
 ## 2.0.0 - March 2019
 
 * Breaking changes:

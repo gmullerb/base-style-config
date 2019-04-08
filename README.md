@@ -320,9 +320,46 @@ For test files, some rules/checks[1] are disabled in order to allow some freedom
 > [1] For Checkstyle, PMD and CodeNarc.
 > [2] Same as in JS.
 
-#### Conventions
+#### Required Conventions
 
 * Unit/Integration test files name should be suffix with "**`Test`**" in order to some rules/checks to be suppressed.
+
+#### Code Style convention/tips
+
+When adding indentation for parameters of a constructor/method/function add an extra 2 spaces, which will differentiate it from the inner code:
+
+e.g.:
+
+Given:
+
+```java
+  public SomeConstructor(final SomeType parameter1, final @SomeAnnotation SomeTypeN parameterN) {
+    this.field1 = parameter1;
+    this.fieldN = parameterN;
+  }
+```
+
+Make it:
+
+```java
+  public SomeConstructor(
+      final SomeType parameter1,
+      final @SomeAnnotation SomeTypeN parameterN) {
+    this.field1 = parameter1;
+    this.fieldN = parameterN;
+  }
+```
+
+instead of:
+
+```java
+  public SomeConstructor(
+    final SomeType parameter1,
+    final @SomeAnnotation SomeTypeN parameterN) {
+    this.field1 = parameter1;
+    this.fieldN = parameterN;
+  }
+```
 
 ### Version Compatibility
 

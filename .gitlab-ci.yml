@@ -61,7 +61,7 @@ test:
       - .gradle/
   artifacts:
     reports:
-      junit: build/test-results/test/**/TEST-*.xml
+      junit: build/test-results/test/TEST-*.xml
 
 assemble:
   stage: assemble
