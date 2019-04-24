@@ -1,5 +1,14 @@
 # Base Style Config Change Log
 
+## 2.0.2 - April 2019
+
+* New rules for forcing public fields to be `final`:
+  * Checkstyle: Updates `VisibilityModifier` rule to allow public **final** fields.
+  * CodeNarc: Disables `PublicInstanceField` rule and Adds security rule set which contains `NonFinalPublicField` rule.
+* Sets priority to `0` (reported but does not cause a failure) for `InstanceOf` rule from CodeNarc.
+* Fixes `AnnotateClassesWith@CompileStaticOr@TypeChecked` Codenarc rule, was not allowing comments.
+* Updates README file.
+
 ## 2.0.1 - April 2019
 
 * Updates `EmptyLineSeparator` Checkstyle rule to allow fields on a class to be immediately below to each other without line between them.

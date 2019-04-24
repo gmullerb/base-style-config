@@ -105,6 +105,7 @@
     <module name="RedundantModifier"/>
     <module name="VisibilityModifier">
       <property name="protectedAllowed" value="true"/>
+      <property name="allowPublicFinalFields" value="true"/>
     </module>
     <!-- Size -->
     <module name="AnonInnerLength"/>

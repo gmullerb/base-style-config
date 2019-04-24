@@ -89,6 +89,7 @@ To highlights:
 * Method length limit: 25 lines per method.
 * Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
+* Public fields must be `final`.
 * Class/File lines limit: 300 lines per class/file.
   * This will allow having at most around of 11 big methods: 11 methods of max 25 lines.
   * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 25 lines.

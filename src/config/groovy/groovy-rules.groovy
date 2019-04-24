@@ -30,7 +30,12 @@ ruleset {
     TrailingComma(enabled: false)
   }
 
-  ruleset('rulesets/design.xml')
+  ruleset('rulesets/design.xml') {
+    PublicInstanceField(enabled: false)
+    Instanceof  {
+      priority = 0
+    }
+  }
 
   ruleset('rulesets/dry.xml') {
     DuplicateNumberLiteral {
@@ -89,6 +94,12 @@ ruleset {
     }
     FactoryMethodName(enabled: false)
     VariableName(enabled: false)
+  }
+
+  ruleset('rulesets/security.xml') {
+    UnsafeArrayDeclaration(enabled: false)
+    JavaIoPackageAccess(enabled: false)
+    FileCreateTempFile(enabled: false)
   }
 
   ruleset('rulesets/size.xml') {
@@ -218,6 +229,6 @@ ruleset {
     violationMessage = 'Annotate Main class, interface or trait with @CompileStatic or @TypeChecked'
     doNotApplyToFileNames = GRADLE_FILES
     // RequiredRegex rule settings
-    regex = /(((?<![\}\/]\s*)@CompileStatic|(?<![\}\/]\s*)@TypeChecked)\s+(public\s+)?(final\s+)?(class|interface|trait)) | (^(((?!(class|interface|trait)).)*)$)/
+    regex = /(((?<![\}\/]\h*)@CompileStatic|(?<![\}\/]\h*)@TypeChecked)\s+(public\s+)?(final\s+)?(class|interface|trait)) | (^(((?!(class|interface|trait)).)*)$)/
   }
 }
