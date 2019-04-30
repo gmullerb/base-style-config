@@ -1,5 +1,16 @@
 # Base Style Config Change Log
 
+## 2.0.3 - May 2019
+
+* Enforces 3/23 rule name length limits.
+  * Creates `LongMethodName`, a custom rule for CodeNarc rules to limit methods' name size.
+  * Adds a suppressions for `ShortVariable` & `ShortMethodName` PMD rules, to allow for `id`, `of`, `k` & `K` names.
+  * Adds `id-match` eslint rule to enforce variable/field/method length and to allow for `id`, `of`, `k` & `K` names, as in backend rules.
+  * Updates `LocalVariableName` & `LocalFinalVariableName` Checkstyle rules and `LocalVariableNamingConventions` PMD rule to be similar to frontend `id-match` rule.
+* Adds new exceptions and markers to `spaced-comment` eslint rule, to allow special comments, like Flow comments.
+* Adds new extensions to be checked by Common rules: `.c`, `.cpp`, `flowconfig`, `.h`, `.hpp`, `jsx`, `mjs`, `qml`, `pro` & `tsx`.
+* Updates README file.
+
 ## 2.0.2 - April 2019
 
 * New rules for forcing public fields to be `final`:

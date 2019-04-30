@@ -28,14 +28,14 @@ The idea is to have a common and single source of code styling rules, which can 
 ## Features
 
 * Provides a set of configuration files for **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)**, **[StyleLint](https://github.com/stylelint/stylelint)** and **[CodeNarc](http://codenarc.sourceforge.net)**, bundle in a JAR:
-  * A [Common Checkstyle's set](/config/common/common-checks.xml), for all files (.java, .js, .css, .gradle, etc.).
+  * A [Common Checkstyle's set](/config/common/common-checks.xml), for "all" files (.java, .js, .css, .gradle, etc.).
   * A [Checkstyle's set](/config/back/coding-checks.xml), for Backend's Java code.
   * A [PMD's set](/config/back/coding-rules.xml), for Backend's Java code.
   * A [ESLint's set](/config/front/.eslintrc.json), for Frontend's JS code.
   * A [StyleLint's set](/config/front/.stylelintrc.json), for Frontend's CSS code.
   * A [Codenarc's set](/config/groovy/groovy-rules.groovy) for Build's Gradle code and Groovy's code.
   * All sets define a similar set of rules in order to get the homogeneity in code style between Backend's, Frontend's and Build's code.
-* Adds some new custom rules to Checkstyle and PMD.
+* Adds some new custom rules to Checkstyle, PMD adn Codenarc.
 
 ## Code Style Checking
 
@@ -48,6 +48,8 @@ Code Style Checking tries to catch differences on coding style.
 There are different development tools for doing this.
 
 This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)**, **[StyleLint](https://github.com/stylelint/stylelint)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
+
+> Checkstyle is easy to use and more "light", and PMD is easy for adding new "powerful" rules.
 
 ## Defined Code Style Checking
 
@@ -67,12 +69,14 @@ The Defined Sets of rules are in:
 
 ### Code Style Checking Common rules
 
-#### Common rules [common-checks.xml](config/common/common-checks.xml) [1]
+#### Common rules [common-checks.xml](config/common/common-checks.xml)
+
+Will check all the files with extension: **c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml**[1].
 
 * No tab characters on files.
 * Requires a new line break at the end of the file[2].
 
-> [1] Extensions: css, conf, gitignore, gradle, groovy, java, js, json, html, md, properties, sh, sql, ts, txt, xml, yml.  
+> [1] Can be extended at [common-checks.xml](config/common/common-checks.xml).
 > [2] In order to be friendly with Code Versioning tools.
 
 #### Common Backend's, Frontend's and Build's code rules
@@ -90,11 +94,12 @@ To highlights:
 * Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
 * Public fields must be `final`.
+* Variable/Field/Method names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
 * Class/File lines limit: 300 lines per class/file.
   * This will allow having at most around of 11 big methods: 11 methods of max 25 lines.
   * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 25 lines.
     * Several small private methods and few public methods.
-    * Java Code [1] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
+    * Java Code [2] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
 * Class count limit: 1 Class per file.
 * Imports should be order alphabetically.
 * Cyclomatic Complexity limit: 8 paths.
@@ -102,7 +107,8 @@ To highlights:
 * When wrapping operators, the operator must be at the beginning of a new line.
 
 > Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
-> [1] CodeNarc and ESLint does not yet provide a way of doing this.
+> [1] This 3/23 rule, allows for concatenated words, still readable, and it is easy to remember.  
+> [2] CodeNarc and ESLint does not yet provide a way of doing this.
 
 ##### Semicolon
 
@@ -222,6 +228,7 @@ Although this rule is not set, the project should always set `quotes` rule in or
 ##### New rules
 
 * **`AvoidFieldInjection`**: Checks that no Field Injection is used in the code with either `javax.inject.Inject`, `com.google.inject.Inject` or `org.springframework.beans.factory.annotation.Autowired`.
+* **`LongMethodName`**: Checks methods' names length.
 
 #### Codenarc custom rules
 
