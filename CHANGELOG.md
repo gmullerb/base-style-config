@@ -1,5 +1,11 @@
 # Base Style Config Change Log
 
+## 2.0.4 - May 2019
+
+* Updates `LineLength` Checkstyle rule to allow long string.
+* Adjusts `UseMultilineTernaryOperator` Checkstyle/Codenarc rule to avoid some false positive when defining JSON strings.
+* Updates README file.
+
 ## 2.0.3 - May 2019
 
 * Enforces 3/23 rule name length limits.

@@ -178,6 +178,7 @@ Although this rule is not set, the project should always set `quotes` rule in or
   * Then these `final` fields abbreviations are check by the Customized PMD's `FieldNamingConventions` rule.
 
 * **`LineLength`**: Line length limit is ignored for lines with some patterns:
+  * With only a string.
   * Starting with `package`.
   * Starting with `import`.
   * Containing Test methods: `public void should*()`.
