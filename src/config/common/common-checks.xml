@@ -6,7 +6,7 @@
     "https://checkstyle.org/dtds/configuration_1_3.dtd">
 <!-- Only modules with parent module Checker should be use here since are "generic" not Java modules (not requires AST) -->
 <module name="Checker">
-  <property name="fileExtensions" value="c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml"/>
+  <property name="fileExtensions" value="c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pri, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml"/>
   <property name="charset" value="UTF-8"/>
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>

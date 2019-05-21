@@ -71,7 +71,7 @@ The Defined Sets of rules are in:
 
 #### Common rules [common-checks.xml](config/common/common-checks.xml)
 
-Will check all the files with extension: **c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml**[1].
+Will check all the files with extension: **c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pri, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml**[1].
 
 * No tab characters on files.
 * Requires a new line break at the end of the file[2].

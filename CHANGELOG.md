@@ -1,5 +1,11 @@
 # Base Style Config Change Log
 
+## 2.0.5 - May 2019
+
+* Add a new extension to be checked by Common rules: `pri`.
+* Removes `no-invalid-this` from eslint rules, it gives error on fat arrow member functions, should be set locally in each project as required.
+* Updates README file.
+
 ## 2.0.4 - May 2019
 
 * Updates `LineLength` Checkstyle rule to allow long string.
