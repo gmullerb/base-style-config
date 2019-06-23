@@ -90,6 +90,7 @@ To highlights:
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
+  * Line with a long string are ignored.
 * Method length limit: 25 lines per method.
 * Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).

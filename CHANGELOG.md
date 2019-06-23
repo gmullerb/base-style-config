@@ -1,5 +1,10 @@
 # Base Style Config Change Log
 
+## 2.0.6 - June 2019
+
+* Sets `"ignoreStrings": true, "ignoreTemplateLiterals": in` from `max-len` eslint rule, in order to be consistent with Checkstyle rules.
+* Updates README file.
+
 ## 2.0.5 - May 2019
 
 * Add a new extension to be checked by Common rules: `pri`.
