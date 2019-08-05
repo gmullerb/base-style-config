@@ -61,6 +61,10 @@
     "no-use-before-define": "error",
     "no-void": "error",
     "no-with": "error",
+    "object-curly-spacing": ["error", "always", {
+      "arraysInObjects": false,
+      "objectsInObjects": false
+    }],
     "object-property-newline": "error",
     "operator-assignment": "error",
     "operator-linebreak": ["error", "before"],

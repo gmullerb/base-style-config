@@ -7,8 +7,10 @@
 <module name="Checker">
   <property name="fileExtensions" value="java"/>
   <module name="JavadocPackage"/>
+  <module name="SuppressWarningsFilter"/>
   <module name="TreeWalker">
     <property name="severity" value="error"/>
+    <module name="SuppressWarningsHolder"/>
     <!-- Annotations -->
     <module name="AnnotationLocation">
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>
@@ -39,7 +41,7 @@
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="UseMultilineTernaryOperator"/>
-      <property name="format" value='^[^\?]*?(?&lt;!(\&lt;|,|,\h))\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?[^\s"]+?\s*?:.*$|^[^"]*?"[^"]*?"[^"]*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?"[^"]*?"[^"]*?:[^"]*$' />
+      <property name="format" value='^[^\?]*?(?&lt;!(\&lt;|,|,\h))\?\s*+$|^[^:]*?:\s*+$|^[^"]*?[^\s"]+?\s*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?[^\s":]+?\s*?:[^:]*$|^[^"]*?"[^"]*?"[^"]*?(?&lt;!(\&lt;|,|,\h))\?(?![:\&gt;\.]).*$|^[^"]*?"[^"]*?"[^"]*?:[^"]*$' />
       <property name="ignoreComments" value="true"/>
       <message key="regexp.exceeded" value="Expand ternary operator in multiple lines: condition NEWLINE ? expression NEWLINE : expression"/>
     </module>
@@ -118,7 +120,7 @@
     </module>
     <module name="LineLength">
       <property name="max" value="144"/>
-      <property name="ignorePattern" value='^\h*.{0,2}".*".{0,2}$|^package\s|^import\s|public void should\w*()|file:///|http://|https://|ftp://|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\('/>
+      <property name="ignorePattern" value='^\h*.{0,2}".*"[\?\+\)\(\}\]\[\.\=:,;]*$|^package\s|^import\s|public void should\w*()|file:///|http://|https://|ftp://|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\('/>
     </module>
     <module name="MethodCount">
       <property name="maxPublic" value="12"/>
@@ -142,6 +144,7 @@
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
       <property name="allowMultipleEmptyLines" value="false"/>
       <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
+      <property name="tokens" value="IMPORT, STATIC_IMPORT, CLASS_DEF, INTERFACE_DEF, ENUM_DEF, STATIC_INIT, INSTANCE_INIT, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
     </module>
     <module name="GenericWhitespace"/>
     <module name="Indentation">

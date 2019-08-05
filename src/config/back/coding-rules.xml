@@ -35,7 +35,7 @@
   </rule>
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
-      <property name="utilityClassPattern" value="[A-Z][a-z0-9]([A-Z]?[a-z0-9]+)*(Factory|Utils?|Helper)"/>
+      <property name="utilityClassPattern" value="^([A-Z][a-z0-9]([A-Z]?[a-z0-9]+)*)?(Factory|Mappers?|Utils?|Helper)$"/>
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions">
@@ -78,6 +78,7 @@
     <exclude name="AvoidDeeplyNestedIfStmts"/>
     <exclude name="CyclomaticComplexity"/>
     <exclude name="DataClass"/>
+    <exclude name="ExcessiveMethodLength"/>
     <exclude name="LawOfDemeter"/>
     <exclude name="LoosePackageCoupling"/>
   </rule>
@@ -115,6 +116,7 @@
     <exclude name="BadComparison"/>
     <exclude name="DataflowAnomalyAnalysis"/>
     <exclude name="JumbledIncrementer"/>
+    <exclude name="LoggerIsNotStaticFinal"/>
     <exclude name="MissingBreakInSwitch"/>
     <exclude name="NonCaseLabelInSwitchStatement"/>
     <exclude name="NullAssignment"/>

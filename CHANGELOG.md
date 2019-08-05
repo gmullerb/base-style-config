@@ -1,5 +1,17 @@
 # Base Style Config Change Log
 
+## 2.0.7 - August 2019
+
+* Adds `object-curly-spacing` to eslint rules.
+* Improves `LineLength` Checkstyle rule to allow any number of specific tokens at start of the line.
+* Improves `UseMultilineTernaryOperator` Checkstyle rule to avoid a false-positive in Method references.
+* Improves `utilityClassPattern` in `ClassNamingConventions` PMD rule to also allow names defined only with one of established suffixes.
+* Adds `Mappers` suffix to `utilityClassPattern` in `ClassNamingConventions` PMD rule.
+* Updates `EmptyLineSeparator` Checkstyle rule to allow empty line for packages definition.
+* Removes `ExcessiveMethodLength` PMD rule which is already checked by Checkstyle (which allows suppressions for tests).
+* Removes `LoggerIsNotStaticFinal` PMD rule which was preventing Logger injection, useful in some special cases.
+* Adds `SuppressWarningsFilter` to Checkstyle in order to be consistent with PMD, allowing suppressions of rule in code for special cases using `@SuppressWarnings` annotation.
+
 ## 2.0.6 - June 2019
 
 * Sets `"ignoreStrings": true, "ignoreTemplateLiterals": in` from `max-len` eslint rule, in order to be consistent with Checkstyle rules.

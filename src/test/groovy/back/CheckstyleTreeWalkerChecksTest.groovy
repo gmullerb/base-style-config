@@ -142,6 +142,11 @@ class CheckstyleTreeWalkerChecksTest {
     }
 
     @Test
+    public void shouldNotFindPatternWhenUsingMethodReference() {
+      assertFalse(checkPattern.test('Some::method'))
+    }
+
+    @Test
     public void shouldNotFindPatternWhenColonInsideJsonString() {
       assertFalse(checkPattern.test('{\"identifier\":\"theId\",\"modified\":\"2019-05-01T15:12:12.123142Z\",\"uri\":\"theUri\"}'))
     }
