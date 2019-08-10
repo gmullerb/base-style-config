@@ -16,10 +16,10 @@
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF"/>
     </module>
     <module name="AnnotationLocation">
-      <property name="id" value="AnnotationLocationVariableAndParameter"/>
+      <property name="id" value="AnnotationLocationVariable"/>
       <property name="allowSamelineMultipleAnnotations" value="true"/>
       <property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
-      <property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF"/>
+      <property name="tokens" value="VARIABLE_DEF"/>
     </module>
     <module name="AnnotationUseStyle"/>
     <module name="MissingOverride"/>
@@ -126,7 +126,7 @@
       <property name="maxPublic" value="12"/>
     </module>
     <module name="MethodLength">
-      <property name="max" value="25"/>
+      <property name="max" value="30"/>
     </module>
     <module name="ParameterNumber">
       <property name="max" value="5"/>

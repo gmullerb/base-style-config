@@ -1,5 +1,21 @@
 # Base Style Config Change Log
 
+## 3.0.0 - August 2019
+
+* Breaking changes:
+  * Removes `.stylelintrc.json`. (It was not providing any real benefit, with only 1 rule, that conflict with the new convention of defining quotes style locally. Besides stylelint inheritance mechanism does not lend to an easy configuration).
+  * Renames `back` folder to `java`, it gives more accurate context.
+  * Renames `front` folder to `js`, it gives more accurate context.
+* Fixes compatibility with Checkstyle 8.21:
+  * Removes `PARAMETER_DEF` from Rule `AnnotationLocationVariableAndParameter`.
+  * Renames `AnnotationLocationVariableAndParameter` to `AnnotationLocationVariable`.
+* Updates _Method Size Rule_ for Checkstyle, CodeNarc & ESLint to 30 lines, which is readable without scrolling, this will increase Mantainability.
+* Disables `CompileStatic` Codenarc rule, since in gradle code is not mandatory.
+* Adds a suppression for `e2eTest`/`E2eTest` files in `ExcessiveImports` PMD rule. (E2E tests tends to be bigger files, having only one big E2E set is useful since loading time is usually bigger and slower than other types of test.)
+* Adds `.typescript-eslintrc.json`.
+* Updates VERSIONS_COMPATIBILITY table.
+* Updates README file.
+
 ## 2.0.7 - August 2019
 
 * Adds `object-curly-spacing` to eslint rules.

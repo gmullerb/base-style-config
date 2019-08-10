@@ -1,5 +1,11 @@
 | base-style-config  |  Tools Version  |
 | ------------------ | --------------- |
+| 3.0.0                                |
+|                    |**Checkstyle 8.21**|
+|                    | **Pmd 6.17**    |
+|                    | **CodeNarc 1.4**|
+|                    | Eslint 5.15     |
+|                    |~~Stylelint~~    |
 | 2.0.0                                |
 |                    | Checkstyle 8.18 |
 |                    | Pmd 6.12        |

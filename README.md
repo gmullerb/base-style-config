@@ -27,12 +27,12 @@ The idea is to have a common and single source of code styling rules, which can 
 
 ## Features
 
-* Provides a set of configuration files for **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)**, **[StyleLint](https://github.com/stylelint/stylelint)** and **[CodeNarc](http://codenarc.sourceforge.net)**, bundle in a JAR:
+* Provides a set of configuration files for **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**, bundle in a JAR:
   * A [Common Checkstyle's set](/config/common/common-checks.xml), for "all" files (.java, .js, .css, .gradle, etc.).
-  * A [Checkstyle's set](/config/back/coding-checks.xml), for Backend's Java code.
-  * A [PMD's set](/config/back/coding-rules.xml), for Backend's Java code.
-  * A [ESLint's set](/config/front/.eslintrc.json), for Frontend's JS code.
-  * A [StyleLint's set](/config/front/.stylelintrc.json), for Frontend's CSS code.
+  * A [Checkstyle's set](/config/java/coding-checks.xml), for Java's code.
+  * A [PMD's set](/config/java/coding-rules.xml), for Java's code.
+  * A [ESLint's set](/config/js/.eslintrc.json), for JS's code.
+    * A [ESLint's set for Typescript](/config/js/.typescript-eslintrc.json), for JS's code.
   * A [Codenarc's set](/config/groovy/groovy-rules.groovy) for Build's Gradle code and Groovy's code.
   * All sets define a similar set of rules in order to get the homogeneity in code style between Backend's, Frontend's and Build's code.
 * Adds some new custom rules to Checkstyle, PMD adn Codenarc.
@@ -47,7 +47,7 @@ Code Style Checking tries to catch differences on coding style.
 
 There are different development tools for doing this.
 
-This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)**, **[StyleLint](https://github.com/stylelint/stylelint)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
+This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
 
 > Checkstyle is easy to use and more "light", and PMD is easy for adding new "powerful" rules.
 
@@ -55,28 +55,28 @@ This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](ht
 
 The Defined Sets of rules are in:
 
-* **Common Checkstyle** rules are in [`config/common/common-checks.xml`](config/common/common-checks.xml).
+* **Common Checkstyle** rules are in [`src/config/common/common-checks.xml`](src/config/common/common-checks.xml).
 
-* **Checkstyle** checks are in [`config/back/coding-checks.xml`](config/back/coding-checks.xml).
-  * Java Test files have some checks removed. ([`config/back/checks-suppressions.xml`](config/back/checks-suppressions.xml))
-* **PMD** rules are in [`config/back/coding-rules.xml`](config/back/coding-rules.xml).
+* **Checkstyle** checks are in [`src/config/java/coding-checks.xml`](src/config/java/coding-checks.xml).
+  * Java Test files have some checks removed. ([`src/config/java/checks-suppressions.xml`](src/config/java/checks-suppressions.xml))
+* **PMD** rules are in [`src/config/java/coding-rules.xml`](src/config/java/coding-rules.xml).
   * Java Test files have some rules ignore.
-* **ESLint** rules are in [`config/front/.eslintrc.json`](config/front/.eslintrc.json).
+* **ESLint** rules are in [`src/config/js/.eslintrc.json`](src/config/js/.eslintrc.json).
+  * ESLint rules for Typescript are in [`src/config/js/.typescript-eslintrc.json`](src/config/js/.eslintrc.json).
+    * [`src/config/js/.typescript-eslintrc.json`](src/config/js/.eslintrc.json) is exactly the same as [`src/config/js/.eslintrc.json`](src/config/js/.eslintrc.json) with additional [typescript-eslint rules](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules).
 
-* **Stylelint** rules are in [`config/front/.stylelintrc.json`](config/front/.stylelintrc.json).
-
-* **Codenarc** rules are in [`config/groovy/groovy-rules.groovy`](config/groovy/groovy-rules.groovy).
+* **Codenarc** rules are in [`src/config/groovy/groovy-rules.groovy`](src/config/groovy/groovy-rules.groovy).
 
 ### Code Style Checking Common rules
 
-#### Common rules [common-checks.xml](config/common/common-checks.xml)
+#### Common rules [common-checks.xml](src/config/common/common-checks.xml)
 
 Will check all the files with extension: **c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pri, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml**[1].
 
 * No tab characters on files.
 * Requires a new line break at the end of the file[2].
 
-> [1] Can be extended at [common-checks.xml](config/common/common-checks.xml).
+> [1] Can be extended at [common-checks.xml](src/config/common/common-checks.xml).
 > [2] In order to be friendly with Code Versioning tools.
 
 #### Common Backend's, Frontend's and Build's code rules
@@ -91,14 +91,14 @@ To highlights:
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
   * Line with a long string are ignored.
-* Method length limit: 25 lines per method.
+* Method length limit: 30 lines per method.
 * Method parameters number limit: 5 parameters per method.
   * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
 * Public fields must be `final`.
 * Variable/Field/Method names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
 * Class/File lines limit: 300 lines per class/file.
-  * This will allow having at most around of 11 big methods: 11 methods of max 25 lines.
-  * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 25 lines.
+  * This will allow having at most around of 10 big methods: ~10 methods of max ~30 lines.
+  * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 30 lines.
     * Several small private methods and few public methods.
     * Java Code [2] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
 * Class count limit: 1 Class per file.
@@ -392,7 +392,7 @@ Following is a detailed description of how to use configuration files from a JAR
  }
 ```
 
-#### Backend
+#### Java
 
 * [Checkstyle plugin](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.quality.Checkstyle.html)
 
@@ -410,7 +410,7 @@ Following is a detailed description of how to use configuration files from a JAR
  }
 ```
 
-#### Frontend
+#### JS
 
 * [Node plugin](https://github.com/srs/gradle-node-plugin)
 
@@ -428,12 +428,23 @@ Following is a detailed description of how to use configuration files from a JAR
   },
 ```
 
-* [StyleLint package](https://www.npmjs.com/package/stylelint)
+##### TS
+
+* [Node plugin](https://github.com/srs/gradle-node-plugin)
+
+```gradle
+ plugins {
+   id 'com.moowork.node' version '1.2.0'
+ }
+```
+
+* [ESlint package](https://www.npmjs.com/package/eslint) + [TypeScript plugin for ESLint](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
 
 ```json
   "devDependencies": {
-    "stylelint": "*",
-    "stylelint-config-standard": "*"
+    "eslint": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
   },
 ```
 
@@ -479,26 +490,27 @@ Following is a detailed description of how to use configuration files from a JAR
 
 2. Define a Checkstyle task to check "all" files in the project tree, e.g.: [basecode project - build.gradle file - assessCommon task](https://github.com/gmullerb/basecode/blob/master/build.gradle).
 
-### Backend configuration
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
 
-#### Java
+### Java configuration
 
 ```gradle
   checkstyle {
-    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'back/coding-checks.xml')
-    configProperties.suppressionFile = resources.text.fromArchiveEntry(configurations.styleConfig, 'back/checks-suppressions.xml').asFile().path
+    config = resources.text.fromArchiveEntry(configurations.styleConfig, 'java/coding-checks.xml')
+    configProperties.suppressionFile = resources.text.fromArchiveEntry(configurations.styleConfig, 'java/checks-suppressions.xml').asFile().path
   }
 
   pmd {
     ruleSets = [] // required with new PMD version
-    ruleSetConfig = resources.text.fromUri(configurations.styleConfig, 'back/coding-rules.xml')
+    ruleSetConfig = resources.text.fromUri(configurations.styleConfig, 'java/coding-rules.xml')
   }
 ```
 
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
 > If using both, PMD should be run after Checkstyle, since Checkstyle is "lighter".  
 > A complete example in [basecode project - back project](https://github.com/gmullerb/basecode/tree/master/back).
 
-#### Groovy
+### Groovy configuration
 
 ```gradle
   codenarc {
@@ -506,9 +518,12 @@ Following is a detailed description of how to use configuration files from a JAR
   }
 ```
 
-### Frontend configuration
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
+
+### JS configuration
 
 1 . Add a config parameter to the respective ESLint script task, e.g.:
+
 - eslint script task: `someEslintTask`.
 - config parameter: `eslintConfigFile`
 
@@ -523,30 +538,63 @@ Following is a detailed description of how to use configuration files from a JAR
 ```gradle
   task assessSomeESLint(type: NpmTask) {
     // NpmTask task settings
-    args = ['someESlintTask', "--eslintConfigFile=${resources.text.fromArchiveEntry(configurations.styleConfig, 'front/.eslintrc.json').asFile().path}"]
+    args = ['someESlintTask', "--eslintConfigFile=${resources.text.fromArchiveEntry(configurations.styleConfig, 'js/.eslintrc.json').asFile().path}"]
   }
 ```
 
-3 . Same for Stylelint:
+3 .  Since version `2.0.0`, [`src/config/js/.eslintrc.json`](src/config/js/.eslintrc.json) does not extend any configuration to allow proper locally eslint config cascading => local `.eslintrc` should extend the required configuration, e.g.:
 
-`package.json`:
+```json
+{
+  "extends": [
+      "eslint:recommended"
+    ]
+  ..
+```
+
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
+> A complete example in [basecode project - front project](https://github.com/gmullerb/basecode/tree/master/front).
+
+#### TS configuration
+
+1 . Add a config parameter to the respective ESLint script task, e.g.:
+
+- eslint script task: `someEslintTask`.
+- config parameter: `tsEslintConfigFile`
 
 ```json
   "scripts": {
-    "someStylelintTask": "stylelint --config ${npm_config_stylelintConfigFile} ..",
+    "someESlintTask": "eslint --config ${npm_config_tsEslintConfigFile} ..",
   },
 ```
 
-`build.gradle`:
+2 . Set the config parameter in the respective gradle NpmTask task:
 
 ```gradle
-  task assessSomeStylelint(type: NpmTask) {
+  task assessSomeESLint(type: NpmTask) {
     // NpmTask task settings
-    args = ['someStylelintTask'] + "--stylelintConfigFile=${resources.text.fromArchiveEntry(configurations.styleConfig, 'front/.stylelintrc.json').asFile().path}"]
+    args = ['someESlintTask', "--tsEslintConfigFile=${resources.text.fromArchiveEntry(configurations.styleConfig, 'js/.typescript-eslintrc.json').asFile().path}"]
   }
 ```
 
-> A complete example in [basecode project - front project](https://github.com/gmullerb/basecode/tree/master/front).
+3 .  local `.eslintrc` should configure [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), e.g.:
+
+```json
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./path/to/some/tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  ..
+```
+
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
 
 ### Gradle configuration
 
@@ -559,6 +607,8 @@ Following is a detailed description of how to use configuration files from a JAR
 ```
 
 2 . Define a Codenarc task to check all gradle files in the project tree, e.g.: [basecode project - build.gradle file - assessGradle task](https://github.com/gmullerb/basecode/blob/master/build.gradle).
+
+> Or use the [base-style-config-wrapper Gradle plugin](https://github.com/gmullerb/base-style-config-wrapper) for a quick and easy configuration.
 __________________
 
 ## Extending/Developing
@@ -605,15 +655,15 @@ git clone https://github.com/gmullerb/base-style-config
 ```
   /config
     /common
-    /back
-    /front
+    /java
+    /js
     /gradle
 ```
 
-- `config/common`: Global Common Checkstyle configuration files.
-- `config/back`: Checkstyle and PMD configuration files.
-- `config/front`: EsLint and StyleLint configuration files.
-- `config/gradle`: CodeNarc configuration files.
+- `src/config/common`: Global Common Checkstyle configuration files.
+- `src/config/java`: Checkstyle and PMD configuration files.
+- `src/config/js`: EsLint configuration files.
+- `src/config/gradle`: CodeNarc configuration files.
 
 ## Documentation
 

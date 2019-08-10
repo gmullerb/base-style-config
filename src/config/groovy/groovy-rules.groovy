@@ -12,6 +12,7 @@ ruleset {
   ruleset('rulesets/braces.xml')
 
   ruleset('rulesets/convention.xml') {
+    CompileStatic(enabled: false)
     CouldBeElvis {
       priority = 0
     }
@@ -111,7 +112,7 @@ ruleset {
       maxMethodComplexity = 8
     }
     MethodSize {
-      maxLines = 25
+      maxLines = 30
       doNotApplyToFileNames = TEST_FILES
     }
     ParameterCount {

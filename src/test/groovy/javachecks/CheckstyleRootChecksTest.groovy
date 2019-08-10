@@ -1,6 +1,6 @@
 //  Copyright (c) 2019 Gonzalo Müller Bravo.
 //  Licensed under the MIT License (MIT), see LICENSE.txt
-package back
+package javachecks
 
 import util.CheckstyleTestUtils
 
@@ -28,7 +28,7 @@ class CheckstyleRootChecksTest {
     final XmlSlurper reader = new XmlSlurper()
     reader.setFeature('http://apache.org/xml/features/disallow-doctype-decl', false)
     reader.setProperty(javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD, 'all')
-    final GPathResult rootNodes = reader.parse('src/config/back/coding-checks.xml')
+    final GPathResult rootNodes = reader.parse('src/config/java/coding-checks.xml')
     final GPathResult checkerNode = rootNodes.find { Node node ->
       node
         .attributes()
