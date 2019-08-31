@@ -87,29 +87,37 @@ To highlights:
   * CamelCase.
   * All in uppercase for constants.
     * Non-consecutive underscore (`_`) for Backend.
+* Variable/Field/Method names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
   * Line with a long string are ignored.
-* Method length limit: 30 lines per method.
-* Method parameters number limit: 5 parameters per method.
-  * Except for Constructor where no limit is set (just to allow Immutables class with a lot of fields).
-* Public fields must be `final`.
-* Variable/Field/Method names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
+* Method length limit: 30 lines per method [2].
+  * Java/Groovy Code [3] will have a limit of 25 [4] public/protected/private methods (being a reasonable limit for functional implementations, which tend to have several small functions/methods).[5]
+* Method parameters number limit: 7 parameters per method [6].
+* Java Code [7] will have a limit of 7 fields by class.
 * Class/File lines limit: 300 lines per class/file.
-  * This will allow having at most around of 10 big methods: ~10 methods of max ~30 lines.
-  * this will allow to be functional, having small simple methods with single responsibility, and only a few "complex" methods of 30 lines.
-    * Several small private methods and few public methods.
-    * Java Code [2] will have a a limit of 12 public methods and 6 fields (for a class having only fields, this will be 6 getters and 6 setters).
 * Class count limit: 1 Class per file.
+* Public fields must be `final`.
 * Imports should be order alphabetically.
 * Cyclomatic Complexity limit: 8 paths.
 * Some spacing rules are the same.
 * When wrapping operators, the operator must be at the beginning of a new line.
 
+Combination of Method length limit and Class/File lines limit allows to:
+
+  * Have at most around of 10 big methods: ~10 methods of max ~30 lines or ~25 methods of max ~12 lines.
+  * Be functional, having small simple methods with single responsibility, and only a few "complex" methods of max 30 lines.
+    * Several small private methods and few public methods.
+
 > Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
 > [1] This 3/23 rule, allows for concatenated words, still readable, and it is easy to remember.  
-> [2] CodeNarc and ESLint does not yet provide a way of doing this.
+> [2] Having 30 lines allows for seen all the code of a function/method in same screen page.  
+> [3] ESLint does not yet provide a way of doing this.  
+> [4] Although there exists public APIs that more than this amount of methods, e.g. `java.util.stream.Stream`.  
+> [5] Although this rule can be circumvented using static function fields.  
+> [6] Exception may be required in constructor , when building of complex inheritance with more than 7 fields as total, for special cases, e.g. using some bad designed but required API, in this case use a @SuppressWarnings("checkstyle:ParameterNumber"). In app own code, Composition should be used over Inheritance.  
+> [7] CodeNarc and ESLint does not yet provide a way of doing this.
 
 ##### Semicolon
 

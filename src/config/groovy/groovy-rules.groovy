@@ -116,11 +116,14 @@ ruleset {
       doNotApplyToFileNames = TEST_FILES
     }
     ParameterCount {
-      maxParameters = 5
+      maxParameters = 7
     }
     AbcMetric(enabled: false)
     CrapMetric(enabled: false)
-    MethodCount(enabled: false)
+    MethodCount {
+      maxMethods = 25
+      doNotApplyToFileNames = TEST_FILES
+    }
   }
 
   ruleset('rulesets/unnecessary.xml') {

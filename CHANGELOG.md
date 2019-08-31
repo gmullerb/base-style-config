@@ -1,5 +1,12 @@
 # Base Style Config Change Log
 
+## 3.0.1 - August 2019
+
+* Updates `TooManyMethods` PMD rule and `MethodCount` Codenarc rule to have a limit of 30 methods by class.
+* Updates `ParameterNumber` Checkstyle rule and `TooManyFields` PMD rule to have be consistent with each other, having a limit of 7 fields by class and 7 parameters by method (including constructor).
+  * Consequently, `max-params` ESlint rule and `ParameterCount` Codenarc rule were updated.
+* Updates README file.
+
 ## 3.0.0 - August 2019
 
 * Breaking changes:

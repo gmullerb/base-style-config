@@ -100,12 +100,13 @@
   </rule>
   <rule ref="category/java/design.xml/TooManyFields">
     <properties>
-      <property name="maxfields" value="6"/>
+      <property name="maxfields" value="7"/>
       <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[ends-with(@Image,'Test')]"/>
     </properties>
   </rule>
   <rule ref="category/java/design.xml/TooManyMethods">
     <properties>
+      <property name="maxmethods" value="25"/>
       <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[ends-with(@Image,'Test')]"/>
     </properties>
   </rule>

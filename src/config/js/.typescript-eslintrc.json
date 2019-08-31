@@ -50,7 +50,7 @@
     "max-classes-per-file": "error",
     "max-len": ["error", {"code": 144, "ignoreComments": false, "ignoreTrailingComments": false, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": false}],
     "max-lines": "error",
-    "max-params": ["error", {"max": 5}],
+    "max-params": ["error", {"max": 7}],
     "max-statements": ["error", {"max": 30}],
     "new-cap": "error",
     "new-parens": "error",
