@@ -43,40 +43,40 @@ class CheckstyleRootChecksTest {
 
     @BeforeEach
     public void beforeEach() {
-      final GPathResult nameOfTestsMustStartWithShouldCheckstyle = CheckstyleTestUtils
+      final GPathResult ruleXmlNode = CheckstyleTestUtils
         .findNodeByTypeAndId(checkerChildrenNodes, 'RegexpMultiline', 'NameOfTestsMustStartWithShould')
       checkPattern = Pattern.compile(
-        CheckstyleTestUtils.obtainChildValue(nameOfTestsMustStartWithShouldCheckstyle, 'format'),
+        CheckstyleTestUtils.obtainChildValue(ruleXmlNode, 'format'),
         Pattern.MULTILINE).asPredicate()
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJUnit() {
+    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJunit() {
       assertTrue(checkPattern.test('\u0040Test public void someTest'))
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJUnit() {
+    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJunit() {
       assertFalse(checkPattern.test('\u0040Test public void shouldTest'))
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJUnit4() {
+    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJunit4() {
       assertTrue(checkPattern.test('\u0040org.junit.Test public void someTest'))
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJUnit4() {
+    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJunit4() {
       assertFalse(checkPattern.test('\u0040org.junit.Test public void shouldTest'))
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJUnit5() {
+    public void shouldFindPatternWhenNameOfTestsDoesNotStartWithShouldForJunit5() {
       assertTrue(checkPattern.test('\u0040org.junit.jupiter.api.Test public void someTest'))
     }
 
     @Test
-    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJUnit5() {
+    public void shouldFindPatternWhenNameOfTestsStartWithShouldForJunit5() {
       assertFalse(checkPattern.test('\u0040org.junit.jupiter.api.Test public void shouldTest'))
     }
 
@@ -97,10 +97,10 @@ class CheckstyleRootChecksTest {
 
     @BeforeEach
     public void beforeEach() {
-      final GPathResult useOnlyDoFamilyMethodsWhenMocking = CheckstyleTestUtils
+      final GPathResult ruleXmlNode = CheckstyleTestUtils
         .findNodeByTypeAndId(checkerChildrenNodes, 'RegexpMultiline', 'UseOnlyDoFamilyMethodsWhenMocking')
       checkPattern = Pattern.compile(
-        CheckstyleTestUtils.obtainChildValue(useOnlyDoFamilyMethodsWhenMocking, 'format'),
+        CheckstyleTestUtils.obtainChildValue(ruleXmlNode, 'format'),
         Pattern.MULTILINE).asPredicate()
     }
 
@@ -110,7 +110,7 @@ class CheckstyleRootChecksTest {
     }
 
     @Test
-    public void shouldFindPatternWhenUsingBDDMockito() {
+    public void shouldFindPatternWhenUsingBddMockito() {
       assertTrue(checkPattern.test('\u006Frg.mockito.BDDMockito'))
     }
 

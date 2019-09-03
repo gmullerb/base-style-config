@@ -1,5 +1,22 @@
 # Base Style Config Change Log
 
+## 3.0.2 - September 2019
+
+* Standardize naming convention for Java, Groovy and JS:
+  * Updates Codenarc rules: `ClassName`, `FieldName`, `MethodName`, `InterfaceName`, `ParameterName` , `PropertyName` and `VariableName`.
+  * Updates Checkstyle rules: `LocalFinalVariableName`, `MemberName`, `MethodName`, `ParameterName` and `TypeName`.
+  * Adds Checkstyle rules: `LambdaParameterName`, `ConstantName`.
+  * Adds Custom Checkstyle rules: `ConstantNameLength` and `TestTypeName`.
+  * Adds Custom Codenarc rules: `ConstantNameLength`, `GradleVariableName`, `GroovyTestClassName` and `GroovyTestMethodName`.
+  * Adds `MethodNamingConventions` PMD rule for checking Test files.
+  * Adds `id-length` ESlint rule.
+  * Adds `@typescript-eslint/generic-type-naming` rule.
+  * Updates Checkstyle rules: `ClassTypeParameterName`, `InterfaceTypeParameterName` and `MethodTypeParameterName`.
+  * Updates `id-match` ESlint rule.
+  * Excludes PMD rules: `FieldNamingConventions`, `FormalParameterNamingConventions`, `GenericsNaming`, `LocalVariableNamingConventions`, `LongVariable`, `ShortClassName`, `ShortVariable` and `ShortMethodName`, cases which are now resolved by Checkstyle rules.
+  * Adds required suppressions.
+* Updates `LineLength` Codenarc rule, to be synchronize with Checkstyle `LineLength` rule.
+
 ## 3.0.1 - August 2019
 
 * Updates `TooManyMethods` PMD rule and `MethodCount` Codenarc rule to have a limit of 30 methods by class.

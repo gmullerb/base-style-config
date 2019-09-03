@@ -6,11 +6,15 @@
     "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 <suppressions>
   <suppress
-    files=".*Test.java"
-    checks="AvoidStaticImport|FileLength|MethodCount|MethodLength|Javadoc.*"
+    files="^.*Test\.java$"
+    checks="AvoidStaticImport|FileLength|MethodCount|MethodLength|MethodName|Javadoc.*"
   />
   <suppress
-    files=".*Test.java"
+    files="^.*Test\.java$"
     id="UseOnlyMockOrSpyPrefixOnTestFiles"
+  />
+  <suppress
+    files="^(.(?!Test))*\.java$"
+    id="TestTypeName"
   />
 </suppressions>

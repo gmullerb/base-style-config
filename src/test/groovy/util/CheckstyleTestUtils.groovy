@@ -8,6 +8,14 @@ import groovy.util.slurpersupport.NodeChild
 
 @CompileStatic
 class CheckstyleTestUtils {
+  public static final GPathResult findNodeByType(final GPathResult sourceNode, final String type) {
+    return sourceNode.find { final NodeChild node ->
+      type == node
+        .attributes()
+        .get('name')
+    }
+  }
+
   public static final GPathResult findNodeByTypeAndId(final GPathResult sourceNode, final String type, final String id) {
     final GPathResult nodes = sourceNode.findAll { final NodeChild node ->
       type == node
@@ -15,23 +23,15 @@ class CheckstyleTestUtils {
         .get('name')
     }
 
-    nodes.find { NodeChild node ->
+    return nodes.find { NodeChild node ->
       checkId(node, id)
     }
-
   }
 
   public static final boolean checkId(final GPathResult node, final String id) {
-    node
+    return node
       .children()
-      .find { final NodeChild child ->
-        'id' == child
-        .attributes()
-        .get('name')
-        &&
-        id == child
-        .attributes()
-        .get('value')
+      .find { final NodeChild child -> ('id' == child.attributes()['name']) && (id == child.attributes()['value'])
     }
   }
 
@@ -41,7 +41,7 @@ class CheckstyleTestUtils {
         .attributes()
         .get('name')
     }
-    result.isEmpty()
+    return result.empty
       ? null
       : ((NodeChild) result)
         .attributes()

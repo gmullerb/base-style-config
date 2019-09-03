@@ -4,6 +4,11 @@
 final GRADLE_FILES = '*.gradle'
 final TEST_FILES = '*Test.*'
 
+final NAME_REGEX = '^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$'
+final STATIC_FINAL_NAME_REGEX = '^[A-Z](_?[A-Z0-9]{1}){2,31}$|' + NAME_REGEX
+final STATIC_FINAL_NAME_LENGTH_REGEX = '^[A-Z_0-9]{3,32}$|^[a-zA-Z0-9]{3,23}$'
+final TYPE_NAME_REGEX = '^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$'
+
 ruleset {
   description 'Gradle code rules'
 
@@ -59,6 +64,7 @@ ruleset {
     LineLength {
       length = 144
       priority = 3
+      ignoreLineRegex = /^\h*.{0,2}".*"[\?\+\)\(\}\]\[\.\=:,;]*$|^package\s|^import\s|public void should\w*()|file:\/\/|http:\/\/|https:\/\/|ftp:\/\/|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\(/
     }
     SpaceAfterOpeningBrace {
       ignoreEmptyBlock = true
@@ -89,12 +95,60 @@ ruleset {
   ruleset('rulesets/logging.xml')
 
   ruleset('rulesets/naming.xml') {
+    ClassName {
+      regex = TYPE_NAME_REGEX
+      doNotApplyToFileNames = TEST_FILES
+    }
     FieldName {
-      regex = '[a-z]([A-Z]?[a-z0-9]+)*[A-Z]?'
-      staticFinalRegex = '([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)'
+      regex = '^id$|' + NAME_REGEX
+      staticFinalRegex = STATIC_FINAL_NAME_REGEX
     }
     FactoryMethodName(enabled: false)
-    VariableName(enabled: false)
+    InterfaceName {
+      regex = TYPE_NAME_REGEX
+    }
+    MethodName {
+      regex = '^of$|' + NAME_REGEX
+      doNotApplyToFileNames = TEST_FILES
+    }
+    ParameterName {
+      regex = '^id$|' + NAME_REGEX
+    }
+    PropertyName {
+      regex = '^id$|' + NAME_REGEX
+      staticFinalRegex = STATIC_FINAL_NAME_REGEX
+    }
+    VariableName {
+      regex = '^k$|^id$|' + NAME_REGEX
+      finalRegex = '^K$|' + NAME_REGEX
+      doNotApplyToFileNames = GRADLE_FILES
+    }
+  }
+
+  ClassName {
+    name = 'GroovyTestClassName'
+    description = 'Verifies that the name of a class matches a regular expression'
+    applyToFileNames = TEST_FILES
+  }
+  FieldName {
+    name = 'ConstantNameLength'
+    description = 'Verifies that the length of name of a constant is between 3 and 23/32(Uppercase) characters'
+    regex = '^.*$'
+    staticFinalRegex = STATIC_FINAL_NAME_LENGTH_REGEX
+    violationMessage = 'Constant name length is invalid, min: 3, max: 23/32(Uppercase)'
+  }
+  MethodName {
+    name = 'GroovyTestMethodName'
+    description = 'Verifies that the name of each method matches a regular expression'
+    regex = '^afterAll$|^afterEach$|^beforeAll$|^beforeEach$|^should[A-Z]([a-z0-9]{1}[A-Z]?)*$|' + NAME_REGEX
+    applyToFileNames = TEST_FILES
+  }
+  VariableName {
+    name = 'GradleVariableName'
+    description = 'Verifies that the name of each variable matches a regular expression'
+    regex = '^k$|^id$|' + NAME_REGEX
+    finalRegex = '^K$|'+ STATIC_FINAL_NAME_REGEX
+    applyToFileNames = GRADLE_FILES
   }
 
   ruleset('rulesets/security.xml') {

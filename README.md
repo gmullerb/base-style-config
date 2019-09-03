@@ -87,7 +87,15 @@ To highlights:
   * CamelCase.
   * All in uppercase for constants.
     * Non-consecutive underscore (`_`) for Backend.
-* Variable/Field/Method names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
+* Fields/Variables/Methods names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
+  * Java/Groovy Test Code [3]:
+    * Test instance methods names should start with `should`.
+    * Other instance methods valid names are: `afterAll`, `afterEach`, `beforeAll` or `beforeEach`. [5]
+      * Groovy: other instance methods must have a length between 3 and 23.
+      * Java: static methods must have a length between 3 and 23.
+* Classes/Constants names must have a length between 3 and 32 [1].
+  * Test Class names will not have length limit.
+* Type parameters names must have a length between 1 and 10, all in uppercase.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
@@ -111,7 +119,7 @@ Combination of Method length limit and Class/File lines limit allows to:
     * Several small private methods and few public methods.
 
 > Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
-> [1] This 3/23 rule, allows for concatenated words, still readable, and it is easy to remember.  
+> [1] This 3/23/32 rule, allows for concatenated words, still readable, and it is easy to remember.  
 > [2] Having 30 lines allows for seen all the code of a function/method in same screen page.  
 > [3] ESLint does not yet provide a way of doing this.  
 > [4] Although there exists public APIs that more than this amount of methods, e.g. `java.util.stream.Stream`.  

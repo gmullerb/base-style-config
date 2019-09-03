@@ -23,44 +23,33 @@
     <exclude name="AvoidFinalLocalVariable"/>
     <exclude name="CallSuperInConstructor"/>
     <exclude name="ConfusingTernary"/>
+    <exclude name="FieldNamingConventions"/>
+    <exclude name="FormalParameterNamingConventions"/>
+    <exclude name="GenericsNaming"/>
+    <exclude name="LocalVariableNamingConventions"/>
+    <exclude name="LongVariable"/>
     <exclude name="OnlyOneReturn"/>
-  </rule>
-  <rule ref="category/java/codestyle.xml/FieldNamingConventions">
-    <properties>
-      <property name="constantPattern" value="([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)"/>
-      <property name="enumConstantPattern" value="[A-Z](_?[A-Z0-9]+)*"/>
-      <property name="finalFieldPattern" value="[a-z]([A-Z]?[a-z0-9]+)*[A-Z]?"/>
-      <property name="publicConstantPattern" value="([A-Z](_?[A-Z0-9]+)*)|([a-z]([A-Z]?[a-z0-9]+)*[A-Z]?)"/>
-    </properties>
+    <exclude name="ShortClassName"/>
+    <exclude name="ShortMethodName"/>
+    <exclude name="ShortVariable"/>
   </rule>
   <rule ref="category/java/codestyle.xml/ClassNamingConventions">
     <properties>
+      <property name="classPattern" value="^.*$"/>
+      <property name="abstractClassPattern" value="^.*$"/>
+      <property name="interfacePattern" value="^.*$"/>
+      <property name="enumPattern" value="^.*$"/>
+      <property name="annotationPattern" value="^.*$"/>
       <property name="utilityClassPattern" value="^([A-Z][a-z0-9]([A-Z]?[a-z0-9]+)*)?(Factory|Mappers?|Utils?|Helper)$"/>
     </properties>
   </rule>
-  <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions">
+  <rule ref="category/java/codestyle.xml/MethodNamingConventions">
     <properties>
-      <property name="finalVarPattern" value="^K|[a-z][a-zA-Z0-9]*$"/>
-    </properties>
-  </rule>
-  <rule ref="category/java/codestyle.xml/LongVariable">
-    <properties>
-      <property name="minimum" value="23"/>
-    </properties>
-  </rule>
-  <rule ref="category/java/codestyle.xml/ShortClassName">
-    <properties>
-      <property name="minimum" value="3"/>
-    </properties>
-  </rule>
-  <rule ref="category/java/codestyle.xml/ShortVariable">
-    <properties>
-      <property name="violationSuppressXPath" value=".[@Image = 'id' or @Image = 'k' or @Image = 'K']"/>
-    </properties>
-  </rule>
-  <rule ref="category/java/codestyle.xml/ShortMethodName">
-    <properties>
-      <property name="violationSuppressXPath" value=".[@Image = 'of']"/>
+      <property name="methodPattern" value="^afterAll$|^afterEach$|^beforeAll$|^beforeEach$|^should[A-Z]([a-z0-9]{1}[A-Z]?)*$"/>
+      <property name="nativePattern" value="^afterAll$|^afterEach$|^beforeAll$|^beforeEach$|^should[A-Z]([a-z0-9]{1}[A-Z]?)*$"/>
+      <property name="staticPattern" value="^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
+      <property name="junit4TestPattern" value="^afterAll$|^afterEach$|^beforeAll$|^beforeEach$|^should[A-Z]([a-z0-9]{1}[A-Z]?)*$"/>
+      <property name="violationSuppressXPath" value="/TypeDeclaration/ClassOrInterfaceDeclaration[not(ends-with(@Image,'Test'))]"/>
     </properties>
   </rule>
   <rule ref="category/java/codestyle.xml/UselessParentheses">
