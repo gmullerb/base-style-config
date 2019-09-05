@@ -192,9 +192,30 @@
     <message key="regexp.exceeded" value="Name of the Test method must begin with 'should'"/>
   </module>
   <module name="RegexpMultiline">
-    <property name="id" value="UseOnlyDoFamilyMethodsWhenMocking"/>
-    <property name="format" value='Mockito\s*\.\s*when|org\.mockito\.BDDMockito' />
-    <message key="regexp.exceeded" value="Use only &#34;do*&#34;'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn &amp; doThrow"/>
+    <property name="id" value="UseDoFamilyMethodsWhenStubbing"/>
+    <property name="format" value='\bMockito\s*\.\s*when\b' />
+    <message key="regexp.exceeded" value="Use &#34;do*&#34;'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn &amp; doThrow"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="UseOnlyWillFamilyMethodsWhenStubbing"/>
+    <property name="format" value='\bBDDMockito\s*\.\s*given\b|\bBDDMockito\s*\.\s*when\b' />
+    <message key="regexp.exceeded" value="Use only &#34;will*&#34;'s family methods when using BDD Mockito: will, willAnswer, willCallRealMethod, willDoNothing, willReturn &amp; willThrow"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="UseOnlyThenFamilyMethodsWhenMocking"/>
+    <property name="format" value='\bBDDMockito\s*\.\s*verify\b' />
+    <message key="regexp.exceeded" value="Use only &#34;then&#34;'s family methods when using BDD Mockito: then(..).should(..)"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="DoNotMixBDDandTDD"/>
+    <property name="format" value='\borg\.mockito\.Mockito\b[\S\s]*\borg\.mockito\.BDDMockito\b|\borg\.mockito\.BDDMockito\b[\S\s]*\borg\.mockito\.Mockito\b' />
+    <message key="regexp.exceeded" value="Use either org.mockito.BDDMockito or org.mockito.Mockito, not both at the same time."/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="id" value="PreferBDDTesting"/>
+    <property name="format" value='\borg\.mockito\.Mockito\b|\bdoAnswer\s*\(|\bdoCallRealMethod\s*\(|\bdoNothing\s*\(|\bdoReturn\s*\(|\bdoThrow\s*\(|\bverify\s*\(' />
+    <property name="severity" value="warning"/>
+    <message key="regexp.exceeded" value="Prefer BDD Testing when using Mockito, use org.mockito.BDDMockito's methods: will, willAnswer, willCallRealMethod, willDoNothing, willReturn, willThrow &amp; then"/>
   </module>
   <module name="SuppressionFilter">
     <property name="file" value="${suppressionFile}" default="dummy.xml"/>

@@ -315,7 +315,6 @@ Checkstyle/CodeNarc Rules:
       .method3(..);
    ```
 
-* **`NameOfTestsMustStartWithShould`**: Checks that the test methods names begin with `should`, e.g. `shouldExtractSomeValue`.
 * **`UseMultilineTernaryOperator`**: Ternary operator is forced to be in multiple lines in order to increase Readability [1]:
 
   ```java
@@ -324,11 +323,23 @@ Checkstyle/CodeNarc Rules:
       : expression
    ```
 
-* **`UseOnlyDoFamilyMethodsWhenMocking`**: Checks that only `do*`'s family methods are use when mocking: `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow`:
+Test Rules
+
+* **`DoNotMixBDDandTDD`**: Checks that TDD and BDD are not mixed, to keep Test style consistency.
+* **`NameOfTestsMustStartWithShould`**: Checks that the test methods names begin with '`should`', e.g. `shouldExtractSomeValue`.
+* **`PreferBDDTesting`**:  Warns that BDD should be prefer over TDD.
+* **`UseDoFamilyMethodsWhenStubbing`**: Checks that family methods '`do*`' are use when stubbing: `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow`, instead of '`when`' method:
   * `Mockito.when` have some ["issues"](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy) basically when spying.
     * `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` do not present those issues.
   * `BDDMockito.given` is an alias for `Mockito.when`.
 * **`UseOnlyMockOrSpyPrefixOnTestFiles`**: Checks that the '`mock`' or '`spy`' prefixes are used only on test's files' code.
+* **`UseOnlyWillFamilyMethodsWhenStubbing`**: Checks that family methods '`will*`' are the only ones use when stubbing: `will`, `willAnswer`, `willCallRealMethod`, `willDoNothing`, `willReturn` & `willThrow`, instead of '`given`' method:
+  * `Mockito.when` have some ["issues"](http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html#spy) basically when spying.
+  * `BDDMockito.given` is an alias for `Mockito.when`.
+    * `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow` do not present those issues.
+    * `willAnswer`, `willCallRealMethod`, `willDoNothing`, `willReturn` & `willThrow` are alias for `doAnswer`, `doCallRealMethod`, `doNothing`, `doReturn` & `doThrow`, respectively.
+      * `will` is an alias for `willAnswer`.
+* **`UseOnlyThenFamilyMethodsWhenMocking`**: Checks that family methods '`then`' are the only ones use when mocking, instead of '`verify`', to keep BDD style consistency.
 
 > [1] Some cases are not detected by CodeNarc.
 

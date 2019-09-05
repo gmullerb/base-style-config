@@ -1,5 +1,12 @@
 # Base Style Config Change Log
 
+## 3.0.3 - September 2019
+
+* Adds rules: `UseOnlyWillFamilyMethodsWhenStubbing`, `UseOnlyThenFamilyMethodsWhenMocking`, `DoNotMixBDDandTDD` and `PreferBDDTesting`.
+* Renames `UseOnlyDoFamilyMethodsWhenMocking` rule to `UseDoFamilyMethodsWhenStubbing`.
+* Fixes `LineLength` Codenarc rule, it was not ignoring single quoted strings.
+* Updates README file.
+
 ## 3.0.2 - September 2019
 
 * Standardize naming convention for Java, Groovy and JS:

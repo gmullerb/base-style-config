@@ -64,7 +64,7 @@ ruleset {
     LineLength {
       length = 144
       priority = 3
-      ignoreLineRegex = /^\h*.{0,2}".*"[\?\+\)\(\}\]\[\.\=:,;]*$|^package\s|^import\s|public void should\w*()|file:\/\/|http:\/\/|https:\/\/|ftp:\/\/|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\(/
+      ignoreLineRegex = /^\h*.{0,2}["''].*["'][\?\+\)\(\}\]\[\.\=:,;]*$|^package\s|^import\s|public void should\w*()|file:\/\/|http:\/\/|https:\/\/|ftp:\/\/|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\(/
     }
     SpaceAfterOpeningBrace {
       ignoreEmptyBlock = true
@@ -261,12 +261,53 @@ ruleset {
 
   IllegalRegex {
     // Codenarc rule settings
-    name = 'UseOnlyDoFamilyMethodsWhenMocking'
-    description = 'Should use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
-    violationMessage = 'Use only "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
+    name = 'UseDoFamilyMethodsWhenStubbing'
+    description = 'Should use "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
+    violationMessage = 'Use "do*"\'s family methods when using Mockito: doAnswer, doCallRealMethod, doNothing, doReturn & doThrow'
     applyToFileNames = TEST_FILES
     // IllegalRegex rule settings
-    regex = /Mockito\s*\.\s*when|org\.mockito\.BDDMockito/
+    regex = /\bMockito\s*\.\s*when\b/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'UseOnlyWillFamilyMethodsWhenStubbing'
+    description = 'Should use only "will*"\'s family methods when using BDD Mockito: will, willAnswer, willCallRealMethod, willDoNothing, willReturn & willThrow'
+    violationMessage = 'Use only "will*"\'s family methods when using BDD Mockito: will, willAnswer, willCallRealMethod, willDoNothing, willReturn & willThrow'
+    applyToFileNames = TEST_FILES
+    // IllegalRegex rule settings
+    regex = /\bBDDMockito\s*\.\s*given\b|\bBDDMockito\s*\.\s*when\b/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'UseOnlyThenFamilyMethodsWhenMocking'
+    description = 'Should use only "then"\'s family methods when using BDD Mockito: then(..).should(..)'
+    violationMessage = 'Use only "then"\'s family methods when using BDD Mockito: then(..).should(..)'
+    applyToFileNames = TEST_FILES
+    // IllegalRegex rule settings
+    regex = /\bBDDMockito\s*\.\s*verify\b/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'DoNotMixBDDandTDD'
+    description = 'Should use either org.mockito.BDDMockito or org.mockito.Mockito, not both at the same time.'
+    violationMessage = 'Use either org.mockito.BDDMockito or org.mockito.Mockito, not both at the same time.'
+    applyToFileNames = TEST_FILES
+    // IllegalRegex rule settings
+    regex = /\borg\.mockito\.Mockito\b[\S\s]*\borg\.mockito\.BDDMockito\b|\borg\.mockito\.BDDMockito\b[\S\s]*\borg\.mockito\.Mockito\b/
+  }
+
+  IllegalRegex {
+    // Codenarc rule settings
+    name = 'PreferBDDTesting'
+    description = 'Should prefer BDD Testing when using Mockito, use org.mockito.BDDMockito\'s methods: will, willAnswer, willCallRealMethod, willDoNothing, willReturn, willThrow & then'
+    violationMessage = 'Prefer BDD Testing when using Mockito, use org.mockito.BDDMockito\'s methods: will, willAnswer, willCallRealMethod, willDoNothing, willReturn, willThrow & then'
+    applyToFileNames = TEST_FILES
+    priority = 0
+    // IllegalRegex rule settings
+    regex = /\borg\.mockito\.Mockito\b|\bdoAnswer\s*\(|\bdoCallRealMethod\s*\(|\bdoNothing\s*\(|\bdoReturn\s*\(|\bdoThrow\s*\(|\bverify\s*\(/
   }
 
   IllegalRegex {
