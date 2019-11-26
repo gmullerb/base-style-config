@@ -1,0 +1,42 @@
+//  Copyright (c) 2019 Gonzalo Müller Bravo.
+//  Licensed under the MIT License (MIT), see LICENSE.txt
+
+plugins {
+  id 'groovy'
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  testCompile 'org.codehaus.groovy:groovy-all:+'
+  testCompile 'org.junit.jupiter:junit-jupiter-api:+'
+  testCompile 'org.junit.jupiter:junit-jupiter-params:+'
+  testRuntime 'org.junit.jupiter:junit-jupiter-engine:+'
+}
+
+// TASKS
+////////
+
+task assembleArtifact (type: Jar) {
+  // Jar task settings
+  baseName = project.name
+  version = project.version
+  from 'src/config'
+  destinationDir = file("$project.buildDir/artifact")
+  // gradle task settings
+  description = 'Creates a JAR file with all check configurations.'
+  group = 'build'
+  shouldRunAfter = ['test']
+}
+
+test {
+  useJUnitPlatform()
+  inputs.dir 'src'
+}
+
+// Default task
+///////////////
+
+defaultTasks 'test', 'assembleArtifact'

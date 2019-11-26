@@ -1,16 +1,84 @@
-# Base coding style check configuration
+# A Set of Essential ESLint rules for JS and TS
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt) ![GitHub package.json version](https://img.shields.io/github/package-json/v/gmullerb/base-style-config/js.svg?logo=npm) [![eslint-plugin-base-style-config](https://img.shields.io/badge/-eslint--plugin--base--style--config-green?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
 
-**A Set of Essential Configuration Files for Backend/Frontend/Build code style checking.**
+**It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: [base-style-config](https://github.com/gmullerb/base-style-config).**
 
-This project is licensed under the terms of the [MIT license](/LICENSE.txt).
+This project is licensed under the terms of the [MIT license](LICENSE.txt).
 __________________
 
 ## Quick Start
 
-* [Java style checking - Quick Start](./java/README.md#quick-start)
-* [JS style checking - Quick Start](./js/README.md#quick-start)
+### JS configuration
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+3 . Take a look to the set of rules: [Set of Eslint Rules for JS](./config/configs/eslintrc.js)
+
+#### TS configuration
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    "@typescript-eslint/eslint-plugin": "~1.13.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+3 . Take a look to the set of rules: [Set of Eslint Rules for Typescript](./config/configs/typescript-eslintrc.js)
 
 __________________
 
@@ -20,18 +88,6 @@ The idea is to have a common and "single" source of code styling rules, which ca
 
 * Provides a **similar set of rules** for Backend's, Frontend's and Build's code.
 * Provides a "single" source of configuration files.
-
-## Features
-
-* Provides a set of configuration files for **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**, bundle in a JAR:
-  * A [Common Checkstyle's set](/config/common/common-checks.xml), for "all" files (.java, .js, .css, .gradle, etc.).
-  * A [Checkstyle's set](/config/java/java-checks.xml), for Java's code.
-  * A [PMD's set](/config/java/java-rules.xml), for Java's code.
-  * A [ESLint's set](/config/js/.eslintrc.json), for JS's code.
-    * A [ESLint's set for Typescript](/config/js/.typescript-eslintrc.json), for JS's code.
-  * A [Codenarc's set](/config/groovy/groovy-rules.groovy) for Build's Gradle code and Groovy's code.
-  * All sets define a similar set of rules in order to get the homogeneity in code style between Backend's, Frontend's and Build's code.
-* Adds some new custom rules to Checkstyle, PMD adn Codenarc.
 
 ## Code Style Checking
 
@@ -45,26 +101,14 @@ There are different development tools for doing this.
 
 This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
 
-> Checkstyle is easy to use and more "light", and PMD is easy for adding new "powerful" rules.
-
 ## Defined Code Style Checking
 
 The Defined Sets of rules are in:
 
-* [Java style checking](./java/README.md)
-* [JS style checking](./js/README.md)
+* **ESLint** rules are in [`config/configs/eslintrc.js`](./config/configs/eslintrc.js).
+* ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
 
 ### Code Style Checking Common rules
-
-#### Common rules [common-checks.xml](src/config/common/common-checks.xml)
-
-Will check all the files with extension: **c, cpp, css, conf, flowconfig, gitignore, gradle, groovy, h, hpp, java, js, jsx, json, html, md, mjs, pri, pro, properties, qml, sh, sql, ts, tsx, txt, xml, yml**[1].
-
-* No tab characters on files.
-* Requires a new line break at the end of the file[2].
-
-> [1] Can be extended at [common-checks.xml](src/config/common/common-checks.xml).
-> [2] In order to be friendly with Code Versioning tools.
 
 #### Common Backend's, Frontend's and Build's code rules
 
@@ -181,7 +225,7 @@ e.g.:
 Given:
 
 ```java
-  public SomeConstructor(final SomeType parameter1, final @SomeAnnotation SomeTypeN parameterN) {
+  public SomeConstructor(final parameter1, final @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }
@@ -191,8 +235,8 @@ Make it:
 
 ```java
   public SomeConstructor(
-      final SomeType parameter1,
-      final @SomeAnnotation SomeTypeN parameterN) {
+      final parameter1,
+      final @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }
@@ -202,13 +246,131 @@ instead of:
 
 ```java
   public SomeConstructor(
-    final SomeType parameter1,
-    final @SomeAnnotation SomeTypeN parameterN) {
+    final parameter1,
+    final @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }
 ```
 __________________
+
+## Using/Configuration
+
+### JS
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/js-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+> `@typescript-eslint/parser` will have a default project: `./tsconfig.json`.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+### TS
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    "@typescript-eslint/eslint-plugin": "~1.13.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+__________________
+
+## Extending/Developing
+
+[Developing](readme/developing.md)
 
 ## Documentation
 
@@ -218,7 +380,7 @@ __________________
 
 ## License
 
-[MIT License](/LICENSE.txt)
+[MIT License](LICENSE.txt)
 __________________
 
 ## Remember

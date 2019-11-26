@@ -32,7 +32,7 @@ class CheckstyleTreeWalkerChecksTest {
     final XmlSlurper reader = new XmlSlurper()
     reader.setFeature('http://apache.org/xml/features/disallow-doctype-decl', false)
     reader.setProperty(javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD, 'all')
-    final GPathResult rootNodes = reader.parse('src/config/java/coding-checks.xml')
+    final GPathResult rootNodes = reader.parse('src/config/java/java-checks.xml')
     final GPathResult checkerNode = rootNodes.find { Node node ->
       node
         .attributes()

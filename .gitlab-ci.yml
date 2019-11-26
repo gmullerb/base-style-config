@@ -13,7 +13,7 @@ before_script:
 stages:
   - inception
   - assess
-  - test
+  - checks
   - assemble
 
 create-cache:
@@ -49,10 +49,10 @@ groovy-assess:
     paths:
       - .gradle/
 
-test:
-  stage: test
+java-test:
+  stage: checks
   script:
-    - ./gradlew test
+    - ./gradlew java:test
   cache:
     key: "${CI_COMMIT_SHA}"
     policy: pull
@@ -63,10 +63,22 @@ test:
     reports:
       junit: build/test-results/test/TEST-*.xml
 
-assemble:
+js-lint:
+  stage: checks
+  script:
+    - ./gradlew js:npmInstall
+    - ./gradlew js:lint
+  cache:
+    key: "${CI_COMMIT_SHA}"
+    policy: pull
+    untracked: true
+    paths:
+      - .gradle/
+
+java-assemble:
   stage: assemble
   script:
-    - ./gradlew assembleArtifact
+    - ./gradlew java:assembleArtifact
   cache:
     key: "${CI_COMMIT_SHA}"
     policy: pull

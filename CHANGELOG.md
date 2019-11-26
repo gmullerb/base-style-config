@@ -1,5 +1,20 @@
 # Base Style Config Change Log
 
+## November 2019 / base-style-config.jar - 4.0.0 / eslint-plugin-base-style-config - 1.0.0
+
+* Moves `js` style configuration files to its own project, it was hard to use this configuration files in npm projects (no gradle projects).
+  * `js` and `java` project will have from now on each one its own version.
+* typescript-eslint now extends from eslint rules
+  * Improves maintainability.
+* Improves eslint rule `id-match`, allowing `$` character at the beginning.
+* Removes `@typescript-eslint/indent` was colliding with eslint `indent`.
+* Removes `@typescript-eslint/no-angle-bracket-type-assertion` (It's no available anymore since 2.0.0).
+  * Adds `@typescript-eslint/consistent-type-assertions`.
+* Removes eslint rule `yoda`, same as `quotes` & `semicolon` should be enforce based on language and team, because it can also harm maintainability.
+* Renames `coding-rules.xml` to `java-rules.xml`.
+* Renames `coding-checks.xml` to `java-checks.xml`.
+* Updates README file.
+
 ## 3.0.3 - September 2019
 
 * Adds rules: `UseOnlyWillFamilyMethodsWhenStubbing`, `UseOnlyThenFamilyMethodsWhenMocking`, `DoNotMixBDDandTDD` and `PreferBDDTesting`.

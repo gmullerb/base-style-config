@@ -1,0 +1,35 @@
+plugins {
+  id 'com.moowork.node' version '1.2.0'
+}
+
+repositories {
+  jcenter()
+}
+
+// Plugins settings
+///////////////////
+
+node {
+  version = NODE_VERSION
+  download = true
+}
+
+// TASKS
+////////
+
+task lint(type: NpmTask) {
+  args = [
+    'run',
+    'lint',
+    '--silent'
+  ]
+}
+
+task publish(type: NpmTask) {
+  args = ['publish']
+}
+
+// Default task
+///////////////
+
+defaultTasks 'npmInstall', 'lint'

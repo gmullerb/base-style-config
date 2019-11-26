@@ -1,0 +1,70 @@
+{
+  "name": "eslint-plugin-base-style-config",
+  "description": "A Set of Essential ESLint rules for JS and TS",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Gonzalo Müller Bravo",
+  "main": "config/index.js",
+  "homepage": "https://gitlab.com/gmullerb/base-style-config/js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmullerb/base-style-config/js"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/gmullerb/base-style-config/issues"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config",
+    "eslint config",
+    "eslintplugin",
+    "eslint-plugin",
+    "eslint plugin",
+    "eslintrules",
+    "eslint-rules",
+    "eslint rules",
+    "coding style",
+    "coding standards",
+    "code checker",
+    "code linter",
+    "code quality",
+    "code standards",
+    "code style",
+    "lint",
+    "jshint",
+    "js-hint",
+    "jslint",
+    "js-lint",
+    "js lint",
+    "js quality",
+    "js rules",
+    "js rules",
+    "js standards",
+    "js style",
+    "style guide",
+    "style checker",
+    "style linter",
+    "standard style",
+    "style",
+    "types",
+    "typing",
+    "typescript",
+    "typescript hint",
+    "typescript-lint",
+    "typescript lint",
+    "typescript quality",
+    "typescript rules",
+    "typescript standards",
+    "typescript style"
+  ],
+  "scripts": {
+    "lint": "eslint --config config/configs/eslintrc.js --color \"**/*.js\""
+  },
+  "peerDependencies": {
+    "eslint": "^6.7.1"
+  },
+  "devDependencies": {
+    "eslint": "~6.7.1"
+  }
+}
