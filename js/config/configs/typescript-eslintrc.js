@@ -2,7 +2,7 @@
 //  Licensed under the MIT License (MIT), see LICENSE.txt
 
 module.exports = {
-  extends: './configs/.eslintrc.js',
+  extends: './configs/eslintrc.js',
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',

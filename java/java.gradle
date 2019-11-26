@@ -21,7 +21,7 @@ dependencies {
 
 task assembleArtifact (type: Jar) {
   // Jar task settings
-  baseName = project.name
+  baseName = 'base-style-config'
   version = project.version
   from 'src/config'
   destinationDir = file("$project.buildDir/artifact")

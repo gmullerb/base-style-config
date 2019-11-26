@@ -36,6 +36,13 @@ git clone https://github.com/gmullerb/react-reducer-context
 `eslintrc.js`
 typescript-eslintrc.js`
 
+### Defined Code Style Checking
+
+The Defined Sets of rules are in:
+
+* **ESLint** rules are in [`config/configs/eslintrc.js`](./config/configs/eslintrc.js).
+* ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
+
 ## Building it
 
 ### Gradle

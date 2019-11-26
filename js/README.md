@@ -1,6 +1,6 @@
 # A Set of Essential ESLint rules for JS and TS
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt) ![GitHub package.json version](https://img.shields.io/github/package-json/v/gmullerb/base-style-config/js.svg?logo=npm) [![eslint-plugin-base-style-config](https://img.shields.io/badge/-eslint--plugin--base--style--config-green?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt) [![eslint-plugin-base-style-config](https://img.shields.io/badge/npm-eslint--plugin--base--style--config-blue?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
 
 **It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: [base-style-config](https://github.com/gmullerb/base-style-config).**
 
@@ -100,13 +100,6 @@ Code Style Checking tries to catch differences on coding style.
 There are different development tools for doing this.
 
 This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
-
-## Defined Code Style Checking
-
-The Defined Sets of rules are in:
-
-* **ESLint** rules are in [`config/configs/eslintrc.js`](./config/configs/eslintrc.js).
-* ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
 
 ### Code Style Checking Common rules
 
