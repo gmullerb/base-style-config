@@ -1,1 +1,6 @@
 rootProject.name = 'base-style-config'
+
+include 'js', 'java'
+
+project(':js').buildFileName = 'js.gradle'
+project(':java').buildFileName = 'java.gradle'

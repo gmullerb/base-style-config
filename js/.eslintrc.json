@@ -1,0 +1,17 @@
+{
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "root": true,
+  "rules": {
+    "object-curly-spacing": ["error", "always", {
+      "arraysInObjects": false,
+      "objectsInObjects": false
+    }],
+    "quotes":  ["error", "single"],
+    "semi": ["error", "never"]
+  }
+}
