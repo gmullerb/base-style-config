@@ -1,7 +1,6 @@
 # Folders
 .gradle/
 build/
-config/
 dev_resources/
 gradle/
 src/test/

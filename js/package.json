@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
-  "description": "A Set of Essential ESLint rules for JS and TS",
-  "version": "1.0.0",
+  "description": "A Set of Essential ESLint rules for JS, TS and React",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",

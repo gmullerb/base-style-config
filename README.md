@@ -1,8 +1,16 @@
-# Base coding style check configuration
+<p align="center">
+  <img src="https://gitlab.com/gmullerb/gallery/raw/master/base-style-config/base-style-config.png"/>
+</p>
+
+<h1 align="center">Base coding style check configuration</h1>
+
+<p align="center">
+  <b>A Set of Essential Configuration Files for Backend/Frontend/Build code style checking.</b>
+</p>
+
+__________________
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt)
-
-**A Set of Essential Configuration Files for Backend/Frontend/Build code style checking.**
 
 This project is licensed under the terms of the [MIT license](/LICENSE.txt).
 __________________

@@ -30,18 +30,21 @@ git clone https://github.com/gmullerb/react-reducer-context
   /config
     /configs
       eslintrc.js
+      import-eslintrc.js
       typescript-eslintrc.js
+      react-eslintrc.js
+      react-with-hooks-eslintrc.js
 ```
-
-`eslintrc.js`
-typescript-eslintrc.js`
 
 ### Defined Code Style Checking
 
 The Defined Sets of rules are in:
 
 * **ESLint** rules are in [`config/configs/eslintrc.js`](./config/configs/eslintrc.js).
+* ESLint rules for Import are in [`config/configs/import-eslintrc.js`](./config/configs/import-eslintrc.js).
 * ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
+* ESLint rules for React are in [`config/configs/react-eslintrc.js`](./config/configs/react-eslintrc.js).
+* ESLint rules for React with Hooks are in [`config/configs/react-with-hooks-eslintrc.js`](./config/configs/react-with-hooks-eslintrc.js).
 
 ## Building it
 

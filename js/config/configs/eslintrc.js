@@ -4,6 +4,14 @@
 module.exports = {
   rules: {
     'accessor-pairs': 'error',
+    'array-bracket-newline': [
+      'error',
+      'consistent'
+    ],
+    'array-element-newline': [
+      'error',
+      'consistent'
+    ],
     'block-scoped-var': 'error',
     'brace-style': [
       'error',
@@ -46,7 +54,12 @@ module.exports = {
     'init-declarations': 'error',
     'id-match': [
       'error',
-      '^_id$|^id$|^k$|^K$|^of$|^[A-Z]([_\\$]?[A-Z0-9]{1}){2,31}$|^_?[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$|^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$'
+      '^_id$|^id$|^k$|^K$|^of$|^T[A-Z]?[0-9]{0,2}$|^[A-Z]([_\\$]?[A-Z0-9]{1}){2,31}$|^_?[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$|^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$',
+      {
+        properties: true,
+        onlyDeclarations: true,
+        ignoreDestructuring: true
+      }
     ],
     'max-classes-per-file': 'error',
     'max-len': [
@@ -70,7 +83,11 @@ module.exports = {
         max: 30
       }
     ],
-    'new-cap': 'error',
+    'new-cap': [
+      'error', {
+        capIsNew: false
+      }
+    ],
     'new-parens': 'error',
     'newline-per-chained-call': 'error',
     'no-alert': 'error',
@@ -112,9 +129,15 @@ module.exports = {
     'no-use-before-define': 'error',
     'no-void': 'error',
     'no-with': 'error',
+    'object-curly-newline': [
+      'error', {
+        consistent: true
+      }
+    ],
     'object-curly-spacing': [
       'error',
-      'always', {
+      'always',
+      {
         arraysInObjects: false,
         objectsInObjects: false
       }
@@ -127,7 +150,8 @@ module.exports = {
     ],
     'quote-props': [
       'error',
-      'consistent-as-needed', {
+      'consistent-as-needed',
+      {
         keywords: false
       }
     ],
@@ -138,7 +162,8 @@ module.exports = {
     ],
     'spaced-comment': [
       'error',
-      'always', {
+      'always',
+      {
         exceptions: ['-', '+', '*', '/', ':', '::', '@', '?', '?:'],
         markers: ['-', '+', '*', '/', ':', '::', '@', '?', '?:']
       }

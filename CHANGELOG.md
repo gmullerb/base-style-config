@@ -1,5 +1,10 @@
 # Base Style Config Change Log
 
+## December 2019
+
+* [eslint-plugin-base-style-config changes](js/CHANGELOG.md#1.0.1---December-2019)
+* Updates README files.
+
 ## November 2019 / base-style-config.jar - 4.0.0 / eslint-plugin-base-style-config - 1.0.0
 
 * Moves `js` style configuration files to its own project, it was hard to use this configuration files in npm projects (no gradle projects).

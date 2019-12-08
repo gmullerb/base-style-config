@@ -1,16 +1,22 @@
-# A Set of Essential ESLint rules for JS and TS
+<p align="center">
+  <img src="https://gitlab.com/gmullerb/gallery/raw/master/base-style-config/base-style-config.png"/>
+</p>
+
+<h1 align="center">A Set of Essential ESLint rules for JS, TS and React</h1>
+
+<p align="center">
+It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: <a href="https://github.com/gmullerb/base-style-config">base-style-config</a>
+</p>
+
+__________________
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt) [![eslint-plugin-base-style-config](https://img.shields.io/badge/npm-eslint--plugin--base--style--config-blue?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
-
-**It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: [base-style-config](https://github.com/gmullerb/base-style-config).**
 
 This project is licensed under the terms of the [MIT license](LICENSE.txt).
 __________________
 
 ## Quick Start
 
-### JS configuration
-
 1 . Add dependencies:
 
 `package.json`:
@@ -19,43 +25,12 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
-    ..
-```
-
-2 . Configure eslint:
-
-`eslintrc.json`:
-
-```json
-{
-  "extends": [
-    "plugin:base-style-config/typescript-rules"
-  ],
-  "plugins": [
-    "base-style-config"
-  ],
-  "rules": {
-    ..
-  }
-}
-```
-
-3 . Take a look to the set of rules: [Set of Eslint Rules for JS](./config/configs/eslintrc.js)
-
-#### TS configuration
-
-1 . Add dependencies:
-
-`package.json`:
-
-```json
-  ..
-  "devDependencies": {
-    "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
-    "@typescript-eslint/eslint-plugin": "~1.13.0",
+    "eslint-plugin-base-style-config": "1.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
     ..
 ```
 
@@ -66,7 +41,10 @@ __________________
 ```json
 {
   "extends": [
-    "plugin:base-style-config/typescript-rules"
+    "plugin:base-style-config/js-rules",
+    "plugin:base-style-config/import-rules",
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/react-with-hooks-rules"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -78,7 +56,8 @@ __________________
 }
 ```
 
-3 . Take a look to the set of rules: [Set of Eslint Rules for Typescript](./config/configs/typescript-eslintrc.js)
+> Remove the rule sets that are not necessary according to your needs.  
+> Take a look to the set of rules: [Set of Eslint Rules for JS](js/config/configs/eslintrc.js), [Set of Eslint Rules for Import](js/config/configs/import-eslintrc.js), [Set of Eslint Rules for Typescript](js/config/configs/typescript-eslintrc.js), [Set of Eslint Rules for React](js/config/configs/react-eslintrc.js), [Set of Eslint Rules for React with Hooks](js/config/configs/react-with-hooks-eslintrc.js).
 
 __________________
 
@@ -151,6 +130,10 @@ Combination of Method length limit and Class/File lines limit allows to:
 > [6] Exception may be required in constructor , when building of complex inheritance with more than 7 fields as total, for special cases, e.g. using some bad designed but required API, in this case use a @SuppressWarnings("checkstyle:ParameterNumber"). In app own code, Composition should be used over Inheritance.  
 > [7] CodeNarc and ESLint does not yet provide a way of doing this.
 
+#### Code Style convention/tips
+
+Although these set of rules are opinionated, some blanks were left in order to make sets more flexible.
+
 ##### Semicolon
 
 Semicolon is required by Java[1], but no by Groovy, then when having JS code, the use of the semicolon could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
@@ -209,7 +192,7 @@ Although this rule is not set, the project should always set `quotes` rule in or
   }
 ```
 
-#### Code Style convention/tips
+##### Parameters
 
 When adding indentation for parameters of a constructor/method/function add an extra 2 spaces, which will differentiate it from the inner code:
 
@@ -217,7 +200,7 @@ e.g.:
 
 Given:
 
-```java
+```js
   public SomeConstructor(final parameter1, final @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
@@ -226,7 +209,7 @@ Given:
 
 Make it:
 
-```java
+```js
   public SomeConstructor(
       final parameter1,
       final @SomeAnnotation parameterN) {
@@ -237,12 +220,73 @@ Make it:
 
 instead of:
 
-```java
+```js
   public SomeConstructor(
     final parameter1,
     final @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
+  }
+```
+
+##### Import
+
+To enforce exports only as a group:
+
+```json
+  "rules": {
+    "import/group-exports": "error"
+  }
+```
+
+To enforce that the exports be placed at the end of the file:
+
+```json
+  "rules": {
+    "import/exports-last": "error"
+  }
+```
+
+To avoid importing namespaces (which is usually bad):
+
+```json
+  "rules": {
+    "import/no-namespace": "error"
+  }
+```
+
+##### Typescript
+
+To avoid the type `any` in the code (which is really bad):
+
+```json
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error"
+  }
+```
+
+Avoid unused variables is a must, but in some special cases (e.g. in React when properties are dynamically injected) the use `@typescript-eslint/no-unused-vars` + `argsIgnorePattern` is useful:
+
+e.g.
+
+```json
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "^someInjectedProp$"
+    }],
+  }
+```
+
+##### React
+
+If only Function Components are desired add the following rule:
+
+```json
+  "rules": {
+    "react/prefer-es6-class": [
+      "error",
+      "never"
+    ]
   }
 ```
 __________________
@@ -281,7 +325,64 @@ __________________
 }
 ```
 
-> `@typescript-eslint/parser` will have a default project: `./tsconfig.json`.  
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+### Import
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/import-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+> There is no need to add `import` plugin, it will be automatically added by `base-style-config` plugin.
 
 3 . Add to the respective ESLint script task:
 
@@ -339,6 +440,99 @@ if using Gradle:
 }
 ```
 
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+> There is no need to add `@typescript-eslint` plugin, it will be automatically added by `base-style-config` plugin.  
+> Must add parser: `"parser": "@typescript-eslint/parser"`.  
+> `@typescript-eslint/parser` will have a default project: `./tsconfig.json`.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+#### React configuration
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-react": "^7.14.3"
+    ..
+```
+
+with hooks:
+
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/react-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+with hooks:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/react-with-hook-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+> There is no need to add `react` plugin and respective configuration, it will be automatically added by `base-style-config` plugin.
+
 3 . Add to the respective ESLint script task:
 
 `package.json`:
@@ -363,11 +557,11 @@ __________________
 
 ## Extending/Developing
 
-[Developing](readme/developing.md)
+[Developing](js/readme/developing.md)
 
 ## Documentation
 
-* [`CHANGELOG.md`](CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
+* [`CHANGELOG.md`](js/CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
 
 > [1] [Keep a Changelog](http://keepachangelog.com)
 

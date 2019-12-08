@@ -1,8 +1,17 @@
-# A Set of Essential ESLint rules for Java, Groovy and Gradle
+<p align="center">
+  <img src="https://gitlab.com/gmullerb/gallery/raw/master/base-style-config/base-style-config.png"/>
+</p>
+
+<h1 align="center">A Set of Essential ESLint rules for Java, Groovy and Gradle</h1>
+
+<p align="center">
+It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: <a href="https://github.com/gmullerb/base-style-config">base-style-config</a>
+</p>
+
+__________________
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](/LICENSE.txt) [![download](https://api.bintray.com/packages/gmullerb/all.shared.quality/base-style-config/images/download.svg)](https://bintray.com/gmullerb/all.shared.quality/base-style-config/_latestVersion)
 
-**It's part of a Set of Essential Configuration Files for Backend/Frontend/Build code style checking: [base-style-config](https://github.com/gmullerb/base-style-config).**
 
 This project is licensed under the terms of the [MIT license](/LICENSE.txt).
 __________________

@@ -2,8 +2,6 @@
 //  Licensed under the MIT License (MIT), see LICENSE.txt
 
 module.exports = {
-  extends: './configs/eslintrc.js',
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
     project: './tsconfig.json'
@@ -28,7 +26,9 @@ module.exports = {
     ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/no-extraneous-class': 'error',
+    '@typescript-eslint/no-extraneous-class': ['error', {
+      allowWithDecorator: true
+    }],
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-type-alias': [
       'warn', {
@@ -42,6 +42,6 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/promise-function-async': 'error',
-    '@typescript-eslint/type-annotation-spacing': 'error',
+    '@typescript-eslint/type-annotation-spacing': 'error'
   }
 }
