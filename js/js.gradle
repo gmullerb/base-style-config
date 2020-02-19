@@ -18,20 +18,35 @@ node {
 ////////
 
 task lint(type: NpmTask) {
-  group='Node'
+  // NpmTask task settings
   args = [
     'run',
     'lint',
     '--silent'
   ]
+  // gradle task settings
+  group='Node'
+}
+
+task build(type: NpmTask) {
+  // NpmTask task settings
+  args = [
+    'pack',
+    '../'
+  ]
+  workingDir buildDir
+  // gradle task settings
+  group = 'Node'
 }
 
 task publish(type: NpmTask) {
-  group='Node'
+  // NpmTask task settings
   args = ['publish']
+  // gradle task settings
+  group='Node'
 }
 
 // Default task
 ///////////////
 
-defaultTasks 'npmInstall', 'lint'
+defaultTasks 'npmInstall', 'lint', 'build'

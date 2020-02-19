@@ -1,5 +1,10 @@
 # Base Style Config Change Log
 
+## February 2020 / base-style-config.jar - 4.0.1 / eslint-plugin-base-style-config - 1.0.2
+
+* Updates the Type Parameters names rule with an additional pattern to allow to given more context in the name.
+* Updates README files.
+
 ## December 2019
 
 * [eslint-plugin-base-style-config changes](js/CHANGELOG.md#1.0.1---December-2019)

@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 1.0.2 - February 2020
+
+* Updates the Type Parameters names rule with an additional pattern to allow to given more context in the name.
+* Updates README files.
+
 ## 1.0.1 - December 2019
 
 * Adds new rules `array-bracket-newline`, `array-element-newline` and `object-curly-newline`.

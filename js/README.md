@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://gitlab.com/gmullerb/gallery/raw/master/base-style-config/base-style-config.png"/>
+  <img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/10888432/base-style-config.png"/>
 </p>
 
 <h1 align="center">A Set of Essential ESLint rules for JS, TS and React</h1>
@@ -78,7 +78,7 @@ Code Style Checking tries to catch differences on coding style.
 
 There are different development tools for doing this.
 
-This project use **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
+[base-style-config](https://github.com/gmullerb/base-style-config) uses **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
 
 ### Code Style Checking Common rules
 
@@ -98,7 +98,7 @@ To highlights:
       * Java: static methods must have a length between 3 and 23.
 * Classes/Constants names must have a length between 3 and 32 [1].
   * Test Class names will not have length limit.
-* Type parameters names must have a length between 1 and 10, all in uppercase.
+* Type parameters names must be in uppercase, have a length between 1 and 10 or following the pattern `T_` up to 32 characters.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
@@ -201,7 +201,7 @@ e.g.:
 Given:
 
 ```js
-  public SomeConstructor(final parameter1, final @SomeAnnotation parameterN) {
+  public SomeConstructor(parameter1, @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }
@@ -211,8 +211,8 @@ Make it:
 
 ```js
   public SomeConstructor(
-      final parameter1,
-      final @SomeAnnotation parameterN) {
+      parameter1,
+      @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }
@@ -222,8 +222,8 @@ instead of:
 
 ```js
   public SomeConstructor(
-    final parameter1,
-    final @SomeAnnotation parameterN) {
+    parameter1,
+    @SomeAnnotation parameterN) {
     this.field1 = parameter1;
     this.fieldN = parameterN;
   }

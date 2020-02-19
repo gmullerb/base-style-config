@@ -3,6 +3,9 @@
 
 module.exports = {
   plugins: ['import'],
+  parserOptions: {
+    sourceType: 'module'
+  },
   rules: {
     'import/default': 'error',
     'import/export': 'error',

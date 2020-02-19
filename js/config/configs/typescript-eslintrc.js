@@ -22,7 +22,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'error',
     '@typescript-eslint/generic-type-naming': [
       'error',
-      '^[A-Z][A-Z0-9]{0,9}$'
+      '^[A-Z][A-Z0-9]{0,9}$|^T_[A-Z]{1,30}$'
     ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
