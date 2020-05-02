@@ -8,6 +8,10 @@ module.exports = {
       'error',
       'consistent'
     ],
+    'array-bracket-spacing': [
+      'error',
+      'always'
+    ],
     'array-element-newline': [
       'error',
       'consistent'
@@ -54,7 +58,7 @@ module.exports = {
     'init-declarations': 'error',
     'id-match': [
       'error',
-      '^_id$|^id$|^k$|^K$|^of$|^T[A-Z]?[0-9]{0,2}$|^[A-Z]([_\\$]?[A-Z0-9]{1}){2,31}$|^_?[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$|^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$',
+      '^\\$$|^\\$\\$$|^at$|^by$|^_id$|^id$|^in$|^k$|^K$|^of$|^on$|^to$|^up$|^T[A-Z]?[0-9]{0,2}$|^[A-Z]([_\\$]?[A-Z0-9]{1}){2,31}$|^_?[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$|^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$',
       {
         properties: true,
         onlyDeclarations: true,
@@ -164,8 +168,8 @@ module.exports = {
       'error',
       'always',
       {
-        exceptions: ['-', '+', '*', '/', ':', '::', '@', '?', '?:'],
-        markers: ['-', '+', '*', '/', ':', '::', '@', '?', '?:']
+        exceptions: [ '-', '+', '*', '/', ':', '::', '@', '?', '?:' ],
+        markers: [ '-', '+', '*', '/', ':', '::', '@', '?', '?:' ]
       }
     ],
     'space-before-function-paren': [

@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -62,12 +62,17 @@
     "typescript style"
   ],
   "scripts": {
-    "lint": "eslint --config config/configs/eslintrc.js --color \"**/*.js\""
+    "lint.common": "echo ==== Lint Common ==== && lintspaces --newline --indentation \"spaces\"  ./config/**/*.* ./*.yml ./*.json ./*.md ./*.sh ./*.txt ./*.properties ./*.gradle ./.gitignore",
+    "lint.config": "echo ==== Lint Config ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
+    "lint": "npm run lint.common && npm run lint.config",
+    "prepack": "echo ==== Build Package ====",
+    "check": "npm run lint && mkdir -p build && cd build && npm pack ../"
   },
   "peerDependencies": {
     "eslint": "^6.7.1"
   },
   "devDependencies": {
-    "eslint": "~6.7.1"
+    "eslint": "~6.7.1",
+    "lintspaces-cli": "^0.7.1"
   }
 }

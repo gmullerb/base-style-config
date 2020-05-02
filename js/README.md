@@ -25,7 +25,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.1",
+    "eslint-plugin-base-style-config": "2.0.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
@@ -57,7 +57,7 @@ __________________
 ```
 
 > Remove the rule sets that are not necessary according to your needs.  
-> Take a look to the set of rules: [Set of Eslint Rules for JS](js/config/configs/eslintrc.js), [Set of Eslint Rules for Import](js/config/configs/import-eslintrc.js), [Set of Eslint Rules for Typescript](js/config/configs/typescript-eslintrc.js), [Set of Eslint Rules for React](js/config/configs/react-eslintrc.js), [Set of Eslint Rules for React with Hooks](js/config/configs/react-with-hooks-eslintrc.js).
+> Take a look to the set of rules: [Set of Eslint Rules for JS](config/configs/eslintrc.js), [Set of Eslint Rules for Import](config/configs/import-eslintrc.js), [Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js), [Set of Eslint Rules for React](config/configs/react-eslintrc.js), [Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js).
 
 __________________
 
@@ -90,7 +90,9 @@ To highlights:
   * CamelCase.
   * All in uppercase for constants.
     * Non-consecutive underscore (`_`) for Backend.
-* Fields/Variables/Methods names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
+* Fields/Variables/Parameters/Methods names must have a length between 3 and 23 [1].
+  * With some exceptions for Fields/Names/Parameters: `id`, `k` & `K` (useful for loops), some prepositions (`at`, `by`, `in`, `of`, `on`, `to` & `up`).
+  * For Java/Groovy methods allows `of`, specially useful for factories.
   * Java/Groovy Test Code [3]:
     * Test instance methods names should start with `should`.
     * Other instance methods valid names are: `afterAll`, `afterEach`, `beforeAll` or `beforeEach`. [5]
@@ -553,21 +555,45 @@ if using Gradle:
     ]
   }
 ```
+
+### Errors
+
+When using the plugin, if the following error appears for some rule:
+
+```bash
+1:1  error  Definition for rule 'some...rule' was not found   some..rule
+
+```
+
+It means the rule is not found in the version of the respective plugin.
+
+Check `devDependencies` version for the set of rules using in the project, i.e. check version for `eslint`, `eslint-plugin-import`, `eslint-plugin-react`, `eslint-plugin-react-hooks` and/or `@typescript-eslint/eslint-plugin`
+
 __________________
 
 ## Extending/Developing
 
-[Developing](js/readme/developing.md)
+[Developing](readme/developing.md)
+
+## Contributing
+
+* **Use it**.
+* **Share it**.
+* **Fork it**.
+* [Give it a Star](https://github.com/gmullerb/base-style-config).
+* [Propose changes or improvements](https://github.com/gmullerb/base-style-config/issues).
+* [Report bugs](https://github.com/gmullerb/base-style-config/issues).
 
 ## Documentation
 
-* [`CHANGELOG.md`](js/CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
+* [`CHANGELOG.md`](CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
 
 > [1] [Keep a Changelog](http://keepachangelog.com)
 
 ## License
 
 [MIT License](LICENSE.txt)
+
 __________________
 
 ## Remember

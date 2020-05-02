@@ -1,5 +1,27 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.0.0 - May 2020
+
+* Adds `$` and `$$` to `id-match`, useful when using `jquery` or `protractor`.
+* Adds some prepositions to `id-match`: `at`, `by`, `in`, `on`, `to` & `up`.
+* Adds `array-bracket-spacing`, to add consistency with `object-curly-spacing`.
+* Adds `import/no-named-as-default-member`.
+* Removes `import/no-namespace`, why? Some libraries are defined with namespaces, and using some TS options as `allowSyntheticDefaultImports` can be helpful, but can also be misleading, so Just avoid creating confusions in the team. (besides, importing as namespace are pretty helpful when testing).
+* Adds `import/namespace`, to do some checking when using namespaces.
+* Adds `@typescript-eslint/no-namespace` to avoid creating namespaces.
+* Adds `allowExpressions: true` to `@typescript-eslint/explicit-function-return-type`, useful for quick callback functions.
+* Adds `@typescript-eslint/explicit-module-boundary-types`.
+* Adds `@typescript-eslint/consistent-type-definitions` with `interface`.
+* Adds `@typescript-eslint/no-misused-promises`.
+* Adds `@typescript-eslint/no-inferrable-types`.
+* Adds `@typescript-eslint/no-misused-new`.
+* Adds `@typescript-eslint/prefer-as-const`.
+* Adds `@typescript-eslint/prefer-readonly`.
+* Adds `@typescript-eslint/prefer-readonly-parameter-types`.
+* Adds `@typescript-eslint/prefer-reduce-type-parameter`.
+* Improves project configuration.
+* Updates README files.
+
 ## 1.0.2 - February 2020
 
 * Updates the Type Parameters names rule with an additional pattern to allow to given more context in the name.

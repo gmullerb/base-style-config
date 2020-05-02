@@ -87,16 +87,16 @@
       <message key="name.invalidPattern" value="Constant name length is invalid: ''{0}'' (min: 3, max: 23/32(Uppercase))"/>
     </module>
     <module name="LambdaParameterName">
-      <property name="format" value="^id$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
+      <property name="format" value="^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
     </module>
     <module name="LocalFinalVariableName">
       <property name="format" value="^K$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
     </module>
     <module name="LocalVariableName">
-      <property name="format" value="^k$|^id$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
+      <property name="format" value="^at$|^by$|^id$|^in$|^k$|^of$|^on$|^to$|^up$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
     </module>
     <module name="MemberName">
-      <property name="format" value="^id$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
+      <property name="format" value="^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
     </module>
     <module name="MethodName">
       <property name="format" value="^of$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
@@ -107,7 +107,7 @@
     <module name="PackageDeclaration"/>
     <module name="PackageName"/>
     <module name="ParameterName">
-      <property name="format" value="^id$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
+      <property name="format" value="^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|^[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$"/>
     </module>
     <module name="RegexpSinglelineJava">
       <property name="id" value="UseOnlyMockOrSpyPrefixOnTestFiles"/>

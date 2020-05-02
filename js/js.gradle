@@ -1,3 +1,4 @@
+// Copyright (c) 2020 Gonzalo Müller Bravo.
 plugins {
   id 'com.moowork.node' version '1.2.0'
 }
@@ -6,47 +7,9 @@ repositories {
   jcenter()
 }
 
-// Plugins settings
-///////////////////
-
 node {
   version = NODE_VERSION
   download = true
 }
 
-// TASKS
-////////
-
-task lint(type: NpmTask) {
-  // NpmTask task settings
-  args = [
-    'run',
-    'lint',
-    '--silent'
-  ]
-  // gradle task settings
-  group='Node'
-}
-
-task build(type: NpmTask) {
-  // NpmTask task settings
-  args = [
-    'pack',
-    '../'
-  ]
-  workingDir buildDir
-  // gradle task settings
-  group = 'Node'
-}
-
-task publish(type: NpmTask) {
-  // NpmTask task settings
-  args = ['publish']
-  // gradle task settings
-  group='Node'
-}
-
-// Default task
-///////////////
-
-defaultTasks 'npmInstall', 'lint', 'build'
+defaultTasks 'npmInstall', 'npm_run_check'

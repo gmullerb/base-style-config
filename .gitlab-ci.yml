@@ -67,7 +67,7 @@ js-lint:
   stage: checks
   script:
     - ./gradlew js:npmInstall
-    - ./gradlew js:lint
+    - ./gradlew js:npm_run_check
   cache:
     key: "${CI_COMMIT_SHA}"
     policy: pull

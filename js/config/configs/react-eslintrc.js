@@ -8,7 +8,7 @@ module.exports = {
       jsx: true
     }
   },
-  plugins: ['react'],
+  plugins: [ 'react' ],
   rules: {
     'react/jsx-first-prop-new-line': 'error',
     'react/jsx-max-props-per-line': 'error',

@@ -2,11 +2,10 @@
 
 ## Prerequisites
 
+* Node/Npm, Node/Yarn or failing [Java](http://www.oracle.com/technetwork/java/javase/downloads) & [Gradle](https://gradle.org/).
 * [Git](https://git-scm.com/downloads) (only if you are going to clone the project).
 
-* [Java](http://www.oracle.com/technetwork/java/javase/downloads) [1].
-or
-* Node/Npm or Node/Yarn can be used.
+> Gradle will allow for quick isolate Node/Npm environments for different projects.
 
 ## Getting it
 
@@ -20,9 +19,43 @@ git clone https://github.com/gmullerb/react-reducer-context
 
 ## Set up
 
-* **No need**, only download and run (It's Gradle! Yes!).
+### Npm
 
-> Gradle will allow to have different really isolate Node/Npm environments for different projects, but `npm` or `yarn` can be used.
+Run:
+
+```sh
+npm install
+```
+
+> Recommendation: Immediately after installation, run `npm run check` to be sure that initial code is "ok".  
+
+### Gradle
+
+Run:
+
+```sh
+./gradlew
+```
+
+This command will install `node` (`npm install`) and run `npm run check`.
+
+### Npm scripts
+
+Npm scripts, [`package.json`](../package.json):
+
+* `lint.common`: checks common style of "all" files.
+* `lint.config`: checks eslint style js files.
+* `check`: will run all lints + `pack`.
+
+Additionally:
+
+* `npm run`: will list all available script/task for the project.
+
+#### From Gradle
+
+Run any scripts using `/gradlew npm_run_.name.`, where `.name.` is the name of the npm script, e.g.:
+
+`lint.common` => `./gradlew npm_run_lint.common`
 
 ## Folders structure
 
@@ -45,22 +78,6 @@ The Defined Sets of rules are in:
 * ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
 * ESLint rules for React are in [`config/configs/react-eslintrc.js`](./config/configs/react-eslintrc.js).
 * ESLint rules for React with Hooks are in [`config/configs/react-with-hooks-eslintrc.js`](./config/configs/react-with-hooks-eslintrc.js).
-
-## Building it
-
-### Gradle
-
-Gradle tasks, [`build.gradle`](../build.gradle):
-
-* `lint`: checks eslint style of js files.
-
-> Recommendation: First time run `gradlew` to start from an "ok" code.
-
-### Npm
-
-Npm scripts, [`package.json`](../package.json):
-
-* `lint`: checks eslint style of js files.
 
 ## Main documentation
 

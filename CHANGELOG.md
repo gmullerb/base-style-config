@@ -1,5 +1,10 @@
 # Base Style Config Change Log
 
+## May 2020 / base-style-config.jar - 4.1.0 / eslint-plugin-base-style-config - 2.0.0
+
+* Adds some prepositions to regular expressions for names: `at`, `by`, `in`, `on`, `to` & `up`.
+* Updates README files.
+
 ## February 2020 / base-style-config.jar - 4.0.1 / eslint-plugin-base-style-config - 1.0.2
 
 * Updates the Type Parameters names rule with an additional pattern to allow to given more context in the name.

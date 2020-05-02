@@ -6,29 +6,44 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json'
   },
-  plugins: ['@typescript-eslint'],
+  plugins: [ '@typescript-eslint' ],
   rules: {
-    '@typescript-eslint/ban-types': ['error', {
-      types: {
-        'Array': 'Use [] instead',
-        'Object': 'Use {} instead',
-        'Component': 'Use function component instead',
-        'PureComponent': 'Use function component instead',
-        'React.Component': 'Use function component instead',
-        'React.PureComponent': 'Use function component instead',
-        'String': 'Use string instead'
+    '@typescript-eslint/consistent-type-definitions': [
+      'error',
+      'interface'
+    ],
+    '@typescript-eslint/ban-types': [
+      'error', {
+        types: {
+          'Array': 'Use [] instead',
+          'Object': 'Use {} instead',
+          'Component': 'Use function component instead',
+          'PureComponent': 'Use function component instead',
+          'React.Component': 'Use function component instead',
+          'React.PureComponent': 'Use function component instead',
+          'String': 'Use string instead'
+        }
       }
-    }],
-    '@typescript-eslint/explicit-function-return-type': 'error',
+    ],
+    '@typescript-eslint/explicit-function-return-type': [
+      'error', {
+        allowExpressions: true
+      }
+    ],
+    '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/generic-type-naming': [
       'error',
       '^[A-Z][A-Z0-9]{0,9}$|^T_[A-Z]{1,30}$'
     ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
-    '@typescript-eslint/no-extraneous-class': ['error', {
-      allowWithDecorator: true
-    }],
+    '@typescript-eslint/no-extraneous-class': [
+      'error', {
+        allowWithDecorator: true
+      }
+    ],
+    '@typescript-eslint/no-inferrable-types': 'error',
+    '@typescript-eslint/no-misused-promises': 'error',
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-type-alias': [
       'warn', {
@@ -41,6 +56,10 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-qualifier': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-useless-constructor': 'error',
+    '@typescript-eslint/prefer-as-const': 'error',
+    '@typescript-eslint/prefer-readonly': 'error',
+    '@typescript-eslint/prefer-readonly-parameter-types': 'error',
+    '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/type-annotation-spacing': 'error'
   }

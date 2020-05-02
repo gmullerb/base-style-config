@@ -100,7 +100,7 @@ ruleset {
       doNotApplyToFileNames = TEST_FILES
     }
     FieldName {
-      regex = '^id$|' + NAME_REGEX
+      regex = '^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|' + NAME_REGEX
       staticFinalRegex = STATIC_FINAL_NAME_REGEX
     }
     FactoryMethodName(enabled: false)
@@ -112,14 +112,14 @@ ruleset {
       doNotApplyToFileNames = TEST_FILES
     }
     ParameterName {
-      regex = '^id$|' + NAME_REGEX
+      regex = '^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|' + NAME_REGEX
     }
     PropertyName {
-      regex = '^id$|' + NAME_REGEX
+      regex = '^at$|^by$|^id$|^in$|^of$|^on$|^to$|^up$|' + NAME_REGEX
       staticFinalRegex = STATIC_FINAL_NAME_REGEX
     }
     VariableName {
-      regex = '^k$|^id$|' + NAME_REGEX
+      regex = '^at$|^by$|^id$|^in$|^k$|^of$|^on$|^to$|^up$|' + NAME_REGEX
       finalRegex = '^K$|' + NAME_REGEX
       doNotApplyToFileNames = GRADLE_FILES
     }
@@ -146,7 +146,7 @@ ruleset {
   VariableName {
     name = 'GradleVariableName'
     description = 'Verifies that the name of each variable matches a regular expression'
-    regex = '^k$|^id$|' + NAME_REGEX
+    regex = '^at$|^by$|^id$|^in$|^k$|^of$|^on$|^to$|^up$|' + NAME_REGEX
     finalRegex = '^K$|'+ STATIC_FINAL_NAME_REGEX
     applyToFileNames = GRADLE_FILES
   }

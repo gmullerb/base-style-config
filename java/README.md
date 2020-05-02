@@ -81,7 +81,9 @@ To highlights:
   * CamelCase.
   * All in uppercase for constants.
     * Non-consecutive underscore (`_`) for Backend.
-* Fields/Variables/Methods names must have a length between 3 and 23, except for `id`, `of`(for factories), `k` & `K`(for loops) [1].
+* Fields/Variables/Parameters/Methods names must have a length between 3 and 23 [1].
+  * With some exceptions for Fields/Names/Parameters: `id`, `k` & `K` (useful for loops), some prepositions (`at`, `by`, `in`, `of`, `on`, `to` & `up`).
+  * For Java/Groovy methods allows `of`, specially useful for factories.
   * Java/Groovy Test Code [3]:
     * Test instance methods names should start with `should`.
     * Other instance methods valid names are: `afterAll`, `afterEach`, `beforeAll` or `beforeEach`. [5]
