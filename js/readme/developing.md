@@ -62,22 +62,22 @@ Run any scripts using `/gradlew npm_run_.name.`, where `.name.` is the name of t
 ```
   /config
     /configs
-      eslintrc.js
-      import-eslintrc.js
-      typescript-eslintrc.js
-      react-eslintrc.js
-      react-with-hooks-eslintrc.js
+      /regex
 ```
 
 ### Defined Code Style Checking
 
-The Defined Sets of rules are in:
-
-* **ESLint** rules are in [`config/configs/eslintrc.js`](./config/configs/eslintrc.js).
-* ESLint rules for Import are in [`config/configs/import-eslintrc.js`](./config/configs/import-eslintrc.js).
-* ESLint rules for Typescript are in [`config/configs/typescript-eslintrc.js`](./config/configs/typescript-eslintrc.js).
-* ESLint rules for React are in [`config/configs/react-eslintrc.js`](./config/configs/react-eslintrc.js).
-* ESLint rules for React with Hooks are in [`config/configs/react-with-hooks-eslintrc.js`](./config/configs/react-with-hooks-eslintrc.js).
+[js-rules: Set of Eslint Rules for JS](../config/configs/eslintrc.js),  
+[import-rules: Set of Eslint Rules for Import](../config/configs/import-eslintrc.js),  
+[unused-imports-rules: Set of Eslint Rules for Unused imports](../config/configs/unused-import-eslintrc.js),  
+[typescript-rule: Set of Eslint Rules for Typescript](../config/configs/typescript-eslintrc.js),  
+[react-rules: Set of Eslint Rules for React](../config/configs/react-eslintrc.js),  
+[react-with-hooks-rules: Set of Eslint Rules for React with Hooks](../config/configs/react-with-hooks-eslintrc.js),  
+[regex[copyright]: Set of Eslint Regex Rules for Copyright](../config/configs/regex/copyright.js),  
+[regex[immutable-js]: Set of Eslint Regex Rules for Immutable Typescript](../config/configs/regex/immutable-ts.js),  
+[regex[jsx]: Set of Eslint Regex Rules for JSX](../config/configs/regex/jsx.js),  
+[regex[quotes.jsx]: Set of Eslint Regex Rules for Quotes in JSX](../config/configs/regex/quotes-jsx.js),  
+[regex[test]: Set of Eslint Regex Rules for Test](../config/configs/regex/test.js).  
 
 ## Main documentation
 

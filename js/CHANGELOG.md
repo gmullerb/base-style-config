@@ -1,5 +1,12 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.1.0 - May 2020
+
+* Adds Regex rules: `regex[copyright]`, `regex[immutable.ts]`, `regex[jsx]`, `regex[quotes.jsx]` & `regex[test]`.
+* Adds `unused-imports` rules.
+* Adds Mechanism for Merging Eslint configurations.
+* Updates README files.
+
 ## 2.0.0 - May 2020
 
 * Adds `$` and `$$` to `id-match`, useful when using `jquery` or `protractor`.

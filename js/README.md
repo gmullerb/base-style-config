@@ -10,9 +10,12 @@ It's part of a Set of Essential Configuration Files for Backend/Frontend/Build c
 
 __________________
 
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt) [![eslint-plugin-base-style-config](https://img.shields.io/badge/npm-eslint--plugin--base--style--config-blue?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
-
-This project is licensed under the terms of the [MIT license](LICENSE.txt).
+[![eslint-plugin-base-style-config](https://img.shields.io/badge/npm-eslint--plugin--base--style--config-blue?logo=npm)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
+[![ ](https://badgen.net/npm/v/eslint-plugin-base-style-config)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
+[![ ](https://badgen.net/npm/node/eslint-plugin-base-style-config)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt)
+[![Github repo](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/gmullerb/eslint-plugin-base-style-config)
+[![Gitlab repo](https://badgen.net/badge/icon/gitlab?icon=gitlab&label)](https://gitlab.com/gmullerb/eslint-plugin-base-style-config)
 __________________
 
 ## Quick Start
@@ -25,26 +28,25 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "eslint-plugin-regex": "^1.1.0",
+    "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
 
-2 . Configure eslint:
+2 . Configure eslint to use rules from `base-style-config`:
 
 `eslintrc.json`:
 
 ```json
 {
   "extends": [
-    "plugin:base-style-config/js-rules",
-    "plugin:base-style-config/import-rules",
-    "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/react-with-hooks-rules"
+    "plugin:base-style-config/js-rules, import-rules, typescript-rules, react-with-hooks-rules, regex[copyright], regex[jsx], regex[quotes.jsx]",
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -57,8 +59,21 @@ __________________
 ```
 
 > Remove the rule sets that are not necessary according to your needs.  
-> Take a look to the set of rules: [Set of Eslint Rules for JS](config/configs/eslintrc.js), [Set of Eslint Rules for Import](config/configs/import-eslintrc.js), [Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js), [Set of Eslint Rules for React](config/configs/react-eslintrc.js), [Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js).
-
+> Take a look to the set of rules:  
+[js-rules: Set of Eslint Rules for JS](config/configs/eslintrc.js),  
+[import-rules: Set of Eslint Rules for Import](config/configs/import-eslintrc.js),  
+[unused-imports-rules: Set of Eslint Rules for Unused imports](config/configs/unused-import-eslintrc.js),  
+[typescript-rule: Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js),  
+[react-rules: Set of Eslint Rules for React](config/configs/react-eslintrc.js),  
+[react-with-hooks-rules: Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js),  
+[regex[copyright]: Set of Eslint Regex Rules for Copyright](config/configs/regex/copyright.js),  
+[regex[immutable-js]: Set of Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js),  
+[regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js),  
+[regex[quotes.jsx]: Set of Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js),  
+[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).  
+> Take a look to Regex rules:  
+[Custom Eslint Regex rules](#custom-regex)  
+[Mixing rules](#mixing-regexrules)
 __________________
 
 ## Goals
@@ -67,235 +82,21 @@ The idea is to have a common and "single" source of code styling rules, which ca
 
 * Provides a **similar set of rules** for Backend's, Frontend's and Build's code.
 * Provides a "single" source of configuration files.
+* Allow to merge different Eslint Regex Rules.
 
-## Code Style Checking
+> In the future, Set of rules will be extracted to an `eslint-config` and Mechanism for Merging Eslint configurations will be extracted to an `eslint-plugin`.
 
-Code Style Checking tries to catch differences on coding style.
+## Background
 
-* The idea is to guaranteed the code looks similar beyond developers preference.
-* It will allowed to force some best practices and standard of coding across team development.
-* It is then recommend should be used before code is submitted to repository by developers or is approved.
+[Background](readme/background.md)
 
-There are different development tools for doing this.
-
-[base-style-config](https://github.com/gmullerb/base-style-config) uses **[Checkstyle](http://checkstyle.sourceforge.net)**, **[PMD](https://pmd.github.io)**, **[ESlint](https://eslint.org)** and **[CodeNarc](http://codenarc.sourceforge.net)**.
-
-### Code Style Checking Common rules
-
-#### Common Backend's, Frontend's and Build's code rules
-
-To highlights:
-
-* Naming convention:
-  * CamelCase.
-  * All in uppercase for constants.
-    * Non-consecutive underscore (`_`) for Backend.
-* Fields/Variables/Parameters/Methods names must have a length between 3 and 23 [1].
-  * With some exceptions for Fields/Names/Parameters: `id`, `k` & `K` (useful for loops), some prepositions (`at`, `by`, `in`, `of`, `on`, `to` & `up`).
-  * For Java/Groovy methods allows `of`, specially useful for factories.
-  * Java/Groovy Test Code [3]:
-    * Test instance methods names should start with `should`.
-    * Other instance methods valid names are: `afterAll`, `afterEach`, `beforeAll` or `beforeEach`. [5]
-      * Groovy: other instance methods must have a length between 3 and 23.
-      * Java: static methods must have a length between 3 and 23.
-* Classes/Constants names must have a length between 3 and 32 [1].
-  * Test Class names will not have length limit.
-* Type parameters names must be in uppercase, have a length between 1 and 10 or following the pattern `T_` up to 32 characters.
-* Brackets style: Stroustrup.
-* Indentation: "Tab" character = 2 spaces.
-* Line length limit: 144 characters per line.
-  * Line with a long string are ignored.
-* Method length limit: 30 lines per method [2].
-  * Java/Groovy Code [3] will have a limit of 25 [4] public/protected/private methods (being a reasonable limit for functional implementations, which tend to have several small functions/methods).[5]
-* Method parameters number limit: 7 parameters per method [6].
-* Java Code [7] will have a limit of 7 fields by class.
-* Class/File lines limit: 300 lines per class/file.
-* Class count limit: 1 Class per file.
-* Public fields must be `final`.
-* Imports should be order alphabetically.
-* Cyclomatic Complexity limit: 8 paths.
-* Some spacing rules are the same.
-* When wrapping operators, the operator must be at the beginning of a new line.
-
-Combination of Method length limit and Class/File lines limit allows to:
-
-* Have at most around of 10 big methods: ~10 methods of max ~30 lines or ~25 methods of max ~12 lines.
-* Be functional, having small simple methods with single responsibility, and only a few "complex" methods of max 30 lines.
-  * Several small private methods and few public methods.
-
-> Some of these rules are ignored for Test files in order to give some flexibility, but its encourage in Source files, may also help to reduce the complexity of Test files.  
-> [1] This 3/23/32 rule, allows for concatenated words, still readable, and it is easy to remember.  
-> [2] Having 30 lines allows for seen all the code of a function/method in same screen page.  
-> [3] ESLint does not yet provide a way of doing this.  
-> [4] Although there exists public APIs that more than this amount of methods, e.g. `java.util.stream.Stream`.  
-> [5] Although this rule can be circumvented using static function fields.  
-> [6] Exception may be required in constructor , when building of complex inheritance with more than 7 fields as total, for special cases, e.g. using some bad designed but required API, in this case use a @SuppressWarnings("checkstyle:ParameterNumber"). In app own code, Composition should be used over Inheritance.  
-> [7] CodeNarc and ESLint does not yet provide a way of doing this.
-
-#### Code Style convention/tips
-
-Although these set of rules are opinionated, some blanks were left in order to make sets more flexible.
-
-##### Semicolon
-
-Semicolon is required by Java[1], but no by Groovy, then when having JS code, the use of the semicolon could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
-
-To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
-
-```json
-  "rules": {
-    "semi": ["error", "always"]
-  }
-```
-
-To enforce Groovy style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
-
-```json
-  "rules": {
-    "semi": ["error", "never"]
-  }
-```
-
-Although this rule is not set, the project should always set `semi` rule in order to guarantee consistency in the code:
-
-```json
-  "rules": {
-    "semi": ["error", ".."]
-  }
-```
-
-> [1] Although new programming languages don't require semicolon, may be forcing JS to use of semicolon can be a waste of typing.  
-
-##### Quotes
-
-The use of single `'` or double `"` quote string could be enforced based on the Backend language, in order to get some consistency between Backend and Frontend.
-
-To enforce Java style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
-
-```json
-  "rules": {
-    "quotes":  ["error", "double"]
-  }
-```
-
-To enforce Groovy style, set the respective project's eslint configuration (`package.json` or `.eslintrc.*`) to:
-
-```json
-  "rules": {
-    "quotes":  ["error", "single"]
-  }
-```
-
-Although this rule is not set, the project should always set `quotes` rule in order to guarantee consistency in the code:
-
-```json
-  "rules": {
-    "quotes":  ["error", ".."]
-  }
-```
-
-##### Parameters
-
-When adding indentation for parameters of a constructor/method/function add an extra 2 spaces, which will differentiate it from the inner code:
-
-e.g.:
-
-Given:
-
-```js
-  public SomeConstructor(parameter1, @SomeAnnotation parameterN) {
-    this.field1 = parameter1;
-    this.fieldN = parameterN;
-  }
-```
-
-Make it:
-
-```js
-  public SomeConstructor(
-      parameter1,
-      @SomeAnnotation parameterN) {
-    this.field1 = parameter1;
-    this.fieldN = parameterN;
-  }
-```
-
-instead of:
-
-```js
-  public SomeConstructor(
-    parameter1,
-    @SomeAnnotation parameterN) {
-    this.field1 = parameter1;
-    this.fieldN = parameterN;
-  }
-```
-
-##### Import
-
-To enforce exports only as a group:
-
-```json
-  "rules": {
-    "import/group-exports": "error"
-  }
-```
-
-To enforce that the exports be placed at the end of the file:
-
-```json
-  "rules": {
-    "import/exports-last": "error"
-  }
-```
-
-To avoid importing namespaces (which is usually bad):
-
-```json
-  "rules": {
-    "import/no-namespace": "error"
-  }
-```
-
-##### Typescript
-
-To avoid the type `any` in the code (which is really bad):
-
-```json
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "error"
-  }
-```
-
-Avoid unused variables is a must, but in some special cases (e.g. in React when properties are dynamically injected) the use `@typescript-eslint/no-unused-vars` + `argsIgnorePattern` is useful:
-
-e.g.
-
-```json
-  "rules": {
-    "@typescript-eslint/no-unused-vars": ["error", {
-      "argsIgnorePattern": "^someInjectedProp$"
-    }],
-  }
-```
-
-##### React
-
-If only Function Components are desired add the following rule:
-
-```json
-  "rules": {
-    "react/prefer-es6-class": [
-      "error",
-      "never"
-    ]
-  }
-```
 __________________
 
 ## Using/Configuration
 
-### JS
+### JS Rules
+
+[Set of Eslint Rules for JS](config/configs/eslintrc.js).
 
 1 . Add dependencies:
 
@@ -305,7 +106,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     ..
 ```
 
@@ -350,7 +151,9 @@ if using Gradle:
   }
 ```
 
-### Import
+### Import Rules
+
+[Set of Eslint Rules for Import](config/configs/import-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -360,7 +163,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     "eslint-plugin-import": "^2.18.2",
     ..
 ```
@@ -407,7 +210,9 @@ if using Gradle:
   }
 ```
 
-### TS
+### Unused Import Rules
+
+[unused-imports-rules: Set of Eslint Rules for Unused imports](config/configs/unused-import-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -417,7 +222,66 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-unused-imports": "0.1.2",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/unused-import-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+> There is no need to add `unused-import` plugin, it will be automatically added by `base-style-config` plugin.
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+### TS Rules
+
+[Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js).
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     ..
@@ -468,7 +332,9 @@ if using Gradle:
   }
 ```
 
-#### React configuration
+### React Rules
+
+[Set of Eslint Rules for React](config/configs/react-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -478,7 +344,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     "eslint-plugin-react": "^7.14.3"
     ..
 ```
@@ -490,7 +356,7 @@ with hooks:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "1.0.0",
+    "eslint-plugin-base-style-config": "2.1.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     ..
@@ -515,6 +381,8 @@ with hooks:
 ```
 
 with hooks:
+
+[Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js).
 
 `eslintrc.json`:
 
@@ -556,6 +424,168 @@ if using Gradle:
   }
 ```
 
+### Regex Rules
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-regex": "^1.1.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/regex[jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+#### Custom Regex
+
+[regex[copyright]: Set of Eslint Regex Rules for Copyright](config/configs/regex/copyright.js):
+
+* For the moment, it has only 1 rule to check that "`Copyright (c)`" is present in the file.
+
+[regex[immutable-js]: Set of Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js): inspects only `.ts` and `.tsx` files:
+
+* For the moment, it has only 1 rule to check that `public` fields are `readonly`.
+
+[regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following rules:
+
+* JSX code should start in its own line,
+* JSX code should end at its own line,
+* Only One JSX tag per line.
+
+[regex[quotes.jsx]: Set of Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js): inspects only `.jsx` and `.tsx` files:
+
+* It has only 1 rules to check that `"` are not use in jsx.
+
+[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).  
+
+* For the moment, it has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
+
+#### Mixing Regex/Rules
+
+Due to the way eslint merge rules, it's not possible to merge [Eslint Regex rules](https://www.npmjs.com/package/eslint-plugin-regex). this plugin provide [1] a mechanism for merging any set of rules (not just Regex rules [2]) => **just use commas to separate rules names** after `plugin:base-style-config`:
+
+e.g. Mixing:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/regex[jsx], regex[quotes-jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+or
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules, regex[jsx], regex[quotes-jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+When using only one regex rule:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/regex[jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+When using more than one regex rule, **must be mixed**:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/regex[jsx], regex[quotes-jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "rules": {
+    ..
+  }
+}
+```
+
+Be aware that:
+
+* If some extension has `regex/required` and/or `regex/invalid` rules will override any merging for those.
+  * If extending locally, re-add "plugin:base-style-config/..", e.g. `.eslintrc.js` has `"plugin:base-style-config/regex[jsx], regex[quotes-jsx]"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `regex[immutable-ts]`, then `src/.eslintrc.js` should use `"plugin:base-style-config/regex[jsx], regex[quotes-jsx], regex[immutable-ts]"`.
+* having local `regex/required` and/or `regex/invalid` rules will override any merging for those.
+
+> [1] In the future, the Mechanism for Merging Eslint configurations will be extracted to its own `eslint-plugin`.  
+> [2] For the moment, only `base-style-config` rules.
+
 ### Errors
 
 When using the plugin, if the following error appears for some rule:
@@ -580,7 +610,7 @@ __________________
 * **Use it**.
 * **Share it**.
 * **Fork it**.
-* [Give it a Star](https://github.com/gmullerb/base-style-config).
+* [Give it a Star :star:](https://github.com/gmullerb/base-style-config).
 * [Propose changes or improvements](https://github.com/gmullerb/base-style-config/issues).
 * [Report bugs](https://github.com/gmullerb/base-style-config/issues).
 
