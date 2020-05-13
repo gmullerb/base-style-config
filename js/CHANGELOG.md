@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.1.1 - May 2020
+
+* Updates Type parameters names regular expression.
+* Updates README files.
+
 ## 2.1.0 - May 2020
 
 * Adds Regex rules: `regex[copyright]`, `regex[immutable.ts]`, `regex[jsx]`, `regex[quotes.jsx]` & `regex[test]`.

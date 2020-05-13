@@ -33,7 +33,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/generic-type-naming': [
       'error',
-      '^[A-Z][A-Z0-9]{0,9}$|^T_[A-Z]{1,30}$'
+      '^[A-Z][A-Z_][A-Z_0-9]{1,22}$'
     ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',

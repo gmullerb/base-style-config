@@ -92,7 +92,7 @@ To highlights:
       * Java: static methods must have a length between 3 and 23.
 * Classes/Constants names must have a length between 3 and 32 [1].
   * Test Class names will not have length limit.
-* Type parameters names must be in uppercase, have a length between 1 and 10 or following the pattern `T_` up to 32 characters.
+* Type parameters names must be in uppercase, have a length between 3 and 23, starting with a letter.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.

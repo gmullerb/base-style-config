@@ -32,7 +32,7 @@ To highlights:
       * Java: static methods must have a length between 3 and 23.
 * Classes/Constants names must have a length between 3 and 32 [1].
   * Test Class names will not have length limit.
-* Type parameters names must be in uppercase, have a length between 1 and 10 or following the pattern `T_` up to 32 characters.
+* Type parameters names must be in uppercase, have a length between 3 and 23, starting with a letter.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
 * Line length limit: 144 characters per line.
@@ -64,9 +64,9 @@ Combination of Method length limit and Class/File lines limit allows to:
 > [6] Exception may be required in constructor , when building of complex inheritance with more than 7 fields as total, for special cases, e.g. using some bad designed but required API, in this case use a @SuppressWarnings("checkstyle:ParameterNumber"). In app own code, Composition should be used over Inheritance.  
 > [7] CodeNarc and ESLint does not yet provide a way of doing this.
 
-#### Code Style convention/tips
+#### Code Style convention and Voids
 
-Although these set of rules are opinionated, some blanks were left in order to make sets more flexible.
+Although these set of rules are opinionated, some voids were left in order to make sets more flexible.
 
 ##### Semicolon
 

@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
@@ -88,7 +88,7 @@ The idea is to have a common and "single" source of code styling rules, which ca
 
 ## Background
 
-[Background](readme/background.md)
+[Background/Conventions/Voids](readme/background.md)
 
 __________________
 
@@ -106,7 +106,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     ..
 ```
 
@@ -163,7 +163,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-import": "^2.18.2",
     ..
 ```
@@ -222,7 +222,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
@@ -281,7 +281,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     ..
@@ -344,7 +344,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-react": "^7.14.3"
     ..
 ```
@@ -356,7 +356,7 @@ with hooks:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     ..
@@ -434,7 +434,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.0",
+    "eslint-plugin-base-style-config": "2.1.1",
     "eslint-plugin-regex": "^1.1.0",
     ..
 ```
@@ -503,6 +503,8 @@ if using Gradle:
 [regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).  
 
 * For the moment, it has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
+
+> Some of these rule may be obsolete in the future as other "core" lint rules arise.
 
 #### Mixing Regex/Rules
 
@@ -581,6 +583,7 @@ Be aware that:
 
 * If some extension has `regex/required` and/or `regex/invalid` rules will override any merging for those.
   * If extending locally, re-add "plugin:base-style-config/..", e.g. `.eslintrc.js` has `"plugin:base-style-config/regex[jsx], regex[quotes-jsx]"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `regex[immutable-ts]`, then `src/.eslintrc.js` should use `"plugin:base-style-config/regex[jsx], regex[quotes-jsx], regex[immutable-ts]"`.
+    * **this only applies to regex rules**, mixing other rules have no issues, e.g. `.eslintrc.js` has `"plugin:base-style-config/js-rules, import-rules"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `typescript-rules`, then `src/.eslintrc.js` may be just `"plugin:base-style-config/typescript-rules"`.
 * having local `regex/required` and/or `regex/invalid` rules will override any merging for those.
 
 > [1] In the future, the Mechanism for Merging Eslint configurations will be extracted to its own `eslint-plugin`.  

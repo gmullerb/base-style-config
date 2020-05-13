@@ -51,4 +51,4 @@ task assessGradle(type: CodeNarc) {
 // Default task
 ///////////////
 
-defaultTasks 'assess', 'assessGradle', 'java:test', 'java:assembleArtifact', 'js:npmInstall', 'js:lint', 'js:build'
+defaultTasks 'assess', 'assessGradle', 'java:test', 'java:assembleArtifact', 'js:npmInstall', 'js:npm_run_check'

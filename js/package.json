@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -66,7 +66,8 @@
     "lint.config": "echo ==== Lint Config ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
     "lint": "npm run lint.common && npm run lint.config",
     "prepack": "echo ==== Build Package ====",
-    "check": "npm run lint && mkdir -p build && cd build && npm pack ../"
+    "check": "npm run lint && mkdir -p build && cd build && npm pack ../",
+    "prepublishOnly": "npm run check"
   },
   "engines": {
     "node": ">= 6.0.0"
