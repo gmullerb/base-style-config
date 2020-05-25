@@ -22,7 +22,7 @@ module.exports = {
         },
         {
           message: 'One JSX tag per line',
-          regex: '\\>(?= *\\<)',
+          regex: '\\>(?=.*\\<(?!\\/))',
           files: {
             inspect: '\\.[jt]sx'
           }

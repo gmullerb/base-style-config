@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.1.2 - May 2020
+
+* Adds DOM types to `id-match`.
+* Fixes `One JSX tag per line` rule for `jsx`.
+
 ## 2.1.1 - May 2020
 
 * Updates Type parameters names regular expression.

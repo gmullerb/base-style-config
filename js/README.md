@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.1.2",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
@@ -643,7 +643,9 @@ Don't forget:
 * **Learn everyday**.
 * **Learn yourself**.
 * **Share your knowledge**.
+* **Think different!**.
 * **Learn from the past, dream on the future, live and enjoy the present to the max!**.
+* **Enjoy and Value the Quest** (It's where you learn and grow).
 
 At life:
 

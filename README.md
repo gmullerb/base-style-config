@@ -254,7 +254,9 @@ Don't forget:
 * **Learn everyday**.
 * **Learn yourself**.
 * **Share your knowledge**.
+* **Think different!**.
 * **Learn from the past, dream on the future, live and enjoy the present to the max!**.
+* **Enjoy and Value the Quest** (It's where you learn and grow).
 
 At life:
 
