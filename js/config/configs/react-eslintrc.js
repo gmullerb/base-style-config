@@ -11,7 +11,12 @@ module.exports = {
   plugins: [ 'react' ],
   rules: {
     'react/jsx-first-prop-new-line': 'error',
-    'react/jsx-max-props-per-line': 'error',
+    'react/jsx-max-props-per-line': [
+      'error',
+      {
+        maximum: 4
+      }
+    ],
     'react/jsx-sort-props': [
       'error', {
         callbacksLast: true,

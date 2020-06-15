@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -76,10 +76,10 @@
     "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
-    "eslint": "^6.7.1"
+    "eslint": "^7.1.0"
   },
   "devDependencies": {
-    "eslint": "~6.7.1",
+    "eslint": "^7.2.0",
     "lintspaces-cli": "^0.7.1"
   }
 }

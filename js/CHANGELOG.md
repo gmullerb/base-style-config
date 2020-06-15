@@ -1,5 +1,17 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.2.0 - June 2020
+
+* Adds Regex rule `regex[react.import]` to encourage the use of `import * as React from 'react'`, React doesn't really export a module, export a namespace.
+* Adds Regex rule `regex[void.function.ts]`.
+* Adds `offsetTernaryExpressions` to `indent` rule in order to increase code Readability.
+* Updates `object-property-newline` settings to `allowAllPropertiesOnSameLine`. sometimes this removes verbosity from the code.
+* Updates `operator-linebreak` settings to change requirement for `&&` to have the line break after, which helps a lot in JSX.
+* Updates `react/jsx-max-props-per-line` to have `maximum`, this will allow to inline props to reduce verbosity of the code.
+* Turn off `"@typescript-eslint/prefer-readonly-parameter-types"` hoping in the future  it may have more options, is an excellent rule but difficult to use in the practice.
+* Removes `@typescript-eslint/explicit-module-boundary-types`, is was giving hard time with small callbacks functions which are use a lot,just keeping `explicit-function-return-type`.
+* Removes `@typescript-eslint/generic-type-naming` was deprecated and removed from `@typescript-eslint`.
+
 ## 2.1.2 - May 2020
 
 * Adds DOM types to `id-match`.

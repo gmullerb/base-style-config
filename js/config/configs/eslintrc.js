@@ -45,6 +45,7 @@ module.exports = {
       2,
       {
         SwitchCase: 1,
+        offsetTernaryExpressions: true,
         FunctionDeclaration: {
           body: 1,
           parameters: 2
@@ -146,11 +147,22 @@ module.exports = {
         objectsInObjects: false
       }
     ],
-    'object-property-newline': 'error',
+    'object-property-newline': [
+      'error',
+      {
+        allowAllPropertiesOnSameLine: true
+      }
+    ],
     'operator-assignment': 'error',
     'operator-linebreak': [
       'error',
-      'before'
+      'before',
+      {
+        overrides:
+        {
+          '&&': 'after'
+        }
+      }
     ],
     'quote-props': [
       'error',

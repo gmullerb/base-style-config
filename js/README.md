@@ -27,11 +27,11 @@ __________________
 ```json
   ..
   "devDependencies": {
-    "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.2",
+    "eslint": "^7.1.0",
+    "eslint-plugin-base-style-config": "2.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.9.0",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-plugin-regex": "^1.1.0",
@@ -59,21 +59,12 @@ __________________
 ```
 
 > Remove the rule sets that are not necessary according to your needs.  
-> Take a look to the set of rules:  
-[js-rules: Set of Eslint Rules for JS](config/configs/eslintrc.js),  
-[import-rules: Set of Eslint Rules for Import](config/configs/import-eslintrc.js),  
-[unused-imports-rules: Set of Eslint Rules for Unused imports](config/configs/unused-import-eslintrc.js),  
-[typescript-rule: Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js),  
-[react-rules: Set of Eslint Rules for React](config/configs/react-eslintrc.js),  
-[react-with-hooks-rules: Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js),  
-[regex[copyright]: Set of Eslint Regex Rules for Copyright](config/configs/regex/copyright.js),  
-[regex[immutable-js]: Set of Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js),  
-[regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js),  
-[regex[quotes.jsx]: Set of Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js),  
-[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).  
-> Take a look to Regex rules:  
-[Custom Eslint Regex rules](#custom-regex)  
-[Mixing rules](#mixing-regexrules)
+
+Take a look to Regex rules:
+
+* [Custom Eslint Regex rules](#custom-regex)
+* [Mixing rules](#mixing-regexrules)
+
 __________________
 
 ## Goals
@@ -482,13 +473,19 @@ if using Gradle:
 
 #### Custom Regex
 
-[regex[copyright]: Set of Eslint Regex Rules for Copyright](config/configs/regex/copyright.js):
+[regex[copyright]: Eslint Regex Rules for Copyright](config/configs/regex/copyright.js):
 
-* For the moment, it has only 1 rule to check that "`Copyright (c)`" is present in the file.
+* It has only 1 rule to check that "`Copyright (c)`" is present in the file.
 
-[regex[immutable-js]: Set of Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js): inspects only `.ts` and `.tsx` files:
+[regex[immutable-js]: Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js):
 
-* For the moment, it has only 1 rule to check that `public` fields are `readonly`.
+* It has only 1 rule to check that `public` fields are `readonly`.
+* Inspects only `.ts` and `.tsx` files.
+
+[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](js/config/configs/regex/void-function-ts.js):
+
+* It has only 1 rule to check that `VoidFunction` is used instead of `() => void`.
+* inspects only `.ts` and `.tsx` files
 
 [regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following rules:
 
@@ -496,13 +493,19 @@ if using Gradle:
 * JSX code should end at its own line,
 * Only One JSX tag per line.
 
-[regex[quotes.jsx]: Set of Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js): inspects only `.jsx` and `.tsx` files:
+[regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js):
 
 * It has only 1 rules to check that `"` are not use in jsx.
+* Inspects only `.jsx` and `.tsx` files.
 
-[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).  
+[regex[react.import]: Eslint Regex Rules for React Import](js/config/configs/regex/react-import.js):
 
-* For the moment, it has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
+* It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
+  * React exports a namespace, not a Module.
+
+[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).
+
+* It has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
 
 > Some of these rule may be obsolete in the future as other "core" lint rules arise.
 

@@ -31,10 +31,6 @@ module.exports = {
       }
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'error',
-    '@typescript-eslint/generic-type-naming': [
-      'error',
-      '^[A-Z][A-Z_][A-Z_0-9]{1,22}$'
-    ],
     '@typescript-eslint/member-ordering': 'error',
     '@typescript-eslint/consistent-type-assertions': 'error',
     '@typescript-eslint/no-extraneous-class': [
@@ -58,7 +54,7 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/prefer-readonly': 'error',
-    '@typescript-eslint/prefer-readonly-parameter-types': 'error',
+    '@typescript-eslint/prefer-readonly-parameter-types': 'off',
     '@typescript-eslint/prefer-reduce-type-parameter': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/type-annotation-spacing': 'error'
