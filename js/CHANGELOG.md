@@ -1,5 +1,11 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.4.0 - July 2020
+
+* Adds new REGEX file `stroustrup-braces-jsx.js`
+* Extracts `Opening brace should be in a new line`to its own file `allman-braces-jsx.js`.
+* Fixes `immutable.ts` for `async` functions.
+
 ## 2.3.1 - July 2020
 
 * Fixes rule `Opening brace should be in a new line`, should ignore lambdas.

@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.3.1",
+    "eslint-plugin-base-style-config": "2.4.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
@@ -499,10 +499,15 @@ if using Gradle:
 * It has only 1 rule to check that `"` are not use in jsx.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[react.import]: Eslint Regex Rules for React Import](js/config/configs/regex/react-import.js):
+[regex[allman-braces.jsx]: Set of Eslint Regex Rules for Allman braces](config/configs/regex/allman-braces-jsx.js):
 
-* It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
-  * React exports a namespace, not a Module.
+* Opening Brace in its own line [1].
+* Inspects only `.jsx` and `.tsx` files.
+
+[regex[stroustrup-braces.jsx]: Set of Eslint Regex Rules for Allman braces](config/configs/regex/stroustrup-braces-jsx.js):
+
+* Braces should follow Stroustrup [1] (this will reduce Verbosity without loosing Readability).
+* Inspects only `.jsx` and `.tsx` files.
 
 [regex[no-html-entities.jsx]: Eslint Regex Rules that disallow the use of HTML entities](config/configs/regex/no-html-entities-jsx.js):
 
@@ -510,11 +515,17 @@ if using Gradle:
   * Use UTF-8 characters which are "universal" and more Readable.
 * Inspects only `.jsx` and `.tsx` files.
 
+[regex[react.import]: Eslint Regex Rules for React Import](js/config/configs/regex/react-import.js):
+
+* It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
+  * React exports a namespace, not a Module.
+
 [regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).
 
 * It has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
 
-> Some of these rule may be obsolete in the future as other "core" lint rules arise.
+> Some of these rule may be obsolete in the future as other "core" lint rules arise.  
+> [1] These rules checks new line breaks, and eslint-plugin-regex does not inform about the specific line where the rule was broken.
 
 #### Mixing Regex/Rules
 

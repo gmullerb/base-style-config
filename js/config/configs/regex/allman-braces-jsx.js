@@ -7,10 +7,10 @@ module.exports = {
     'regex/invalid': [
       'error', [
         {
-          message: 'public class fields should be readonly',
-          regex: '\\bpublic\\b\\s+(?!async)\\s?\\s*(?!readonly)[\\$_A-Za-z]+\\b(?!\\s*\\()',
+          message: 'Opening brace should be in a new line',
+          regex: '(((^[ \\t]*|\\>)\\<\\w+|[ \\t]*^)\\>|\\/\\>)(?=[ \\t]*\{[ \\t]*$)',
           files: {
-            inspect: '\\.tsx?'
+            inspect: '\\.[jt]sx'
           }
         }
       ]
