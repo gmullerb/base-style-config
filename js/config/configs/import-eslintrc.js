@@ -13,6 +13,12 @@ module.exports = {
     'import/no-default-export': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-named-as-default-member': 'error',
-    'import/no-unused-modules': 'error'
+    'import/no-unused-modules': 'error',
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always'
+      }
+    ]
   }
 }

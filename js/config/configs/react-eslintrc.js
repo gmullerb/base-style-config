@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [ 'react' ],
   rules: {
-    'react/jsx-first-prop-new-line': 'error',
+    'react/jsx-first-prop-new-line': [ 'error', 'never' ],
     'react/jsx-max-props-per-line': [
       'error',
       {
@@ -25,6 +25,7 @@ module.exports = {
     ],
     'react/no-multi-comp': 'error',
     'react/no-this-in-sfc': 'error',
+    'react/no-unescaped-entities': 'off',
     'react/no-unsafe': 'error',
     'react/no-unused-prop-types': 'error',
     'react/no-unused-state': 'error',

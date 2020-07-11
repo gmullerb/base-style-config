@@ -243,8 +243,8 @@ __________________
 ## Remember
 
 * Use code style verification tools => Encourages Best Practices, Efficiency, Readability and Learnability.
-* Start testing early => Encourages Reliability and Maintainability.
 * Code Review everything => Encourages Functional suitability, Performance Efficiency and Teamwork.
+* If viable, Start testing early => Encourages Reliability and Maintainability.
 
 ## Additional words
 

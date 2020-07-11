@@ -1,5 +1,17 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.3.0 - July 2020
+
+* Adds a new rule to `jsx` rules: Opening brace should be in a new line.
+* Adds exception for `<span>`,`<a>` & `<i>` to `Only One JSX tag per line` rule.
+* Adds Regex rule `regex[no-html-entities.jsx]` to disallow the use of HTML entities.
+* Disables `react/no-unescaped-entities` (which is part of react/recommended).
+* Removes `sort-imports`.
+* Adds `import/order`.
+* Adjusts `@typescript-eslint/ban-types` for `Object` and `{}`.
+* Adds `@typescript-eslint/explicit-member-accessibility`.
+* Adjusts `react/jsx-first-prop-new-line` to `never`, why? right now there is no rule like jsx-min-props-per-line, having only 1 prop per line with an small amount of properties increase the verbosity.
+
 ## 2.2.0 - June 2020
 
 * Adds Regex rule `regex[react.import]` to encourage the use of `import * as React from 'react'`, React doesn't really export a module, export a namespace.

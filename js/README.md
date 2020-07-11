@@ -477,7 +477,7 @@ if using Gradle:
 
 * It has only 1 rule to check that "`Copyright (c)`" is present in the file.
 
-[regex[immutable-js]: Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js):
+[regex[immutable.ts]: Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js):
 
 * It has only 1 rule to check that `public` fields are `readonly`.
 * Inspects only `.ts` and `.tsx` files.
@@ -491,17 +491,24 @@ if using Gradle:
 
 * JSX code should start in its own line,
 * JSX code should end at its own line,
-* Only One JSX tag per line.
+* Only One JSX tag per line, , except for `<span>`, `<a>` or `<i>`.
+* No Opening Brace at the end of the line.
 
 [regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js):
 
-* It has only 1 rules to check that `"` are not use in jsx.
+* It has only 1 rule to check that `"` are not use in jsx.
 * Inspects only `.jsx` and `.tsx` files.
 
 [regex[react.import]: Eslint Regex Rules for React Import](js/config/configs/regex/react-import.js):
 
 * It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
   * React exports a namespace, not a Module.
+
+[regex[no-html-entities.jsx]: Eslint Regex Rules that disallow the use of HTML entities](config/configs/regex/no-html-entities-jsx.js):
+
+* It has only 1 rule to check that `&abc123;` or `&#123;`are not use in jsx.
+  * Use UTF-8 characters which are "universal" and more Readable.
+* Inspects only `.jsx` and `.tsx` files.
 
 [regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).
 
@@ -521,7 +528,7 @@ e.g. Mixing:
 {
   "extends": [
     "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx], regex[quotes-jsx]"
+    "plugin:base-style-config/regex[jsx], regex[quotes.jsx]"
   ],
   "plugins": [
     "base-style-config"
@@ -537,7 +544,7 @@ or
 ```json
 {
   "extends": [
-    "plugin:base-style-config/typescript-rules, regex[jsx], regex[quotes-jsx]"
+    "plugin:base-style-config/typescript-rules, regex[jsx], regex[quotes.jsx]"
   ],
   "plugins": [
     "base-style-config"
@@ -571,7 +578,7 @@ When using more than one regex rule, **must be mixed**:
 {
   "extends": [
     "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx], regex[quotes-jsx]"
+    "plugin:base-style-config/regex[jsx], regex[quotes.jsx]"
   ],
   "plugins": [
     "base-style-config"
@@ -585,7 +592,7 @@ When using more than one regex rule, **must be mixed**:
 Be aware that:
 
 * If some extension has `regex/required` and/or `regex/invalid` rules will override any merging for those.
-  * If extending locally, re-add "plugin:base-style-config/..", e.g. `.eslintrc.js` has `"plugin:base-style-config/regex[jsx], regex[quotes-jsx]"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `regex[immutable-ts]`, then `src/.eslintrc.js` should use `"plugin:base-style-config/regex[jsx], regex[quotes-jsx], regex[immutable-ts]"`.
+  * If extending locally, re-add "plugin:base-style-config/..", e.g. `.eslintrc.js` has `"plugin:base-style-config/regex[jsx], regex[quotes.jsx]"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `regex[immutable.ts]`, then `src/.eslintrc.js` should use `"plugin:base-style-config/regex[jsx], regex[quotes.jsx], regex[immutable.ts]"`.
     * **this only applies to regex rules**, mixing other rules have no issues, e.g. `.eslintrc.js` has `"plugin:base-style-config/js-rules, import-rules"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `typescript-rules`, then `src/.eslintrc.js` may be just `"plugin:base-style-config/typescript-rules"`.
 * having local `regex/required` and/or `regex/invalid` rules will override any merging for those.
 
@@ -635,8 +642,8 @@ __________________
 ## Remember
 
 * Use code style verification tools => Encourages Best Practices, Efficiency, Readability and Learnability.
-* Start testing early => Encourages Reliability and Maintainability.
 * Code Review everything => Encourages Functional suitability, Performance Efficiency and Teamwork.
+* If viable, Start testing early => Encourages Reliability and Maintainability.
 
 ## Additional words
 

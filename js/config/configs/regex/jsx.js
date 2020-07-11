@@ -21,8 +21,15 @@ module.exports = {
           }
         },
         {
-          message: 'One JSX tag per line',
-          regex: '\\>(?=.*\\<(?!\\/))',
+          message: 'One JSX tag per line, except for <span>, <a> or <i>',
+          regex: '\\>(?=.*\\<(?!(\\/|span\\>|a\\>|i\\>)))',
+          files: {
+            inspect: '\\.[jt]sx'
+          }
+        },
+        {
+          message: 'Opening brace should be in a new line',
+          regex: '\\>(?=[ \\t]*{\\s*$)',
           files: {
             inspect: '\\.[jt]sx'
           }

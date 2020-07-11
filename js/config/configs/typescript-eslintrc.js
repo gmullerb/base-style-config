@@ -16,7 +16,14 @@ module.exports = {
       'error', {
         types: {
           'Array': 'Use [] instead',
-          'Object': 'Use {} instead',
+          'Object': {
+            message: 'Use object instead',
+            fixWith: 'object'
+          },
+          '{}': {
+            message: 'Use object instead',
+            fixWith: 'object'
+          },
           'Component': 'Use function component instead',
           'PureComponent': 'Use function component instead',
           'React.Component': 'Use function component instead',
@@ -28,6 +35,18 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': [
       'error', {
         allowExpressions: true
+      }
+    ],
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error', {
+        accessibility: 'explicit',
+        overrides: {
+          accessors: 'off',
+          constructors: 'off',
+          methods: 'explicit',
+          properties: 'no-public',
+          parameterProperties: 'explicit'
+        }
       }
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'error',
