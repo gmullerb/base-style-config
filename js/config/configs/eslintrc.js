@@ -171,11 +171,6 @@ module.exports = {
         keywords: false
       }
     ],
-    'sort-imports':  [
-      'error', {
-        ignoreCase: true
-      }
-    ],
     'spaced-comment': [
       'error',
       'always',

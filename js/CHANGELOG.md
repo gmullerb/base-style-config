@@ -1,5 +1,9 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.4.1 - July 2020
+
+* Actually removes `sort-imports`.
+
 ## 2.4.0 - July 2020
 
 * Adds new REGEX file `stroustrup-braces-jsx.js`
