@@ -29,7 +29,7 @@ module.exports = {
         },
         {
           message: 'Opening brace should be in a new line',
-          regex: '\\>(?=[ \\t]*{\\s*$)',
+          regex: '[^=]\\>(?=[ \\t]*{\\s*$)',
           files: {
             inspect: '\\.[jt]sx'
           }

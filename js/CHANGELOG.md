@@ -1,5 +1,9 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.3.1 - July 2020
+
+* Fixes rule `Opening brace should be in a new line`, should ignore lambdas.
+
 ## 2.3.0 - July 2020
 
 * Adds a new rule to `jsx` rules: Opening brace should be in a new line.

@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.2.0",
+    "eslint-plugin-base-style-config": "2.3.1",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
