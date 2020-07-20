@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.5.1 - July 2020
+
+* Fixes `One JSX tag per line`.
+* Removes `ignoreComments` from `max-len` rule, it was giving issues when working with JSDoc.
+
 ## 2.5.0 - July 2020
 
 * Adds new REGEX rule `no-export-group.js`.
