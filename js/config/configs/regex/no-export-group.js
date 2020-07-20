@@ -7,11 +7,8 @@ module.exports = {
     'regex/invalid': [
       'error', [
         {
-          message: 'Stroustrup opening brace',
-          regex: '\\<[^\\/]*\\>[\\r\\n\\v\\f]+[ \\t]*\\{\\s*$',
-          files: {
-            inspect: '\\.[jt]sx'
-          }
+          message: 'Use individual exports',
+          regex: '^[ \\t]*export\\s*\\{'
         }
       ]
     ]

@@ -1,5 +1,14 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.5.0 - July 2020
+
+* Adds new REGEX rule `no-export-group.js`.
+* Adds new REGEX rule `no-react-fragment-jsx.js`.
+* Adds new REGEX rule `intl-jsx.js`.
+* Extracts `id-match` to its own file `id-eslintrc.js`, it seems too opinionated and variable.
+* Improves `One JSX tag per line`.
+* Removes `Stroustrup closing brace` rule.
+
 ## 2.4.1 - July 2020
 
 * Actually removes `sort-imports`.

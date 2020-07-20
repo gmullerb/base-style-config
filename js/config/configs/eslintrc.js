@@ -57,15 +57,6 @@ module.exports = {
       }
     ],
     'init-declarations': 'error',
-    'id-match': [
-      'error',
-      '^\\$$|^\\$\\$$|^at$|^by$|^_id$|^id$|^in$|^k$|^K$|^of$|^on$|^to$|^up$|^T[A-Z]?[0-9]{0,2}$|(\\b(HTML|SVG|XML|JSON|URL|URI|XSL|IDB|RTC|UI|VR|DOM|CSS|RGB)\\w*)|(\\w*(HTML|SVG|XML|JSON|URL|URI|XSL|IDB|RTC|UI|VR|DOM|CSS|RGB)\\b)|^[A-Z]([_\\$]?[A-Z0-9]{1}){2,31}$|^_?[a-z]([A-Z][a-z0-9]|[a-z0-9][A-Z]|[a-z0-9]{2}){1}([A-Z]?[a-z0-9]{1}){0,19}[a-zA-Z0-9]?$|^[A-Z][a-z0-9][A-Z]([a-z0-9]([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?)?$|^[A-Z][a-z0-9]{2}([A-Z]?[a-z0-9]{1}){0,29}[a-zA-Z0-9]?$',
-      {
-        properties: true,
-        onlyDeclarations: true,
-        ignoreDestructuring: true
-      }
-    ],
     'max-classes-per-file': 'error',
     'max-len': [
       'error', {

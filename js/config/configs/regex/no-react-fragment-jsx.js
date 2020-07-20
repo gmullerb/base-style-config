@@ -7,8 +7,8 @@ module.exports = {
     'regex/invalid': [
       'error', [
         {
-          message: 'Stroustrup opening brace',
-          regex: '\\<[^\\/]*\\>[\\r\\n\\v\\f]+[ \\t]*\\{\\s*$',
+          message: 'Use \'<></>\', instead of \'<React.Fragment></React.Fragment>\'',
+          regex: '(React\\.|<|\\/)Fragment>',
           files: {
             inspect: '\\.[jt]sx'
           }

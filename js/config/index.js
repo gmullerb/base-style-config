@@ -4,10 +4,12 @@ const merge = require('deepmerge')
 
 const rules = new Map([
   [ 'js-rules', './configs/eslintrc.js' ],
+  [ 'id-rules', './configs/id-eslintrc.js' ],
   [ 'import-rules', './configs/import-eslintrc.js' ],
   [ 'react-rules', './configs/react-eslintrc.js' ],
   [ 'react-with-hooks-rules', './configs/react-with-hooks-eslintrc.js' ],
   [ 'regex[copyright]', './configs/regex/copyright.js' ],
+  [ 'regex[no-export-group]', './configs/regex/no-export-group.js' ],
   [ 'regex[immutable.ts]', './configs/regex/immutable-ts.js' ],
   [ 'regex[void.function.ts]', './configs/regex/void-function-ts.js' ],
   [ 'regex[jsx]', './configs/regex/jsx.js' ],
@@ -16,6 +18,8 @@ const rules = new Map([
   [ 'regex[stroustrup-braces.jsx]', './configs/regex/stroustrup-braces-jsx.js' ],
   [ 'regex[no-html-entities.jsx]', './configs/regex/no-html-entities-jsx.js' ],
   [ 'regex[react.import]', './configs/regex/react-import.js' ],
+  [ 'regex[no-react-fragment.jsx]', './configs/regex/no-react-fragment-jsx.js' ],
+  [ 'regex[intl.jsx]', './configs/regex/intl-jsx.js' ],
   [ 'regex[test]', './configs/regex/test.js' ],
   [ 'typescript-rules', './configs/typescript-eslintrc.js' ],
   [ 'unused-imports-rules', './configs/unused-import-eslintrc.js' ]

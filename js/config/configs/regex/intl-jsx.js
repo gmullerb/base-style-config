@@ -7,8 +7,8 @@ module.exports = {
     'regex/invalid': [
       'error', [
         {
-          message: 'Stroustrup opening brace',
-          regex: '\\<[^\\/]*\\>[\\r\\n\\v\\f]+[ \\t]*\\{\\s*$',
+          message: 'Don\'t mixed formatMessage and FormattedMessage',
+          regex: '((\\b|\\.?)formatMessage(\\(|\\b)[\\s\\S]*\\<FormattedMessage\\b)|((\\<FormattedMessage\\b)[\\s\\S]*(\\b|\\.?)formatMessage(\\(|\\b))',
           files: {
             inspect: '\\.[jt]sx'
           }

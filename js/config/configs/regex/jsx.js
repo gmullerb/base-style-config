@@ -21,8 +21,8 @@ module.exports = {
           }
         },
         {
-          message: 'One JSX tag per line, except for <span>, <a> or <i>',
-          regex: '\\>(?=.*\\<(?!(\\/|span\\>|a\\>|i\\>)))',
+          message: 'One JSX tag per line, except when containing <span>, <a>, <img>, <i> or <FormattedMessage>',
+          regex: '\\>(?=.*\\<(?!(\\/|span|a|i|img|FormattedMessage)))',
           files: {
             inspect: '\\.[jt]sx'
           }

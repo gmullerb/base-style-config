@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.4.1",
+    "eslint-plugin-base-style-config": "2.5.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
@@ -141,6 +141,8 @@ if using Gradle:
     ]
   }
 ```
+
+> Can be complemented with [id-rules](config/configs/id-eslintrc.js).
 
 ### Import Rules
 
@@ -477,12 +479,16 @@ if using Gradle:
 
 * It has only 1 rule to check that "`Copyright (c)`" is present in the file.
 
+[regex[no-export-group]: Eslint Regex Rules for Exports](config/configs/regex/no-export-group.js):
+
+* It has only 1 rule to check that export group is not used.
+
 [regex[immutable.ts]: Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js):
 
 * It has only 1 rule to check that `public` fields are `readonly`.
 * Inspects only `.ts` and `.tsx` files.
 
-[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](js/config/configs/regex/void-function-ts.js):
+[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](config/configs/regex/void-function-ts.js):
 
 * It has only 1 rule to check that `VoidFunction` is used instead of `() => void`.
 * inspects only `.ts` and `.tsx` files
@@ -497,6 +503,11 @@ if using Gradle:
 [regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js):
 
 * It has only 1 rule to check that `"` are not use in jsx.
+* Inspects only `.jsx` and `.tsx` files.
+
+[regex[no-react-fragment.jsx]: Eslint Regex Rules for JSX Fragments](config/configs/regex/no-react-fragment-jsx.js):
+
+* It has only 1 rule to check that `React.Fragment` is not used in jsx.
 * Inspects only `.jsx` and `.tsx` files.
 
 [regex[allman-braces.jsx]: Set of Eslint Regex Rules for Allman braces](config/configs/regex/allman-braces-jsx.js):
@@ -515,7 +526,12 @@ if using Gradle:
   * Use UTF-8 characters which are "universal" and more Readable.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[react.import]: Eslint Regex Rules for React Import](js/config/configs/regex/react-import.js):
+[regex[intl.jsx]: Eslint Regex Rules for FormatJS in JSX](config/configs/regex/intl-jsx.js):
+
+* It has only 1 rule to check that `formatMessage` and `FormattedMessage` are not mixed in the same file.
+* Inspects only `.jsx` and `.tsx` files.
+
+[regex[react.import]: Eslint Regex Rules for React Import](config/configs/regex/react-import.js):
 
 * It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
   * React exports a namespace, not a Module.
