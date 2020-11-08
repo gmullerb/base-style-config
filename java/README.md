@@ -490,9 +490,10 @@ git clone https://github.com/gmullerb/base-style-config
   * `gradlew assess`: will check the style of common code.
 
 * To build it:
-  * `gradlew`: this will run default task, or
+  * `gradlew`: this will run default tasks, or
   * `gradlew build`.
     * `build` task depends on `assess` task.
+  * resulting JAR will be at `/java/build/artifact`.
 
 * To get all the tasks for the project: `gradlew tasks --all`
 
@@ -523,8 +524,8 @@ __________________
 ## Remember
 
 * Use code style verification tools => Encourages Best Practices, Efficiency, Readability and Learnability.
-* Start testing early => Encourages Reliability and Maintainability.
 * Code Review everything => Encourages Functional suitability, Performance Efficiency and Teamwork.
+* If viable, Start testing early => Encourages Reliability and Maintainability.
 
 ## Additional words
 

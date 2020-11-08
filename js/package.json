@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -65,8 +65,9 @@
     "lint.common": "echo ==== Lint Common ==== && lintspaces --newline --indentation \"spaces\"  ./config/**/*.* ./*.yml ./*.json ./*.md ./*.sh ./*.txt ./*.properties ./*.gradle ./.gitignore",
     "lint.config": "echo ==== Lint Config ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
     "lint": "npm run lint.common && npm run lint.config",
+    "test": "jest",
     "prepack": "echo ==== Build Package ====",
-    "check": "npm run lint && mkdir -p build && cd build && npm pack ../",
+    "check": "npm run lint && npm run test && mkdir -p build && cd build && npm pack ../",
     "prepublishOnly": "npm run check"
   },
   "engines": {
@@ -80,6 +81,13 @@
   },
   "devDependencies": {
     "eslint": "^7.2.0",
+    "jest": "^26.4.2",
     "lintspaces-cli": "^0.7.1"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/config/"
+    ]
   }
 }

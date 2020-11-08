@@ -53,7 +53,8 @@ module.exports = {
         FunctionExpression: {
           body: 1,
           parameters: 2
-        }
+        },
+        ignoreComments: true
       }
     ],
     'init-declarations': 'error',

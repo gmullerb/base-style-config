@@ -47,6 +47,13 @@ Npm scripts, [`package.json`](../package.json):
 * `lint.config`: checks eslint style js files.
 * `check`: will run all lints + `pack`.
 
+* To build it:
+  * `npm run check`: this will run "default" tasks.
+    * will run all lints, tests and `pack`.
+      * resulting Package will be at `/js/build`.
+  * `npm pack`
+    * resulting Package will be at `/js`.
+
 Additionally:
 
 * `npm run`: will list all available script/task for the project.

@@ -1,5 +1,13 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.5.2 - November 2020
+
+* Fixes `immutable.ts` rule, now consider `static` fields.
+* Adds `ignoreComments` to `indent` rule.
+* Updates `no-html-entities.jsx` rule to check Hexadecimal values.
+* Removes length check from `id-match` rule, for length use `id-length`.
+* Allows `object` in `@typescript-eslint/ban-types` rule.
+
 ## 2.5.1 - July 2020
 
 * Fixes `One JSX tag per line`.

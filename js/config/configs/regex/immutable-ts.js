@@ -8,7 +8,7 @@ module.exports = {
       'error', [
         {
           message: 'public class fields should be readonly',
-          regex: '\\bpublic\\b\\s+(?!async)\\s?\\s*(?!readonly)[\\$_A-Za-z]+\\b(?!\\s*\\()',
+          regex: '\\bpublic\\b\\s+(static\\s+|(?!static)\\s*)(?!async)\\s*(?!readonly)[\\$_A-Za-z]+\\b(?!\\s*\\()',
           files: {
             inspect: '\\.tsx?'
           }

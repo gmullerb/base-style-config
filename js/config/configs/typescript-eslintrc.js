@@ -24,6 +24,7 @@ module.exports = {
             message: 'Use object instead',
             fixWith: 'object'
           },
+          'object': false,
           'Component': 'Use function component instead',
           'PureComponent': 'Use function component instead',
           'React.Component': 'Use function component instead',
