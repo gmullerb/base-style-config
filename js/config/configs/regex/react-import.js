@@ -9,6 +9,7 @@ module.exports = {
         {
           message: 'Use \'import * as React from "react"\', instead of \'import React from "react"\'',
           regex: 'import[ ]+React[ ]+from[ ]+["\']react["\']',
+          replacement: 'import React from \'react\'',
           files: {
             inspect: '\\.[jt]sx'
           }

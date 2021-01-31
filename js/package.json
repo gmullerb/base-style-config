@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -67,7 +67,7 @@
     "lint": "npm run lint.common && npm run lint.config",
     "test": "jest",
     "prepack": "echo ==== Build Package ====",
-    "check": "npm run lint && npm run test && mkdir -p build && cd build && npm pack ../",
+    "check": "npm install && npm run lint && npm run test && mkdir -p build && cd build && npm pack ../",
     "prepublishOnly": "npm run check"
   },
   "engines": {

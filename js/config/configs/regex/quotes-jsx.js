@@ -9,6 +9,7 @@ module.exports = {
         {
           message: 'Do not use ", Use \' instead',
           regex: '"(?!.*\')',
+          replacement: '\'',
           files: {
             inspect: '\\.[jt]sx'
           }

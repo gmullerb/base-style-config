@@ -9,6 +9,7 @@ module.exports = {
         {
           message: 'Use VoidFunction, instead of () => void',
           regex: '\\([ ]*\\)[ ]*=>[ ]*void',
+          replacement: 'VoidFunction',
           files: {
             inspect: '\\.tsx?'
           }

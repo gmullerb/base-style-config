@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.6.0 - January 2020
+
+* Makes rules `regex[void.function.ts]`, `regex[quotes.jsx]` and `regex[react.import]` fixable.
+* Improves project configuration.
+
 ## 2.5.2 - November 2020
 
 * Fixes `immutable.ts` rule, now consider `static` fields.

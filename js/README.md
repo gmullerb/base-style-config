@@ -14,8 +14,8 @@ __________________
 [![ ](https://badgen.net/npm/v/eslint-plugin-base-style-config)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
 [![ ](https://badgen.net/npm/node/eslint-plugin-base-style-config)](https://www.npmjs.com/package/eslint-plugin-base-style-config)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE.txt)
-[![Github repo](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/gmullerb/eslint-plugin-base-style-config)
-[![Gitlab repo](https://badgen.net/badge/icon/gitlab?icon=gitlab&label)](https://gitlab.com/gmullerb/eslint-plugin-base-style-config)
+[![Github repo](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/gmullerb/base-style-config/tree/master/js)
+[![Gitlab repo](https://badgen.net/badge/icon/gitlab?icon=gitlab&label)](https://gitlab.com/gmullerb/base-style-config/tree/master/js)
 __________________
 
 ## Quick Start
@@ -28,13 +28,13 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.5.2",
+    "eslint-plugin-base-style-config": "2.6.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "eslint-plugin-regex": "^1.2.1",
+    "eslint-plugin-regex": "^1.3.0",
     "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
@@ -97,7 +97,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     ..
 ```
 
@@ -156,7 +156,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     "eslint-plugin-import": "^2.18.2",
     ..
 ```
@@ -215,7 +215,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
@@ -274,7 +274,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     ..
@@ -337,7 +337,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     "eslint-plugin-react": "^7.14.3"
     ..
 ```
@@ -349,7 +349,7 @@ with hooks:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
+    "eslint-plugin-base-style-config": "2.6.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     ..
@@ -427,10 +427,12 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.1.1",
-    "eslint-plugin-regex": "^1.1.0",
+    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-regex": "^1.3.0",
     ..
 ```
+
+> `eslint-plugin-regex` version `1.3.0` is required since this version add replacements.
 
 2 . Configure eslint:
 
@@ -491,6 +493,7 @@ if using Gradle:
 [regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](config/configs/regex/void-function-ts.js):
 
 * It has only 1 rule to check that `VoidFunction` is used instead of `() => void`.
+  * This rule is fixable and it will substituted `() => void` with `VoidFunction`.
 * inspects only `.ts` and `.tsx` files
 
 [regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following rules:
@@ -503,6 +506,7 @@ if using Gradle:
 [regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js):
 
 * It has only 1 rule to check that `"` are not use in jsx.
+  * This rule is fixable and it will substituted `"` with `'`.
 * Inspects only `.jsx` and `.tsx` files.
 
 [regex[no-react-fragment.jsx]: Eslint Regex Rules for JSX Fragments](config/configs/regex/no-react-fragment-jsx.js):
@@ -534,6 +538,7 @@ if using Gradle:
 [regex[react.import]: Eslint Regex Rules for React Import](config/configs/regex/react-import.js):
 
 * It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
+  * This rule is fixable and it will substituted `import * as React from 'react'` with `import React from 'react'`.
   * React exports a namespace, not a Module.
 
 [regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).
