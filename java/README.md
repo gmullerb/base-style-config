@@ -94,7 +94,7 @@ To highlights:
 * Type parameters names must be in uppercase, have a length between 3 and 23, starting with a letter.
 * Brackets style: Stroustrup.
 * Indentation: "Tab" character = 2 spaces.
-* Line length limit: 144 characters per line.
+* Line length limit: 160 characters per line.
   * Line with a long string are ignored.
 * Method length limit: 30 lines per method [2].
   * Java/Groovy Code [3] will have a limit of 25 [4] public/protected/private methods (being a reasonable limit for functional implementations, which tend to have several small functions/methods).[5]

@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.7.0 - May 2021
+
+* Increase line size.
+* Adds warning regex rule `regex[no-equality]` to avoid using `===` or `==`, recommendation is to substitute with `!(!==)`.
+
 ## 2.6.0 - January 2020
 
 * Makes rules `regex[void.function.ts]`, `regex[quotes.jsx]` and `regex[react.import]` fixable.

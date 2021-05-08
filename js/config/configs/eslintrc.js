@@ -61,7 +61,7 @@ module.exports = {
     'max-classes-per-file': 'error',
     'max-len': [
       'error', {
-        code: 144,
+        code: 160,
         ignoreComments: true,
         ignoreTrailingComments: false,
         ignoreStrings: true,

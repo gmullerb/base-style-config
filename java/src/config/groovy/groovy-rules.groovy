@@ -62,7 +62,7 @@ ruleset {
       doNotApplyToFileNames = GRADLE_FILES
     }
     LineLength {
-      length = 144
+      length = 160
       priority = 3
       ignoreLineRegex = /^\h*.{0,2}["''].*["'][\?\+\)\(\}\]\[\.\=:,;]*$|^package\s|^import\s|public void should\w*()|file:\/\/|http:\/\/|https:\/\/|ftp:\/\/|classpath:|jar:|zip:|find\w*By\w*\(|read\w*By\w*\(|query\w*By\w*\(|get\w*By\w*\(|count\w*By\w*\(/
     }

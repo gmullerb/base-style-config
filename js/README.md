@@ -79,7 +79,7 @@ The idea is to have a common and "single" source of code styling rules, which ca
 
 ## Background
 
-[Background/Conventions/Voids](readme/background.md)
+[Background/Conventions/Voids](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/background.md)
 
 __________________
 
@@ -87,7 +87,7 @@ __________________
 
 ### JS Rules
 
-[Set of Eslint Rules for JS](config/configs/eslintrc.js).
+[Set of Eslint Rules for JS](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/eslintrc.js).
 
 1 . Add dependencies:
 
@@ -142,11 +142,11 @@ if using Gradle:
   }
 ```
 
-> Can be complemented with [id-rules](config/configs/id-eslintrc.js).
+> Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
 
 ### Import Rules
 
-[Set of Eslint Rules for Import](config/configs/import-eslintrc.js).
+[Set of Eslint Rules for Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/import-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -205,7 +205,7 @@ if using Gradle:
 
 ### Unused Import Rules
 
-[unused-imports-rules: Set of Eslint Rules for Unused imports](config/configs/unused-import-eslintrc.js).
+[unused-imports-rules: Set of Eslint Rules for Unused imports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/unused-import-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -264,7 +264,7 @@ if using Gradle:
 
 ### TS Rules
 
-[Set of Eslint Rules for Typescript](config/configs/typescript-eslintrc.js).
+[Set of Eslint Rules for Typescript](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/typescript-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -327,7 +327,7 @@ if using Gradle:
 
 ### React Rules
 
-[Set of Eslint Rules for React](config/configs/react-eslintrc.js).
+[Set of Eslint Rules for React](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/react-eslintrc.js).
 
 1 . Add dependencies:
 
@@ -375,7 +375,7 @@ with hooks:
 
 with hooks:
 
-[Set of Eslint Rules for React with Hooks](config/configs/react-with-hooks-eslintrc.js).
+[Set of Eslint Rules for React with Hooks](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/react-with-hooks-eslintrc.js).
 
 `eslintrc.json`:
 
@@ -477,73 +477,77 @@ if using Gradle:
 
 #### Custom Regex
 
-[regex[copyright]: Eslint Regex Rules for Copyright](config/configs/regex/copyright.js):
+[regex[copyright]: Eslint Regex Rules for Copyright](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/copyright.js):
 
-* It has only 1 rule to check that "`Copyright (c)`" is present in the file.
+* It has only 1 **error** rule to check that "`Copyright (c)`" is present in the file.
 
-[regex[no-export-group]: Eslint Regex Rules for Exports](config/configs/regex/no-export-group.js):
+[regex[no-equality]: Eslint Regex Rules to avoid using `===` or `==`](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-equality.js):
 
-* It has only 1 rule to check that export group is not used.
+* It has only 1 **warning** rule to check that if `===` or `==` is present in the file.
 
-[regex[immutable.ts]: Eslint Regex Rules for Immutable Typescript](config/configs/regex/immutable-ts.js):
+[regex[no-export-group]: Eslint Regex Rules for Exports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-export-group.js):
 
-* It has only 1 rule to check that `public` fields are `readonly`.
+* It has only 1 **error** rule to check that export group is not used.
+
+[regex[immutable.ts]: Eslint Regex Rules for Immutable Typescript](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/immutable-ts.js):
+
+* It has only 1 **error** rule to check that `public` fields are `readonly`.
 * Inspects only `.ts` and `.tsx` files.
 
-[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](config/configs/regex/void-function-ts.js):
+[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/void-function-ts.js):
 
-* It has only 1 rule to check that `VoidFunction` is used instead of `() => void`.
+* It has only 1 **error** rule to check that `VoidFunction` is used instead of `() => void`.
   * This rule is fixable and it will substituted `() => void` with `VoidFunction`.
 * inspects only `.ts` and `.tsx` files
 
-[regex[jsx]: Set of Eslint Regex Rules for JSX](config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following rules:
+[regex[jsx]: Set of Eslint Regex Rules for JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following **error** rules:
 
 * JSX code should start in its own line,
 * JSX code should end at its own line,
 * Only One JSX tag per line, , except for `<span>`, `<a>` or `<i>`.
 * No Opening Brace at the end of the line.
 
-[regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](config/configs/regex/quotes-jsx.js):
+[regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/quotes-jsx.js):
 
-* It has only 1 rule to check that `"` are not use in jsx.
+* It has only 1 **error** rule to check that `"` are not use in jsx.
   * This rule is fixable and it will substituted `"` with `'`.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[no-react-fragment.jsx]: Eslint Regex Rules for JSX Fragments](config/configs/regex/no-react-fragment-jsx.js):
+[regex[no-react-fragment.jsx]: Eslint Regex Rules for JSX Fragments](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-react-fragment-jsx.js):
 
-* It has only 1 rule to check that `React.Fragment` is not used in jsx.
+* It has only 1 **error** rule to check that `React.Fragment` is not used in jsx.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[allman-braces.jsx]: Set of Eslint Regex Rules for Allman braces](config/configs/regex/allman-braces-jsx.js):
+[regex[allman-braces.jsx]: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/allman-braces-jsx.js):
 
-* Opening Brace in its own line [1].
+* It has only 1 **error** rule to check that Opening Brace in its own line [1].
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[stroustrup-braces.jsx]: Set of Eslint Regex Rules for Allman braces](config/configs/regex/stroustrup-braces-jsx.js):
+[regex[stroustrup-braces.jsx]: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/stroustrup-braces-jsx.js):
 
-* Braces should follow Stroustrup [1] (this will reduce Verbosity without loosing Readability).
+* It has only 1 **error** rule to check that Braces should follow Stroustrup [1] (this will reduce Verbosity without loosing Readability).
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[no-html-entities.jsx]: Eslint Regex Rules that disallow the use of HTML entities](config/configs/regex/no-html-entities-jsx.js):
+[regex[no-html-entities.jsx]: Eslint Regex Rules that disallow the use of HTML entities](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-html-entities-jsx.js):
 
-* It has only 1 rule to check that `&abc123;` or `&#123;`are not use in jsx.
+* It has only 1 **error** rule to check that `&abc123;` or `&#123;`are not use in jsx.
   * Use UTF-8 characters which are "universal" and more Readable.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[intl.jsx]: Eslint Regex Rules for FormatJS in JSX](config/configs/regex/intl-jsx.js):
+[regex[intl.jsx]: Eslint Regex Rules for FormatJS in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/intl-jsx.js):
 
-* It has only 1 rule to check that `formatMessage` and `FormattedMessage` are not mixed in the same file.
+* It has only 1 **error** rule to check that `formatMessage` and `FormattedMessage` are not mixed in the same file.
 * Inspects only `.jsx` and `.tsx` files.
 
-[regex[react.import]: Eslint Regex Rules for React Import](config/configs/regex/react-import.js):
+[regex[react.import]: Eslint Regex Rules for React Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/react-import.js):
 
-* It has only 1 rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
+* It has only 1 **error** rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
   * This rule is fixable and it will substituted `import * as React from 'react'` with `import React from 'react'`.
   * React exports a namespace, not a Module.
 
-[regex[test]: Set of Eslint Regex Rules for Test](config/configs/regex/test.js).
+[regex[test]: Set of Eslint Regex Rules for Test](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/test.js).
 
-* It has only 1 rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
+* It has only 1 **error** rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
 
 > Some of these rule may be obsolete in the future as other "core" lint rules arise.  
 > [1] These rules checks new line breaks, and eslint-plugin-regex does not inform about the specific line where the rule was broken.

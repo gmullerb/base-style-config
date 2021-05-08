@@ -9,6 +9,7 @@ const rules = new Map([
   [ 'react-rules', './configs/react-eslintrc.js' ],
   [ 'react-with-hooks-rules', './configs/react-with-hooks-eslintrc.js' ],
   [ 'regex[copyright]', './configs/regex/copyright.js' ],
+  [ 'regex[no-equality]', './configs/regex/no-equality.js' ],
   [ 'regex[no-export-group]', './configs/regex/no-export-group.js' ],
   [ 'regex[immutable.ts]', './configs/regex/immutable-ts.js' ],
   [ 'regex[void.function.ts]', './configs/regex/void-function-ts.js' ],
