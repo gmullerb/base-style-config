@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
@@ -97,7 +97,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     ..
 ```
 
@@ -144,6 +144,62 @@ if using Gradle:
 
 > Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
 
+### Common Rules
+
+[Set of Common Eslint Rules for using in "any" type of file](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/common-eslintrc.js).
+
+* To be used in conjunction with [any-eslint-parser](https://any-eslint-parser.github.io/).
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  ..
+  "devDependencies": {
+    "any-eslint-parser": "1.0.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "2.8.0",
+    ..
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [ "plugin:base-style-config/common-rules" ],
+  "plugins": [ "base-style-config" ],
+  "parser": "any-eslint-parser",
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint ..",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+> Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
+
 ### Import Rules
 
 [Set of Eslint Rules for Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/import-eslintrc.js).
@@ -156,7 +212,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-import": "^2.18.2",
     ..
 ```
@@ -215,7 +271,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
@@ -274,7 +330,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     ..
@@ -337,7 +393,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-react": "^7.14.3"
     ..
 ```
@@ -349,7 +405,7 @@ with hooks:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     ..
@@ -427,7 +483,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.6.0",
+    "eslint-plugin-base-style-config": "2.8.0",
     "eslint-plugin-regex": "^1.3.0",
     ..
 ```

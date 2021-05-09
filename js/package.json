@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -14,7 +14,7 @@
     "url": "https://github.com/gmullerb/base-style-config"
   },
   "bugs": {
-    "url": "https://gitlab.com/gmullerb/base-style-config/issues"
+    "url": "https://github.com/gmullerb/base-style-config/issues"
   },
   "keywords": [
     "any-eslint-parser",
@@ -27,10 +27,11 @@
     "style",
     "standards",
     "quality",
-    "hint",
+    "syntax",
     "rule",
     "code",
     "coding",
+    "hint",
     "guide",
     "checker",
     "linter",
@@ -46,9 +47,9 @@
     "eslint-plugin"
   ],
   "scripts": {
-    "lint.common": "echo ==== Lint Common ==== && lintspaces --newline --indentation \"spaces\"  ./config/**/*.* ./*.yml ./*.json ./*.md ./*.sh ./*.txt ./*.properties ./*.gradle ./.gitignore",
+    "lint.any": "echo ==== Lint Any ====  && eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
     "lint.config": "echo ==== Lint Config ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
-    "lint": "npm run lint.common && npm run lint.config",
+    "lint": "npm run lint.any && npm run lint.config",
     "test": "jest",
     "prepack": "echo ==== Build Package ====",
     "check": "npm install && npm run lint && npm run test && mkdir -p build && cd build && npm pack ../",
@@ -66,7 +67,7 @@
   "devDependencies": {
     "eslint": "^7.2.0",
     "jest": "^26.4.2",
-    "lintspaces-cli": "^0.7.1"
+    "any-eslint-parser": "1.0.0-alpha"
   },
   "jest": {
     "testPathIgnorePatterns": [

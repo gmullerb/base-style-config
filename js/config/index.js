@@ -5,6 +5,7 @@ const merge = require('deepmerge')
 const rules = new Map([
   [ 'js-rules', './configs/eslintrc.js' ],
   [ 'id-rules', './configs/id-eslintrc.js' ],
+  [ 'common-rules', './configs/common-eslintrc.js' ],
   [ 'import-rules', './configs/import-eslintrc.js' ],
   [ 'react-rules', './configs/react-eslintrc.js' ],
   [ 'react-with-hooks-rules', './configs/react-with-hooks-eslintrc.js' ],

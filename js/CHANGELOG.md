@@ -1,5 +1,9 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.8.0 - May 2021
+
+* Adds `common-rules` for using in "any" type of file in conjunction with [any-eslint-parser](https://any-eslint-parser.github.io/).
+
 ## 2.7.0 - May 2021
 
 * Increase line size.
