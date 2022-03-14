@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -62,12 +62,12 @@
     "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
-    "eslint": "^7.1.0"
+    "eslint": ">=7.1.0"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
+    "eslint": "^8.11.0",
     "jest": "^26.4.2",
-    "any-eslint-parser": "1.0.0-alpha"
+    "any-eslint-parser": "^1.0.1"
   },
   "jest": {
     "testPathIgnorePatterns": [

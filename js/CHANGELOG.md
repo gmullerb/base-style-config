@@ -1,5 +1,9 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.8.1 - March 2022
+
+* Fixes peerDependencies.
+
 ## 2.8.0 - May 2021
 
 * Adds `common-rules` for using in "any" type of file in conjunction with [any-eslint-parser](https://any-eslint-parser.github.io/).

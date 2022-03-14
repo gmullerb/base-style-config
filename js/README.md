@@ -28,7 +28,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
@@ -97,7 +97,7 @@ __________________
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     ..
 ```
 
@@ -159,7 +159,7 @@ if using Gradle:
   "devDependencies": {
     "any-eslint-parser": "1.0.0",
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     ..
 ```
 
@@ -212,7 +212,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-import": "^2.18.2",
     ..
 ```
@@ -271,7 +271,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-unused-imports": "0.1.2",
     ..
 ```
@@ -330,7 +330,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
     ..
@@ -393,7 +393,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-react": "^7.14.3"
     ..
 ```
@@ -405,7 +405,7 @@ with hooks:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     ..
@@ -483,7 +483,7 @@ if using Gradle:
   ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.0",
+    "eslint-plugin-base-style-config": "2.8.1",
     "eslint-plugin-regex": "^1.3.0",
     ..
 ```
