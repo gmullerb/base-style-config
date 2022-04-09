@@ -1,5 +1,13 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.9.0 - April 2022
+
+* Removes rules `array-element-newline`, `array-bracket-spacing`, `object-curly-spacing` this should be now locally set.
+* Changes `complexity` `max` to 15.
+* Changes `max-len` `ignoreRegExpLiterals` to `true`.
+* Updates `eslint-plugin-regex` to new version `1.9.0` and start using new Name Regex Rules.
+* Updates Documentation.
+
 ## 2.8.1 - March 2022
 
 * Fixes peerDependencies.
