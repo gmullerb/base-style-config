@@ -1,6 +1,6 @@
 const config = require('../config/configs/regex/immutable-ts')
 
-const invalidRegex = new RegExp(config.rules['regex/invalid'][1][0].regex)
+const invalidRegex = new RegExp(config.rules['regex/disuse-mutable-public-fields'][1][0].regex)
 
 it('should not allow public not readonly', () => {
   expect(invalidRegex.test('public FIELD=value')).toBe(true)

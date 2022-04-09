@@ -14,7 +14,20 @@ module.exports = {
     'react/jsx-max-props-per-line': [
       'error',
       {
-        maximum: 4
+        maximum: 1,
+        when: 'multiline'
+      }
+    ],
+    'react/jsx-newline': [
+      'error',
+      {
+        prevent: true
+      }
+    ],
+    'react/jsx-one-expression-per-line': [
+      'error',
+      {
+        allow: 'single-child'
       }
     ],
     'react/jsx-sort-props': [

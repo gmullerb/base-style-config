@@ -1,10 +1,13 @@
 //  Copyright (c) 2020 Gonzalo Müller Bravo.
 //  Licensed under the MIT License (MIT), see LICENSE.txt
+const { addRegexRuleName } = require('eslint-plugin-regex')
+
+addRegexRuleName('disuse-mutable-public-fields')
 
 module.exports = {
   plugins: [ 'regex' ],
   rules: {
-    'regex/invalid': [
+    'regex/disuse-mutable-public-fields': [
       'error', [
         {
           message: 'public class fields should be readonly',

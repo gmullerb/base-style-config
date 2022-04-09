@@ -1,6 +1,6 @@
 const config = require('../config/configs/regex/no-equality')
 
-const invalidRegex = new RegExp(config.rules['regex/invalid'][1][0].regex)
+const invalidRegex = new RegExp(config.rules['regex/avoid-equality'][1][0].regex)
 
 it('should not allow ===', () => {
   expect(invalidRegex.test('some===some')).toBe(true)

@@ -8,14 +8,6 @@ module.exports = {
       'error',
       'consistent'
     ],
-    'array-bracket-spacing': [
-      'error',
-      'always'
-    ],
-    'array-element-newline': [
-      'error',
-      'consistent'
-    ],
     'block-scoped-var': 'error',
     'brace-style': [
       'error',
@@ -24,7 +16,7 @@ module.exports = {
     'camelcase': 'error',
     'complexity': [
       'error', {
-        max: 8
+        max: 15
       }
     ],
     'comma-spacing': 'error',
@@ -66,7 +58,7 @@ module.exports = {
         ignoreTrailingComments: false,
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
-        ignoreRegExpLiterals: false
+        ignoreRegExpLiterals: true
       }
     ],
     'max-lines': 'error',
@@ -129,14 +121,6 @@ module.exports = {
     'object-curly-newline': [
       'error', {
         consistent: true
-      }
-    ],
-    'object-curly-spacing': [
-      'error',
-      'always',
-      {
-        arraysInObjects: false,
-        objectsInObjects: false
       }
     ],
     'object-property-newline': [

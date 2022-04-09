@@ -1,6 +1,6 @@
 const config = require('../config/configs/regex/no-html-entities-jsx')
 
-const invalidRegex = new RegExp(config.rules['regex/invalid'][1][0].regex)
+const invalidRegex = new RegExp(config.rules['regex/disuse-html-entities'][1][0].regex)
 
 it('should not allow html entity by name', () => {
   expect(invalidRegex.test('&lt;')).toBe(true)

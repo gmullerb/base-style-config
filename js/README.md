@@ -25,18 +25,16 @@ __________________
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "eslint-plugin-regex": "^1.3.0",
+    "eslint-plugin-regex": "^1.9.0",
     "eslint-plugin-unused-imports": "0.1.2",
-    ..
 ```
 
 2 . Configure eslint to use rules from `base-style-config`:
@@ -52,10 +50,6 @@ __________________
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remove the rule sets that are not necessary according to your needs.  
@@ -77,15 +71,59 @@ The idea is to have a common and "single" source of code styling rules, which ca
 
 > In the future, Set of rules will be extracted to an `eslint-config` and Mechanism for Merging Eslint configurations will be extracted to an `eslint-plugin`.
 
-## Background
-
-[Background/Conventions/Voids](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/background.md)
-
 __________________
 
 ## Using/Configuration
 
-### JS Rules
+### Mixing Rules
+
+Due to the way eslint merge rules, it's not possible to merge [Eslint Regex rules](https://www.npmjs.com/package/eslint-plugin-regex). this plugin provide [1] a mechanism for merging any set of rules [2] => **just use commas to separate rules names** after `plugin:base-style-config`:
+
+e.g. Mixing:
+
+`eslintrc.json`:
+
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules, regex[jsx], regex[quotes.jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+```
+
+or
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/regex[jsx], regex[quotes.jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+```
+
+or
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/typescript-rules",
+    "plugin:base-style-config/regex[jsx]"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+```
+
+> [1] In the future, the Mechanism for Merging Eslint configurations will be extracted to its own `eslint-plugin`.  
+> [2] For the moment, only `base-style-config` rules.
+
+### `js-rules`
 
 [Set of Eslint Rules for JS](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/eslintrc.js).
 
@@ -94,11 +132,9 @@ __________________
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
-    ..
+    "eslint-plugin-base-style-config": "2.9.0",
 ```
 
 2 . Configure eslint:
@@ -113,10 +149,6 @@ __________________
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -144,7 +176,7 @@ if using Gradle:
 
 > Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
 
-### Common Rules
+### `common-rules`
 
 [Set of Common Eslint Rules for using in "any" type of file](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/common-eslintrc.js).
 
@@ -155,12 +187,10 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "any-eslint-parser": "1.0.0",
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
-    ..
+    "eslint-plugin-base-style-config": "2.9.0",
 ```
 
 2 . Configure eslint:
@@ -183,7 +213,7 @@ if using Gradle:
 
 ```json
   "scripts": {
-    "someESlintTask": "eslint ..",
+    "someESlintTask": "eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
   },
 ```
 
@@ -200,7 +230,7 @@ if using Gradle:
 
 > Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
 
-### Import Rules
+### `import-rules`
 
 [Set of Eslint Rules for Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/import-eslintrc.js).
 
@@ -209,12 +239,10 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "eslint-plugin-import": "^2.18.2",
-    ..
 ```
 
 2 . Configure eslint:
@@ -229,10 +257,6 @@ if using Gradle:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -259,7 +283,7 @@ if using Gradle:
   }
 ```
 
-### Unused Import Rules
+### `unused-import-rules`
 
 [unused-imports-rules: Set of Eslint Rules for Unused imports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/unused-import-eslintrc.js).
 
@@ -268,12 +292,10 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "eslint-plugin-unused-imports": "0.1.2",
-    ..
 ```
 
 2 . Configure eslint:
@@ -288,10 +310,6 @@ if using Gradle:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -318,7 +336,7 @@ if using Gradle:
   }
 ```
 
-### TS Rules
+### `typescript-rules`
 
 [Set of Eslint Rules for Typescript](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/typescript-eslintrc.js).
 
@@ -327,13 +345,11 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
-    ..
 ```
 
 2 . Configure eslint:
@@ -349,10 +365,6 @@ if using Gradle:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -381,7 +393,7 @@ if using Gradle:
   }
 ```
 
-### React Rules
+### `react-rules`
 
 [Set of Eslint Rules for React](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/react-eslintrc.js).
 
@@ -390,25 +402,21 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "eslint-plugin-react": "^7.14.3"
-    ..
 ```
 
 with hooks:
 
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
+    "eslint-plugin-base-style-config": "2.9.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    ..
 ```
 
 2 . Configure eslint:
@@ -423,10 +431,6 @@ with hooks:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 with hooks:
@@ -443,10 +447,6 @@ with hooks:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -480,12 +480,10 @@ if using Gradle:
 `package.json`:
 
 ```json
-  ..
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.8.1",
-    "eslint-plugin-regex": "^1.3.0",
-    ..
+    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-regex": "^1.9.0",
 ```
 
 > `eslint-plugin-regex` version `1.3.0` is required since this version add replacements.
@@ -502,10 +500,6 @@ if using Gradle:
   "plugins": [
     "base-style-config"
   ],
-  "rules": {
-    ..
-  }
-}
 ```
 
 > Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
@@ -533,163 +527,94 @@ if using Gradle:
 
 #### Custom Regex
 
-[regex[copyright]: Eslint Regex Rules for Copyright](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/copyright.js):
+[**`regex[copyright]`**: Eslint Regex Rules for Copyright](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/copyright.js):
 
-* It has only 1 **error** rule to check that "`Copyright (c)`" is present in the file.
+* `regex/copyright-required`: checks that "`Copyright (c)`" is present in the file.
+  * default error level: **error**.
 
-[regex[no-equality]: Eslint Regex Rules to avoid using `===` or `==`](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-equality.js):
+[**`regex[no-equality]`**: Eslint Regex Rules to avoid using `===` or `==`](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-equality.js):
 
-* It has only 1 **warning** rule to check that if `===` or `==` is present in the file.
+* `regex/avoid-equality`: checks that `===` or `==` is used, prefer inequalities.
+  * default error level: **warning**.
 
-[regex[no-export-group]: Eslint Regex Rules for Exports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-export-group.js):
+[**`regex[no-export-group]`**: Eslint Regex Rules for Exports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-export-group.js):
 
-* It has only 1 **error** rule to check that export group is not used.
+* `regex/disuse-export-group`: checks that export group is not used.
+  * default error level: **error**.
+  * Using `export` group makes maintainability harder, because adding/removing requires two points of modification. (Although single source of truth can be broke, more than 1 export sentence)
 
-[regex[immutable.ts]: Eslint Regex Rules for Immutable Typescript](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/immutable-ts.js):
+[**`regex[immutable.ts]`**: Eslint Regex Rules for Immutable Typescript](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/immutable-ts.js):
 
-* It has only 1 **error** rule to check that `public` fields are `readonly`.
-* Inspects only `.ts` and `.tsx` files.
+* regex/disuse-mutable-public-fields: checks that `public` fields are `readonly`.
+  * default error level: **error**.
+  * Inspects only `.ts` and `.tsx` files.
 
-[regex[void.function.ts]: Eslint Regex Rules for Void Function Typings](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/void-function-ts.js):
+[**`regex[void.function.ts]`**: Eslint Regex Rules for Void Function Typings](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/void-function-ts.js):
 
-* It has only 1 **error** rule to check that `VoidFunction` is used instead of `() => void`.
+* `regex/disuse () => void`: checks that `VoidFunction` is used instead of `() => void`.
+  * default error level: **error**.
   * This rule is fixable and it will substituted `() => void` with `VoidFunction`.
-* inspects only `.ts` and `.tsx` files
+  * inspects only `.ts` and `.tsx` files
 
-[regex[jsx]: Set of Eslint Regex Rules for JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files, has the following **error** rules:
+[**`regex[jsx]`**: Set of Eslint Regex Rules for JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/jsx.js): inspect only `jsx` and `tsx` files:
 
-* JSX code should start in its own line,
-* JSX code should end at its own line,
-* Only One JSX tag per line, , except for `<span>`, `<a>` or `<i>`.
-* No Opening Brace at the end of the line.
+* `regex/disuse starting jsx with no-jsx`: checks that JSX code should start in its own line.
+  * default error level: **error**.
+* `regex/disuse ending jsx with no-jsx`: JSX code should end at its own line.
+  * default error level: **error**.
+* `regex/disuse-several-tags-per-line-in-jsx`: checks that Only One JSX tag per line is use, , except for `<span>`, `<a>` or `<i>`.
+  * default error level: **error**.
 
-[regex[quotes.jsx]: Eslint Regex Rules for Quotes in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/quotes-jsx.js):
+[**`regex[quotes.jsx]`**: Eslint Regex Rules for Quotes in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/quotes-jsx.js):
 
-* It has only 1 **error** rule to check that `"` are not use in jsx.
+* `regex/disuse-double-quotes-in-jsx`: checks that `"` are not use in jsx.
+  * default error level: **error**.
   * This rule is fixable and it will substituted `"` with `'`.
-* Inspects only `.jsx` and `.tsx` files.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[no-react-fragment.jsx]: Eslint Regex Rules for JSX Fragments](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-react-fragment-jsx.js):
+[**`regex[no-react-fragment.jsx]`**: Eslint Regex Rules for JSX Fragments](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-react-fragment-jsx.js):
 
-* It has only 1 **error** rule to check that `React.Fragment` is not used in jsx.
-* Inspects only `.jsx` and `.tsx` files.
+* `regex/disuse React.Fragment`: checks that `React.Fragment` is not used in jsx, instead use `<></>`.
+  * default error level: **error**.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[allman-braces.jsx]: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/allman-braces-jsx.js):
+[**`regex[allman-braces.jsx]`**: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/allman-braces-jsx.js):
 
-* It has only 1 **error** rule to check that Opening Brace in its own line [1].
-* Inspects only `.jsx` and `.tsx` files.
+* `regex/disuse-same-line-opening-brace-in-jsx`: checks that Opening Brace in its own line.
+  * default error level: **error**.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[stroustrup-braces.jsx]: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/stroustrup-braces-jsx.js):
+[**`regex[stroustrup-braces.jsx]`**: Set of Eslint Regex Rules for Allman braces](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/stroustrup-braces-jsx.js):
 
-* It has only 1 **error** rule to check that Braces should follow Stroustrup [1] (this will reduce Verbosity without loosing Readability).
-* Inspects only `.jsx` and `.tsx` files.
+* `regex/disuse-opening-brace-in-new-line-in-jsx`: checks that Braces should follow Stroustrup (this will reduce Verbosity without loosing Readability).
+  * default error level: **error**.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[no-html-entities.jsx]: Eslint Regex Rules that disallow the use of HTML entities](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-html-entities-jsx.js):
+[**`regex[no-html-entities.jsx]`**: Eslint Regex Rules that disallow the use of HTML entities](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-html-entities-jsx.js):
 
-* It has only 1 **error** rule to check that `&abc123;` or `&#123;`are not use in jsx.
+* `regex/disuse-html-entities`: checks that `&abc123;` or `&#123;`are not use in jsx.
+  * default error level: **error**.
   * Use UTF-8 characters which are "universal" and more Readable.
-* Inspects only `.jsx` and `.tsx` files.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[intl.jsx]: Eslint Regex Rules for FormatJS in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/intl-jsx.js):
+[**`regex[intl.jsx]`**: Eslint Regex Rules for FormatJS in JSX](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/intl-jsx.js):
 
-* It has only 1 **error** rule to check that `formatMessage` and `FormattedMessage` are not mixed in the same file.
-* Inspects only `.jsx` and `.tsx` files.
+* `regex/disuse-mixing-formatMessage-&-FormattedMessage`: checks that `formatMessage` and `FormattedMessage` are not mixed in the same file.
+  * default error level: **error**.
+  * Inspects only `.jsx` and `.tsx` files.
 
-[regex[react.import]: Eslint Regex Rules for React Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/react-import.js):
+[**`regex[react.import]`**: Eslint Regex Rules for React Import](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/react-import.js):
 
-* It has only 1 **error** rule to check that `import * as React from 'react'` instead of `import React from 'react'`.
+* `regex/disuse 'import React from "react"'`: checks that `import * as React from 'react'` instead of `import React from 'react'`.
+  * default error level: **error**.
   * This rule is fixable and it will substituted `import * as React from 'react'` with `import React from 'react'`.
   * React exports a namespace, not a Module.
 
-[regex[test]: Set of Eslint Regex Rules for Test](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/test.js).
+[**`regex[test]`**: Set of Eslint Regex Rules for Test](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/test.js).
 
 * It has only 1 **error** rule to check that name of variables create with `jasmine.createSpy()` or `jest.fn()` are prefixed with `mock` or `stub`.
 
 > Some of these rule may be obsolete in the future as other "core" lint rules arise.  
-> [1] These rules checks new line breaks, and eslint-plugin-regex does not inform about the specific line where the rule was broken.
-
-#### Mixing Regex/Rules
-
-Due to the way eslint merge rules, it's not possible to merge [Eslint Regex rules](https://www.npmjs.com/package/eslint-plugin-regex). this plugin provide [1] a mechanism for merging any set of rules (not just Regex rules [2]) => **just use commas to separate rules names** after `plugin:base-style-config`:
-
-e.g. Mixing:
-
-`eslintrc.json`:
-
-```json
-{
-  "extends": [
-    "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx], regex[quotes.jsx]"
-  ],
-  "plugins": [
-    "base-style-config"
-  ],
-  "rules": {
-    ..
-  }
-}
-```
-
-or
-
-```json
-{
-  "extends": [
-    "plugin:base-style-config/typescript-rules, regex[jsx], regex[quotes.jsx]"
-  ],
-  "plugins": [
-    "base-style-config"
-  ],
-  "rules": {
-    ..
-  }
-}
-```
-
-When using only one regex rule:
-
-```json
-{
-  "extends": [
-    "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx]"
-  ],
-  "plugins": [
-    "base-style-config"
-  ],
-  "rules": {
-    ..
-  }
-}
-```
-
-When using more than one regex rule, **must be mixed**:
-
-```json
-{
-  "extends": [
-    "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx], regex[quotes.jsx]"
-  ],
-  "plugins": [
-    "base-style-config"
-  ],
-  "rules": {
-    ..
-  }
-}
-```
-
-Be aware that:
-
-* If some extension has `regex/required` and/or `regex/invalid` rules will override any merging for those.
-  * If extending locally, re-add "plugin:base-style-config/..", e.g. `.eslintrc.js` has `"plugin:base-style-config/regex[jsx], regex[quotes.jsx]"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `regex[immutable.ts]`, then `src/.eslintrc.js` should use `"plugin:base-style-config/regex[jsx], regex[quotes.jsx], regex[immutable.ts]"`.
-    * **this only applies to regex rules**, mixing other rules have no issues, e.g. `.eslintrc.js` has `"plugin:base-style-config/js-rules, import-rules"`, and `src/.eslintrc.js` extends `.eslintrc.js` and add `typescript-rules`, then `src/.eslintrc.js` may be just `"plugin:base-style-config/typescript-rules"`.
-* having local `regex/required` and/or `regex/invalid` rules will override any merging for those.
-
-> [1] In the future, the Mechanism for Merging Eslint configurations will be extracted to its own `eslint-plugin`.  
-> [2] For the moment, only `base-style-config` rules.
 
 ### Errors
 
@@ -704,11 +629,15 @@ It means the rule is not found in the version of the respective plugin.
 
 Check `devDependencies` version for the set of rules using in the project, i.e. check version for `eslint`, `eslint-plugin-import`, `eslint-plugin-react`, `eslint-plugin-react-hooks` and/or `@typescript-eslint/eslint-plugin`
 
+### When also developing with Java or Groovy
+
+[Conventions/Voids](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/background.md)
+
 __________________
 
 ## Extending/Developing
 
-[Developing](readme/developing.md)
+[Developing](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/developing.md)
 
 ## Contributing
 
@@ -721,9 +650,7 @@ __________________
 
 ## Documentation
 
-* [`CHANGELOG.md`](CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
-
-> [1] [Keep a Changelog](http://keepachangelog.com)
+* [`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
 
 ## License
 

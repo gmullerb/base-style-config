@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-base-style-config",
   "description": "A Set of Essential ESLint rules for JS, TS and React",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "license": "MIT",
   "author": "Gonzalo Müller Bravo",
   "main": "config/index.js",
@@ -48,8 +48,8 @@
   ],
   "scripts": {
     "lint.any": "echo ==== Lint Any ====  && eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
-    "lint.config": "echo ==== Lint Config ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
-    "lint": "npm run lint.any && npm run lint.config",
+    "lint.js": "echo ==== Lint JS ==== && eslint --config config/configs/eslintrc.js --color \"**/*.js\"",
+    "lint": "npm run lint.any && npm run lint.js",
     "test": "jest",
     "prepack": "echo ==== Build Package ====",
     "check": "npm install && npm run lint && npm run test && mkdir -p build && cd build && npm pack ../",
@@ -62,10 +62,12 @@
     "deepmerge": "^4.2.2"
   },
   "peerDependencies": {
-    "eslint": ">=7.1.0"
+    "eslint": ">=7.1.0",
+    "eslint-plugin-regex": ">=1.9.0"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
+    "eslint": ">=8.12.0",
+    "eslint-plugin-regex": ">=1.9.0-chi",
     "jest": "^26.4.2",
     "any-eslint-parser": "^1.0.1"
   },

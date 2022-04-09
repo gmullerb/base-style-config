@@ -231,9 +231,7 @@ __________________
 
 ## Documentation
 
-* [`CHANGELOG.md`](CHANGELOG.md): add information of notable changes for each version here, chronologically ordered [1].
-
-> [1] [Keep a Changelog](http://keepachangelog.com)
+* [`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
 
 ## License
 
