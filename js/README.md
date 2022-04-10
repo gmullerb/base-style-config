@@ -54,11 +54,6 @@ __________________
 
 > Remove the rule sets that are not necessary according to your needs.  
 
-Take a look to Regex rules:
-
-* [Custom Eslint Regex rules](#custom-regex)
-* [Mixing rules](#mixing-regexrules)
-
 __________________
 
 ## Goals
@@ -75,14 +70,13 @@ __________________
 
 ## Using/Configuration
 
-### Mixing Rules
+### Selecting Rules
 
-Due to the way eslint merge rules, it's not possible to merge [Eslint Regex rules](https://www.npmjs.com/package/eslint-plugin-regex). this plugin provide [1] a mechanism for merging any set of rules [2] => **just use commas to separate rules names** after `plugin:base-style-config`:
+Due to the way eslint merge rules, it's not possible to select a subset of the rules from a package of rules, this plugin provides [1] a mechanism for doing that[2] => **just use commas to separate rules names** after `plugin:base-style-config`:
 
-e.g. Mixing:
+e.g. Selecting typescript-rules, regex[jsx] and regex[quotes.jsx] rules:
 
 `eslintrc.json`:
-
 
 ```json
 {
@@ -113,15 +107,70 @@ or
 {
   "extends": [
     "plugin:base-style-config/typescript-rules",
-    "plugin:base-style-config/regex[jsx]"
+    "plugin:base-style-config/regex[jsx]",
+    "plugin:base-style-config/regex[quotes.jsx]"
   ],
   "plugins": [
     "base-style-config"
   ],
 ```
 
-> [1] In the future, the Mechanism for Merging Eslint configurations will be extracted to its own `eslint-plugin`.  
+> [1] In the future, the Mechanism for Selecting and Merging Eslint configurations will be extracted to its own `eslint-plugin`.  
 > [2] For the moment, only `base-style-config` rules.
+
+### `common-rules`
+
+[Set of Common Eslint Rules for using in "any" type of file](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/common-eslintrc.js).
+
+* To be used in conjunction with [any-eslint-parser](https://any-eslint-parser.github.io/).
+
+1 . Add dependencies:
+
+`package.json`:
+
+```json
+  "devDependencies": {
+    "any-eslint-parser": "1.0.1",
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "2.9.0",
+```
+
+2 . Configure eslint:
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [ "plugin:base-style-config/common-rules" ],
+  "plugins": [ "base-style-config" ],
+  "parser": "any-eslint-parser",
+}
+```
+
+> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
+
+3 . Add to the respective ESLint script task:
+
+`package.json`:
+
+```json
+  "scripts": {
+    "someESlintTask": "eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
+  },
+```
+
+if using Gradle:
+
+```gradle
+  task assessSomeESLint(type: NpmTask) {
+    args = [
+      'run',
+      'someESlintTask'
+    ]
+  }
+```
+
+> Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
 
 ### `js-rules`
 
@@ -160,60 +209,6 @@ or
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
-```
-
-> Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
-
-### `common-rules`
-
-[Set of Common Eslint Rules for using in "any" type of file](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/common-eslintrc.js).
-
-* To be used in conjunction with [any-eslint-parser](https://any-eslint-parser.github.io/).
-
-1 . Add dependencies:
-
-`package.json`:
-
-```json
-  "devDependencies": {
-    "any-eslint-parser": "1.0.0",
-    "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
-```
-
-2 . Configure eslint:
-
-`eslintrc.json`:
-
-```json
-{
-  "extends": [ "plugin:base-style-config/common-rules" ],
-  "plugins": [ "base-style-config" ],
-  "parser": "any-eslint-parser",
-}
-```
-
-> Remember order of sets in `extends` is important since each new set will override rules of the previous ones.  
-
-3 . Add to the respective ESLint script task:
-
-`package.json`:
-
-```json
-  "scripts": {
-    "someESlintTask": "eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
   },
 ```
 
@@ -285,7 +280,7 @@ if using Gradle:
 
 ### `unused-import-rules`
 
-[unused-imports-rules: Set of Eslint Rules for Unused imports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/unused-import-eslintrc.js).
+[Set of Eslint Rules for Unused imports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/unused-import-eslintrc.js).
 
 1 . Add dependencies:
 

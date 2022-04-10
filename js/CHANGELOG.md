@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.9.1 - April 2022
+
+* Fixes peerDependencies.
+* Updates Documentation.
+
 ## 2.9.0 - April 2022
 
 * Removes rules `array-element-newline`, `array-bracket-spacing`, `object-curly-spacing` this should be now locally set.
