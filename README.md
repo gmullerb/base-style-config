@@ -229,9 +229,9 @@ __________________
 * [Propose changes or improvements](https://github.com/gmullerb/base-style-config/issues).
 * [Report bugs](https://github.com/gmullerb/base-style-config/issues).
 
-## Documentation
+## Evolution
 
-* [`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
+[`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
 
 ## License
 

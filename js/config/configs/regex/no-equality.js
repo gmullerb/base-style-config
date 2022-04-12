@@ -8,7 +8,7 @@ module.exports = {
   plugins: [ 'regex' ],
   rules: {
     'regex/avoid-equality': [
-      'warning', [
+      'warn', [
         {
           message: 'Avoid using \'===\' or \'==\', use \'!==\' or \'!(!==)\' instead',
           regex: '(?<![\!=])={2,3}(?!=)'

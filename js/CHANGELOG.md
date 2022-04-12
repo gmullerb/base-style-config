@@ -1,5 +1,10 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.9.2 - April 2022
+
+* Fixes `regex/avoid-equality`'s default error level.
+* Updates Documentation.
+
 ## 2.9.1 - April 2022
 
 * Fixes peerDependencies.

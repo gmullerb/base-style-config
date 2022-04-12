@@ -27,7 +27,7 @@ __________________
 ```json
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
@@ -43,13 +43,9 @@ __________________
 
 ```json
 {
-  "extends": [
-    "plugin:base-style-config/js-rules, import-rules, typescript-rules, react-with-hooks-rules, regex[copyright], regex[jsx], regex[quotes.jsx]",
-  ],
+  "extends": [ "plugin:base-style-config/js-rules, import-rules, typescript-rules, react-with-hooks-rules, regex[copyright], regex[jsx], regex[quotes.jsx]" ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "base-style-config"
-  ],
+  "plugins": [ "base-style-config" ],
 ```
 
 > Remove the rule sets that are not necessary according to your needs.  
@@ -132,7 +128,7 @@ or
   "devDependencies": {
     "any-eslint-parser": "1.0.1",
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
 ```
 
 2 . Configure eslint:
@@ -143,7 +139,7 @@ or
 {
   "extends": [ "plugin:base-style-config/common-rules" ],
   "plugins": [ "base-style-config" ],
-  "parser": "any-eslint-parser",
+  "parser": "any-eslint-parser"
 }
 ```
 
@@ -156,18 +152,6 @@ or
 ```json
   "scripts": {
     "someESlintTask": "eslint --config .eslintrc-any.json \"**/[\\.a-zA-Z]*.+(js|json|yml|txt|md|svg)\" \"**/.+(gitignore|npmignore)\"",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 > Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
@@ -183,7 +167,7 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
 ```
 
 2 . Configure eslint:
@@ -209,18 +193,6 @@ if using Gradle:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 > Can be complemented with [id-rules](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/id-eslintrc.js).
@@ -236,7 +208,7 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "eslint-plugin-import": "^2.18.2",
 ```
 
@@ -264,18 +236,6 @@ if using Gradle:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 ### `unused-import-rules`
@@ -289,7 +249,7 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "eslint-plugin-unused-imports": "0.1.2",
 ```
 
@@ -317,18 +277,6 @@ if using Gradle:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 ### `typescript-rules`
@@ -342,7 +290,7 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
 ```
@@ -374,18 +322,6 @@ if using Gradle:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 ### `react-rules`
@@ -399,17 +335,16 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-react": "^7.14.3",
 ```
 
 with hooks:
 
-
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
 ```
@@ -454,18 +389,6 @@ with hooks:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 ### Regex Rules
@@ -477,11 +400,11 @@ if using Gradle:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.0",
+    "eslint-plugin-base-style-config": "2.9.2",
     "eslint-plugin-regex": "^1.9.0",
 ```
 
-> `eslint-plugin-regex` version `1.3.0` is required since this version add replacements.
+> `eslint-plugin-regex >= 1.9.0` is required.
 
 2 . Configure eslint:
 
@@ -506,18 +429,6 @@ if using Gradle:
 ```json
   "scripts": {
     "someESlintTask": "eslint ..",
-  },
-```
-
-if using Gradle:
-
-```gradle
-  task assessSomeESLint(type: NpmTask) {
-    args = [
-      'run',
-      'someESlintTask'
-    ]
-  }
 ```
 
 #### Custom Regex
@@ -530,7 +441,7 @@ if using Gradle:
 [**`regex[no-equality]`**: Eslint Regex Rules to avoid using `===` or `==`](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-equality.js):
 
 * `regex/avoid-equality`: checks that `===` or `==` is used, prefer inequalities.
-  * default error level: **warning**.
+  * default error level: **warn**.
 
 [**`regex[no-export-group]`**: Eslint Regex Rules for Exports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/regex/no-export-group.js):
 
@@ -630,6 +541,10 @@ Check `devDependencies` version for the set of rules using in the project, i.e. 
 
 __________________
 
+## Evolution
+
+[`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
+
 ## Extending/Developing
 
 [Developing](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/developing.md)
@@ -642,10 +557,6 @@ __________________
 * [Give it a Star :star:](https://github.com/gmullerb/base-style-config).
 * [Propose changes or improvements](https://github.com/gmullerb/base-style-config/issues).
 * [Report bugs](https://github.com/gmullerb/base-style-config/issues).
-
-## Documentation
-
-* [`CHANGELOG`](CHANGELOG.html): contains the information about changes in each version, chronologically ordered ([Keep a Changelog](http://keepachangelog.com)).
 
 ## License
 
