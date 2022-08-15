@@ -1,92 +1,25 @@
 image: openjdk:11-jdk
 
-cache:
-  key: "${CI_COMMIT_SHA}"
-  untracked: true
-  paths:
-    - .gradle/
-
 before_script:
   - chmod +x ./gradlew
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
 stages:
-  - inception
-  - assess
-  - checks
-  - assemble
+  - one
 
-create-cache:
-  stage: inception
+only-one:
+  stage: one
   script:
     - ./gradlew -v
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: push
-    untracked: true
-    paths:
-      - .gradle/
-
-common-assess:
-  stage: assess
-  script:
     - ./gradlew assess
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: pull
-    untracked: true
-    paths:
-      - .gradle/
-
-groovy-assess:
-  stage: assess
-  script:
     - ./gradlew assessGradle
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: pull
-    untracked: true
-    paths:
-      - .gradle/
-
-java-test:
-  stage: checks
-  script:
     - ./gradlew java:test
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: pull
-    untracked: true
-    paths:
-      - .gradle/
-  artifacts:
-    reports:
-      junit: build/test-results/test/TEST-*.xml
-
-js-lint:
-  stage: checks
-  script:
     - ./gradlew js:npmInstall
     - ./gradlew js:npm_run_check
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: pull
-    untracked: true
-    paths:
-      - .gradle/
-
-java-assemble:
-  stage: assemble
-  script:
     - ./gradlew java:assembleArtifact
-  cache:
-    key: "${CI_COMMIT_SHA}"
-    policy: pull
-    untracked: true
-    paths:
-      - .gradle/
   artifacts:
     name: $CI_PROJECT_NAME-artifact-$CI_COMMIT_SHORT_SHA
     paths:
       - build/artifact
-
+    reports:
+      junit: build/test-results/test/TEST-*.xml

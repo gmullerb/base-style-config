@@ -238,6 +238,33 @@ or
     "someESlintTask": "eslint ..",
 ```
 
+If Typescript files are present in the code then `@typescript-eslint/parser` is required by `eslint-plugin-import`.
+
+`package.json`:
+
+```json
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-import": "^2.18.2",
+    "@typescript-eslint/parser": "*^2.18.2*",
+```
+
+and
+
+`eslintrc.json`:
+
+```json
+{
+  "extends": [
+    "plugin:base-style-config/import-rules"
+  ],
+  "plugins": [
+    "base-style-config"
+  ],
+  "parser": "@typescript-eslint/parser"
+```
+
 ### `unused-import-rules`
 
 [Set of Eslint Rules for Unused imports](https://github.com/gmullerb/base-style-config/blob/HEAD/js/config/configs/unused-import-eslintrc.js).
@@ -537,7 +564,7 @@ Check `devDependencies` version for the set of rules using in the project, i.e. 
 
 ### When also developing with Java or Groovy
 
-[Conventions/Voids](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/background.md)
+[Conventions/Voids](https://github.com/gmullerb/base-style-config/blob/HEAD/js/.readme/background.md)
 
 __________________
 
@@ -547,7 +574,7 @@ __________________
 
 ## Extending/Developing
 
-[Developing](https://github.com/gmullerb/base-style-config/blob/HEAD/js/readme/developing.md)
+[Developing](https://github.com/gmullerb/base-style-config/blob/HEAD/js/.readme/developing.md)
 
 ## Contributing
 

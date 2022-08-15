@@ -49,7 +49,6 @@ module.exports = {
         ignoreComments: true
       }
     ],
-    'init-declarations': 'error',
     'max-classes-per-file': 'error',
     'max-len': [
       'error', {
@@ -140,13 +139,6 @@ module.exports = {
         }
       }
     ],
-    'quote-props': [
-      'error',
-      'consistent-as-needed',
-      {
-        keywords: false
-      }
-    ],
     'spaced-comment': [
       'error',
       'always',
@@ -168,14 +160,6 @@ module.exports = {
       'error', {
         words: true,
         nonwords: false
-      }
-    ],
-    'valid-jsdoc': [
-      'error', {
-        requireReturn: false,
-        requireReturnType: true,
-        requireReturnDescription: true,
-        requireParamDescription: true
       }
     ],
     'wrap-iife': 'error'

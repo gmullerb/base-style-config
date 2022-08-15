@@ -1,5 +1,19 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.9.3 - August 2022
+
+* Removes `init-declarations` rule.
+  * Sometimes makes no sense to make an initialization and "impacts" the performance.
+* Removes `quote-props` rule.
+  * Maintainability was being affected since if a new "string" key was required when there were "non-string" keys, then all other keys needed the quotes.
+  * `as-needed` seemed like a good choice, but but still too strict, so lets quotes for props be free.
+* Removes `valid-jsdoc` rule (It's deprecated).
+* Improves project configuration.
+  * Renames `readme` folder to `.readme` in order to prevent it to be packed.
+  * Removes `.npmignore`.
+  * Changes CI pipeline configuration to reduce free time consumption.
+* Updates Documentation.
+
 ## 2.9.2 - April 2022
 
 * Fixes `regex/avoid-equality`'s default error level.
