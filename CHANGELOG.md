@@ -1,5 +1,9 @@
 # Base Style Config Change Log
 
+## October 2022
+
+* Fixes CI configuration.
+
 ## May 2020 / base-style-config.jar - 4.1.1 / eslint-plugin-base-style-config - 2.1.1
 
 * Updates Type parameters names regular expression.

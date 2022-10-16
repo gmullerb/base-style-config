@@ -1,4 +1,4 @@
-image: openjdk:11-jdk
+image: openjdk:11-jdk-slim
 
 before_script:
   - chmod +x ./gradlew
@@ -20,6 +20,6 @@ only-one:
   artifacts:
     name: $CI_PROJECT_NAME-artifact-$CI_COMMIT_SHORT_SHA
     paths:
-      - build/artifact
+      - java/build/artifact
     reports:
-      junit: build/test-results/test/TEST-*.xml
+      junit: java/build/test-results/test/TEST-*.xml
