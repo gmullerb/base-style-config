@@ -27,7 +27,7 @@ __________________
 ```json
   "devDependencies": {
     "eslint": "^7.1.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
@@ -128,7 +128,7 @@ or
   "devDependencies": {
     "any-eslint-parser": "1.0.1",
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
 ```
 
 2 . Configure eslint:
@@ -167,7 +167,7 @@ or
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
 ```
 
 2 . Configure eslint:
@@ -208,7 +208,7 @@ or
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-import": "^2.18.2",
 ```
 
@@ -245,7 +245,7 @@ If Typescript files are present in the code then `@typescript-eslint/parser` is 
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-import": "^2.18.2",
     "@typescript-eslint/parser": "*^2.18.2*",
 ```
@@ -276,7 +276,7 @@ and
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-unused-imports": "0.1.2",
 ```
 
@@ -317,7 +317,7 @@ and
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "@typescript-eslint/eslint-plugin": "~1.13.0",
     "@typescript-eslint/parser": "^1.9.0",
 ```
@@ -362,7 +362,7 @@ and
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-react": "^7.14.3",
 ```
 
@@ -371,7 +371,7 @@ with hooks:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
 ```
@@ -427,7 +427,7 @@ with hooks:
 ```json
   "devDependencies": {
     "eslint": "^6.3.0",
-    "eslint-plugin-base-style-config": "2.9.2",
+    "eslint-plugin-base-style-config": "2.9.4",
     "eslint-plugin-regex": "^1.9.0",
 ```
 

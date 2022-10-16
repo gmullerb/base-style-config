@@ -1,5 +1,9 @@
 # ESLint Plugin Base Style Config Change Log
 
+## 2.9.4 - October 2022
+
+* Adds `one-var` rule, with `never` option to avoid "hidden" variables declaration, i.e. enforce each variable to be declare on its own line.
+
 ## 2.9.3 - August 2022
 
 * Removes `init-declarations` rule.

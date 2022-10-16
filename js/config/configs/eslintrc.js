@@ -128,6 +128,7 @@ module.exports = {
         allowAllPropertiesOnSameLine: true
       }
     ],
+    'one-var': ['error', 'never'],
     'operator-assignment': 'error',
     'operator-linebreak': [
       'error',
